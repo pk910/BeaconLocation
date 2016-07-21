@@ -1,0 +1,61 @@
+    <resources>
+        <!--General-->
+        <string name="app_name">Machine Locator</string>
+        <string name="allBeaconsInRange">Machine in range</string>
+
+        <!--Menu -->
+        <string name="menu_beaconView">Beacons</string>
+        <string name="menu_beaconViewDescription">Scan for Beacons in your environment</string>
+        <string name="menu_machineView">Machines</string>
+
+        <!--Menu Buttons-->
+        <string name="action_settings">Settings</string>
+        <string name="rssi">Sort: RSSI</string>
+        <string name="minor">Sort: Minor</string>
+        <string name="delete">Delete machine</string>
+        <string name="addMachine">Add machine</string>
+        <string name="addBeacon">Add beacon</string>
+        <string name="deleteBeacon">Delete beacon</string>
+        <string name="modusRssiAvg">Mode: RSSI Average</string>
+        <string name="modusRssiAdv">Mode: RSSI Advanced</string>
+        <string name="modusRssiNormal">Mode: RSSI Default</string>
+        <string name="toMachine">Go to machine</string>
+
+        <!--Dialog Buttons-->
+        <string name="addToMachine">Add to machine</string>
+        <string name="createNewMachine">Create new Machine</string>
+        <string name="cancel">Cancel</string>
+        <string name="yes">Yes</string>
+        <string name="no">No</string>
+        <string name="activate">Activate</string>
+        <string name="addMachineManual">Create Machine manually</string>
+        <string name="addMachineWithScan">Use Beacon Scan</string>
+
+        <!--Dialog Titles-->
+        <string name="dialog_title">Beacon Options</string>
+        <string name="dialog_titleMachine">Add Machine Options</string>
+
+        <!--Alert Titles-->
+        <string name="alert_title_warning">Warning</string>
+        <string name="alert_title_sucess">Success</string>
+        <string name="alert_title_deleteMachine">Delete Machine</string>
+        <string name="alert_title_deleteBeacon">Delete Beacon</string>
+        <string name="bluetoothDisabledCaption">Bluetooth is disabled</string>
+
+        <!--Alert Messages-->
+        <string name="alert_message_name">Name already in use. Please choose new name.</string>
+        <string name="alert_message_enterName">Please enter a name for your machine.</string>
+        <string name="alert_message_save">Your changes have been saved to the database</string>
+        <string name="alert_message_deleteMachine">Do you really want to delete the machine?</string>
+        <string name="alert_message_deleteBeacon">Do you really want to delete the beacon %s?</string>
+        <string name="bluetoothDisabledMessage">This application need bluetooth. We can activate bluetooth for you.</string>
+
+        <!-- Empty Lists -->
+        <string name="emptyList_beacons">I\'m empty and happy :)</string>
+        <string name="emptyList_add_machines">I\'m empty and happy :)</string>
+        <string name="emptyList_machine">I\'m empty and happy :)</string>
+        <string name="emptyList_machines">I\'m empty and happy :)</string>
+
+        <!--Bitte ordnen!!!-->
+        <string name="minorId">Minor Id</string>
+</resources>
