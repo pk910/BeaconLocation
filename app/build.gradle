@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 apply plugin: 'findbugs'
+apply plugin: 'pmd'
 
 android {
     compileSdkVersion 23
@@ -37,7 +38,8 @@ task findbugsMain(type: FindBugs, dependsOn: assembleDebug) {
     description 'Run findbugs on main'
     group 'verification'
 
-    ignoreFailures = true
+    ignoreFailures = true // Do not stop build on errors (so CI can evaluate the results)
+
     effort = "max"
     reportLevel = "low"
     classes = files("$project.buildDir/intermediates/classes")
@@ -54,4 +56,23 @@ task findbugsMain(type: FindBugs, dependsOn: assembleDebug) {
     }
 }
 
-check.dependsOn findbugsMain
+task pmdMain (type: Pmd, dependsOn: assembleDebug) {
+
+    description 'Run pmd'
+    group 'verification'
+
+    ignoreFailures = true // Do not stop build on errors (so CI can evaluate the results)
+
+    ruleSets = [ "java-basic", "java-strings", "java-braces", "java-design", "java-unusedcode" ]
+    source = fileTree('src/main/java')
+
+    reports {
+        xml.enabled = true
+        html.enabled = false
+    }
+}
+
+check.doLast {
+    project.tasks.getByName("findbugsMain").execute()
+    project.tasks.getByName("pmdMain").execute()
+}
