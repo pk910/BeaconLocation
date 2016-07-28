@@ -41,3 +41,6 @@ captures/
 *.jks
 
 .DS_Store
+
+# Generated Javadoc
+app/javaDoc/
