@@ -4,7 +4,10 @@
 1. Entwicklungsprozess:
   * Keine Fehler und Warnungen im Produkt
   * Findbugs
+  * PMD
   * Android Lint
+  * TODO und FIXME beachten
+  * Ergebnisse der JUnit tests beachten
 
 2. Fehlermanagement
   * Fix-first Herangehensweise
