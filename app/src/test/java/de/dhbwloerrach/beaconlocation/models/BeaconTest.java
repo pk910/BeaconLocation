@@ -1,6 +1,7 @@
 package de.dhbwloerrach.beaconlocation.models;
 
-import static org.junit.Assert.*;
+import junit.framework.Assert;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -22,6 +23,6 @@ public class BeaconTest {
         Beacon testbeacon = new Beacon();
         String uuid = "asdf";
         testbeacon.setUuid(uuid);
-        assert(testbeacon.getUuid().equals(uuid));
+        Assert.assertEquals(uuid, testbeacon.getUuid());
     }
 }
