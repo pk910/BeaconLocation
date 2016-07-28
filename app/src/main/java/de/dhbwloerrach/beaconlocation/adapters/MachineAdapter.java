@@ -111,7 +111,7 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
 
         inRangeIcon.setImageResource(machineIdInRange.contains(machine.getId()) ? R.mipmap.circle_green : R.mipmap.circle_grey);
 
-        // 5. retrn rowView
+        // 5. return rowView
         return rowView;
     }
 }
