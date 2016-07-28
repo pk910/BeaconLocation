@@ -1,4 +1,4 @@
-package de.dhbwloerrach.beaconlocation.test.tools;
+package de.dhbwloerrach.beaconlocation.tools;
 
 import android.os.Bundle;
 import android.test.AndroidTestCase;
@@ -7,15 +7,15 @@ import java.util.AbstractMap;
 import java.util.Map;
 
 import de.dhbwloerrach.beaconlocation.activities.ActivityCommons;
-import de.dhbwloerrach.beaconlocation.test.helpers.TestHelper;
+import de.dhbwloerrach.beaconlocation.helpers.IntegrationTestHelper;
 
-public class ActivityCommonsTest extends AndroidTestCase {
-    private TestHelper helper = new TestHelper();
+public class ActivityCommonsTestIntegration extends AndroidTestCase {
+    private IntegrationTestHelper helper = new IntegrationTestHelper();
     private ActivityCommons commons;
 
     private static final int COUNT_FRAGMENTS = 10;
 
-    public ActivityCommonsTest() {
+    public ActivityCommonsTestIntegration() {
         super();
         commons = new ActivityCommons(null);
     }

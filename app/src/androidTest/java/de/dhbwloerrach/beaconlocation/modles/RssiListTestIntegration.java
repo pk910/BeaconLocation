@@ -1,24 +1,23 @@
-package de.dhbwloerrach.beaconlocation.test.modles;
+package de.dhbwloerrach.beaconlocation.modles;
 
 import android.test.AndroidTestCase;
 
 import java.util.ArrayList;
 
-import de.dhbwloerrach.beaconlocation.models.DistanceList;
 import de.dhbwloerrach.beaconlocation.models.RssiList;
 import de.dhbwloerrach.beaconlocation.models.TimedRssi;
-import de.dhbwloerrach.beaconlocation.test.helpers.TestHelper;
+import de.dhbwloerrach.beaconlocation.helpers.IntegrationTestHelper;
 
 /**
  * Created by Lukas on 11.09.2015.
  */
-public class RssiListTest extends AndroidTestCase {
-    private TestHelper helper = new TestHelper();
+public class RssiListTestIntegration extends AndroidTestCase {
+    private IntegrationTestHelper helper = new IntegrationTestHelper();
     private RssiList rssiList;
 
     private ArrayList<Integer> rssis;
 
-    public RssiListTest() {
+    public RssiListTestIntegration() {
         super();
     }
 

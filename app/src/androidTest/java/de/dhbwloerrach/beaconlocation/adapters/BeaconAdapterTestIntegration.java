@@ -1,4 +1,4 @@
-package de.dhbwloerrach.beaconlocation.test.adapters;
+package de.dhbwloerrach.beaconlocation.adapters;
 
 import android.test.AndroidTestCase;
 import android.view.View;
@@ -8,17 +8,16 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 import de.dhbwloerrach.beaconlocation.R;
-import de.dhbwloerrach.beaconlocation.adapters.BeaconAdapter;
 import de.dhbwloerrach.beaconlocation.models.Beacon;
 import de.dhbwloerrach.beaconlocation.models.BeaconList;
 import de.dhbwloerrach.beaconlocation.models.FilterTyp;
-import de.dhbwloerrach.beaconlocation.test.helpers.TestHelper;
+import de.dhbwloerrach.beaconlocation.helpers.IntegrationTestHelper;
 
 /**
  * Created by David on 7/24/15.
  */
-public class BeaconAdapterTest extends AndroidTestCase {
-    private TestHelper helper = new TestHelper();
+public class BeaconAdapterTestIntegration extends AndroidTestCase {
+    private IntegrationTestHelper helper = new IntegrationTestHelper();
     private BeaconList beacons;
     private BeaconAdapter adapter;
 
@@ -26,7 +25,7 @@ public class BeaconAdapterTest extends AndroidTestCase {
 
     private static final int COUNT_BEACONS = 10;
 
-    public BeaconAdapterTest() {
+    public BeaconAdapterTestIntegration() {
         super();
     }
 

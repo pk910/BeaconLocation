@@ -1,4 +1,4 @@
-package de.dhbwloerrach.beaconlocation.test.adapters;
+package de.dhbwloerrach.beaconlocation.adapters;
 
 import android.test.AndroidTestCase;
 import android.view.View;
@@ -8,21 +8,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.dhbwloerrach.beaconlocation.R;
-import de.dhbwloerrach.beaconlocation.adapters.MachineAdapter;
 import de.dhbwloerrach.beaconlocation.models.Machine;
-import de.dhbwloerrach.beaconlocation.test.helpers.TestHelper;
+import de.dhbwloerrach.beaconlocation.helpers.IntegrationTestHelper;
 
 /**
  * Created by David on 7/24/15.
  */
-public class MachineAdapterTest extends AndroidTestCase {
-    private TestHelper helper = new TestHelper();
+public class MachineAdapterTestIntegration extends AndroidTestCase {
+    private IntegrationTestHelper helper = new IntegrationTestHelper();
     private List<Machine> machines;
     private MachineAdapter adapter;
 
     private static final int COUNT_MACHINES = 10;
 
-    public MachineAdapterTest() {
+    public MachineAdapterTestIntegration() {
         super();
     }
 

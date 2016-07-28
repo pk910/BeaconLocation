@@ -1,4 +1,4 @@
-package de.dhbwloerrach.beaconlocation.test.modles;
+package de.dhbwloerrach.beaconlocation.modles;
 
 import android.test.AndroidTestCase;
 
@@ -6,18 +6,18 @@ import java.util.ArrayList;
 
 import de.dhbwloerrach.beaconlocation.models.DistanceList;
 import de.dhbwloerrach.beaconlocation.models.TimedDistance;
-import de.dhbwloerrach.beaconlocation.test.helpers.TestHelper;
+import de.dhbwloerrach.beaconlocation.helpers.IntegrationTestHelper;
 
 /**
  * Created by David on 7/29/15.
  */
-public class DistanceListTest extends AndroidTestCase {
-    private TestHelper helper = new TestHelper();
+public class DistanceListTestIntegration extends AndroidTestCase {
+    private IntegrationTestHelper helper = new IntegrationTestHelper();
     private DistanceList distanceList;
 
     private ArrayList<Double> distances;
 
-    public DistanceListTest() {
+    public DistanceListTestIntegration() {
         super();
     }
 

@@ -1,4 +1,4 @@
-package de.dhbwloerrach.beaconlocation.test.modles;
+package de.dhbwloerrach.beaconlocation.modles;
 
 import android.test.AndroidTestCase;
 
@@ -7,19 +7,19 @@ import java.util.List;
 import de.dhbwloerrach.beaconlocation.models.Beacon;
 import de.dhbwloerrach.beaconlocation.models.BeaconList;
 import de.dhbwloerrach.beaconlocation.models.FilterTyp;
-import de.dhbwloerrach.beaconlocation.test.helpers.TestHelper;
+import de.dhbwloerrach.beaconlocation.helpers.IntegrationTestHelper;
 
 /**
  * Created by David on 7/24/15.
  */
-public class BeaconListTest extends AndroidTestCase {
-    private TestHelper helper = new TestHelper();
+public class BeaconListTestIntegration extends AndroidTestCase {
+    private IntegrationTestHelper helper = new IntegrationTestHelper();
 
     private BeaconList beacons;
 
     private static final int COUNT_BEACONS = 10;
 
-    public BeaconListTest() {
+    public BeaconListTestIntegration() {
         super();
     }
 

@@ -1,4 +1,4 @@
-package de.dhbwloerrach.beaconlocation.test.helpers;
+package de.dhbwloerrach.beaconlocation.helpers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import de.dhbwloerrach.beaconlocation.models.Machine;
 /**
  * Created by David on 7/24/15.
  */
-public class TestHelper {
+public class IntegrationTestHelper {
     public List<Beacon> createBeacons(int count)
     {
         List<Beacon> beacons = new ArrayList<>(count);
