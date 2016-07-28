@@ -35,6 +35,10 @@ dependencies {
     }
     // Unit testing dependencies
     testCompile 'junit:junit:4.12'
+    testCompile('junit:junit:4.12'){
+        exclude group: 'org.hamcrest'
+    }
+    testCompile 'org.hamcrest:hamcrest-library:1.3'
 }
 
 task findbugsMain(type: FindBugs, dependsOn: assembleDebug) {
