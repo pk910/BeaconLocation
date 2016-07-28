@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'findbugs'
 apply plugin: 'pmd'
+apply plugin: "com.vanniktech.android.javadoc"
+
 
 android {
     compileSdkVersion 23
@@ -71,6 +73,13 @@ task pmdMain (type: Pmd, dependsOn: assembleDebug) {
         html.enabled = false
     }
 }
+
+/*task generateJavadocs(type: Javadoc) {
+    description 'Generate Javadocs'
+    group 'build'
+    source = fileTree('src/main/java')
+    destinationDir = reporting.file("javadocs")
+}*/
 
 check.doLast {
     project.tasks.getByName("findbugsMain").execute()
