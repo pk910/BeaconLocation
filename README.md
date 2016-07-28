@@ -4,8 +4,7 @@
 1. Entwicklungsprozess:
   * Keine Fehler und Warnungen im Produkt
   * Findbugs
-  * Checkstyle
-  * PMD
+  * Android Lint
 
 2. Fehlermanagement
   * Fix-first Herangehensweise
@@ -17,3 +16,9 @@
   * Häufige commits
   * Zusammengehörende Änderungen in einem Commit
   * Commit-Nachricht aussagekräftig und unabhängig von vorherigen Commits
+
+4. Dokumentation
+  * Kommentare so einpflegen, dass man auch nach 3 Monaten den Sinn des
+    Quellcodes nachvollziehen kann.
+  * Insbesondere bei von außen zugänglichen Methoden, Header-Kommentar-Blocks
+    benutzen.
