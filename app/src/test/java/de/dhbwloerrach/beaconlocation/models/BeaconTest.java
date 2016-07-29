@@ -10,6 +10,7 @@ import static org.hamcrest.Matchers.is;
  */
 public class BeaconTest {
 
+    // TODO: Extend unit tests.
     @org.junit.Test
     public void testGetUuid() throws Exception {
         Beacon testbeacon = new Beacon();
