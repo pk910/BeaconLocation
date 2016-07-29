@@ -91,3 +91,8 @@ check.doLast {
     project.tasks.getByName("findbugsMain").execute()
     project.tasks.getByName("pmdMain").execute()
 }
+
+// Always execute Unit-Tests on "test" task
+tasks.withType(Test) {
+    outputs.upToDateWhen { false }
+}
