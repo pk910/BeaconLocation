@@ -249,13 +249,14 @@ public class MachineFragment extends BaseFragment implements IBeaconListView {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(R.string.alert_title_deleteBeacon);
 
-        String beacons = "";
+        StringBuilder stBuilder= new StringBuilder();
         for (Beacon beacon : selectedBeacons) {
-            beacons += beacon.getMinor().toString();
+            stBuilder.append(beacon.getMinor().toString());
             if(selectedBeacons.indexOf(beacon) < selectedBeacons.size() - 1) {
-                beacons += ", ";
+                stBuilder.append(", ");
             }
         }
+        String beacons = stBuilder.toString();
 
         builder.setMessage(String.format(activity.getResources().getString(R.string.alert_message_deleteBeacon), beacons));
         builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {

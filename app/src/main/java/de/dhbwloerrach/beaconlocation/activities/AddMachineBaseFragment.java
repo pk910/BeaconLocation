@@ -84,18 +84,20 @@ public abstract class AddMachineBaseFragment extends BaseFragment {
      * @return boolean
      */
     protected boolean checkBeacons(ArrayList<Beacon> beacons, DatabaseHandler databaseHandler, final Delegate action) {
-        String allOverwriteBeacons = "";
+
+        StringBuilder stBuilder= new StringBuilder();
         for (Beacon beacon : beacons) {
 
             if (!beacon.checkBecaoninDB(beacon, databaseHandler)) {
                 continue;
             }
             if (beacons.indexOf(beacon) <= beacons.size() - 1) {
-                allOverwriteBeacons += beacon.getMinor().toString() + ", ";
+                stBuilder.append(beacon.getMinor().toString() + ", ");
             } else {
-                allOverwriteBeacons += beacon.getMinor().toString() + " ";
+                stBuilder.append(beacon.getMinor().toString() + " ");
             }
         }
+        String allOverwriteBeacons = stBuilder.toString();
 
         if (!allOverwriteBeacons.isEmpty()) {
             new AlertDialog.Builder(activity)
