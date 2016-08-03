@@ -69,7 +69,7 @@ public class MachineAdapterTestIntegration extends AndroidTestCase {
 
             assertNotNull(machineName);
 
-            assertEquals(machineName.getText(), machines.get(index).getName().toString());
+            assertEquals(machineName.getText(), machines.get(index).getName());
         }
     }
 
