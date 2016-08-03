@@ -80,6 +80,22 @@ task pmdMain (type: Pmd, dependsOn: assembleDebug) {
     }
 }
 
+task pmdMainHTML (type: Pmd, dependsOn: assembleDebug) {
+
+    description 'Run pmd'
+    group 'verification'
+
+    ignoreFailures = true // Do not stop build on errors (so CI can evaluate the results)
+
+    ruleSets = [ "java-basic", "java-strings", "java-braces", "java-design", "java-unusedcode" ]
+    source = fileTree('src/main/java')
+
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
 /*task generateJavadocs(type: Javadoc) {
     description 'Generate Javadocs'
     group 'build'
