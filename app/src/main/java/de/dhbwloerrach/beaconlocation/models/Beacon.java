@@ -220,8 +220,7 @@ public class Beacon implements Parcelable{
         //int result = uuid.hashCode();
         //result = 31 * result + major.hashCode();
         //result = 31 * result + minor.hashCode();
-        int result = minor.hashCode();
-        return result;
+        return minor.hashCode();
     }
 
     @Override
