@@ -9,6 +9,7 @@ import de.dhbwloerrach.beaconlocation.models.Machine;
 
 /**
  * Created by David on 7/24/15.
+ * Implements a set of functions used for other testings classes
  */
 public class IntegrationTestHelper {
     public List<Beacon> createBeacons(int count)

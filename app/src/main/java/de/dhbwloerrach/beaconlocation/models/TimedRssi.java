@@ -4,6 +4,7 @@ import java.util.Date;
 
 /**
  * Created by Lukas on 31.07.2015.
+ * Implements a class that holds a rssi value and a timestamp from a beacon
  */
 public class TimedRssi {
     private int rssi;

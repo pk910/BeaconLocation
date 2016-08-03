@@ -10,6 +10,7 @@ import de.dhbwloerrach.beaconlocation.helpers.IntegrationTestHelper;
 
 /**
  * Created by David on 7/29/15.
+ * Implements a testing class for the distance list implementation
  */
 public class DistanceListTestIntegration extends AndroidTestCase {
     private IntegrationTestHelper helper = new IntegrationTestHelper();

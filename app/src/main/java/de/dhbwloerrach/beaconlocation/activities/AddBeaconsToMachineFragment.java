@@ -21,6 +21,7 @@ import de.dhbwloerrach.beaconlocation.models.Machine;
 
 /**
  * Created by alirei on 09.08.2015.
+ * Implements the fragmant for adding a beacon to a machine
  */
 public class AddBeaconsToMachineFragment extends AddMachineBaseFragment {
     private ArrayList<Beacon> selectedBeacons = new ArrayList<>();

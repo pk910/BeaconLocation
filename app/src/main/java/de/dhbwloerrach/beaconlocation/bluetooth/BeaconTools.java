@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 /**
  * Created by alirei on 20.07.2015.
+ * Implements a set of tools for beacons
  */
 public class BeaconTools implements BeaconConsumer {
     Region mRegion = new Region("Region", null, null, null);

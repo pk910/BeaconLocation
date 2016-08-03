@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Lukas on 23.07.2015.
+ * Implements a list of distance values for beacons
  */
 public class DistanceList extends ArrayList<TimedDistance> {
     public DistanceList getLast(int seconds){

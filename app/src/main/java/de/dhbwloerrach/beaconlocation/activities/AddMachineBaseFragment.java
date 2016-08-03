@@ -14,6 +14,7 @@ import de.dhbwloerrach.beaconlocation.models.Machine;
 
 /**
  * Created by Lukas on 13.08.2015.
+ * Extends the BaseFragment with some machine specific functions
  */
 public abstract class AddMachineBaseFragment extends BaseFragment {
 

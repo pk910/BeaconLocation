@@ -19,6 +19,7 @@ import de.dhbwloerrach.beaconlocation.models.RssiAverageType;
 
 /**
  * Created by Lukas on 22.07.2015.
+ * Implements a class that manages a list off beacons
  */
 public class BeaconAdapter extends ArrayAdapter<Beacon> {
     private final Context context;

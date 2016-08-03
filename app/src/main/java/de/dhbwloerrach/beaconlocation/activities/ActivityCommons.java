@@ -25,6 +25,7 @@ import de.dhbwloerrach.beaconlocation.bluetooth.IBeaconListView;
 
 /**
  * Created by Lukas on 31.07.2015.
+ * Manages fragmants and some common elements
  */
 public class ActivityCommons implements Drawer.OnDrawerItemClickListener {
     private Menu menu;

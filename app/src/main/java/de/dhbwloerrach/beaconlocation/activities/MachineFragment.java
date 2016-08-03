@@ -26,6 +26,7 @@ import de.dhbwloerrach.beaconlocation.models.RssiAverageType;
 
 /**
  * Created by Lukas on 05.08.2015.
+ * Implements a fragment that shows a single machine
  */
 public class MachineFragment extends BaseFragment implements IBeaconListView {
     protected BeaconAdapter adapter;

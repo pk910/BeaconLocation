@@ -7,6 +7,7 @@ import android.view.View;
 
 /**
  * Created by David on 7/31/15.
+ * Extens the standard fragment with some required elements
  */
 public abstract class BaseFragment extends Fragment {
     protected MainActivity activity;

@@ -18,6 +18,7 @@ import de.dhbwloerrach.beaconlocation.models.Beacon;
 
 /**
  * Created by Lukas on 04.08.2015.
+ * Implements a fragmant that allows an user to manually add a maschine (with entering the mino-ID)
  */
 public class AddManualMachineFragment extends AddMachineBaseFragment {
     ArrayList<EditText> dynamicMinorIds;

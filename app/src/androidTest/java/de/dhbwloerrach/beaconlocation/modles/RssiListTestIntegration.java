@@ -10,6 +10,7 @@ import de.dhbwloerrach.beaconlocation.helpers.IntegrationTestHelper;
 
 /**
  * Created by Lukas on 11.09.2015.
+ * Implements a test class for RssiList
  */
 public class RssiListTestIntegration extends AndroidTestCase {
     private IntegrationTestHelper helper = new IntegrationTestHelper();

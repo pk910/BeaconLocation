@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Lukas on 31.07.2015.
+ * Implements a list of timedRssi values
  */
 public class RssiList extends ArrayList<TimedRssi> {
     public RssiList getLast(int seconds){

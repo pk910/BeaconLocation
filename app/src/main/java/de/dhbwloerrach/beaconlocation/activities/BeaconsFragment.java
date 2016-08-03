@@ -29,6 +29,7 @@ import de.dhbwloerrach.beaconlocation.models.RssiAverageType;
 
 /**
  * Created by Lukas on 31.07.2015.
+ * Implements the fragmant that shows a list of beacons
  */
 public class BeaconsFragment extends AddMachineBaseFragment implements IBeaconListView {
     protected BeaconAdapter adapter;

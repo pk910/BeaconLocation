@@ -7,6 +7,7 @@ import de.dhbwloerrach.beaconlocation.database.DatabaseHandler;
 
 /**
  * Created by Salvo on 23.07.2015.
+ * Implements a class that represents a single machine
  */
 public class Machine implements Parcelable {
 

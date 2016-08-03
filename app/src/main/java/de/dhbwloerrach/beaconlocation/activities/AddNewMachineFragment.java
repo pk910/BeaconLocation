@@ -17,6 +17,7 @@ import de.dhbwloerrach.beaconlocation.models.Beacon;
 
 /**
  * Created by alirei on 31.07.2015.
+ * Implement a fragment that allows a user to add a machine by selecting a beacon from a list
  */
 public class AddNewMachineFragment extends AddMachineBaseFragment {
     private ArrayList<Beacon> selectedBeacons = new ArrayList<>();

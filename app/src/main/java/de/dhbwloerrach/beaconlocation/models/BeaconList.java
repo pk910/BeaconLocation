@@ -6,6 +6,7 @@ import java.util.Comparator;
 
 /**
  * Created by Lukas on 23.07.2015.
+ * Implements a list of Beacons
  */
 public class BeaconList extends ArrayList<Beacon> {
 

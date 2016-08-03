@@ -14,6 +14,7 @@ import de.dhbwloerrach.beaconlocation.models.Machine;
 
 /**
  * Created by Salvo on 23.07.2015.
+ * Implements a database managment class
  */
 public class DatabaseHandler extends SQLiteOpenHelper {
 

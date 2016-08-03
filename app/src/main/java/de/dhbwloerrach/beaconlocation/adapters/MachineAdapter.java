@@ -18,6 +18,7 @@ import de.dhbwloerrach.beaconlocation.models.Machine;
 
 /**
  * Created by Lukas on 31.07.2015.
+ * Implements an adapter class for machines
  */
 public class MachineAdapter extends ArrayAdapter<Machine> {
     private final Context context;
