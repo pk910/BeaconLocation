@@ -85,36 +85,55 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
         return true;
     }
 
+    static class ViewHolder {
+
+        private TextView valueViewMinor;
+        private ImageView inRangeIcon;
+        private ImageView warningIcon;
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Machine machine = machines.get(position);
 
-        // 1. Create inflater
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        // 2. Get rowView from inflater
-        View rowView = inflater.inflate(R.layout.listitem_machine, parent, false);
+        ViewHolder mViewHolder;
 
-        // 3. Get the two text view from the rowView
-        TextView valueViewMinor = (TextView) rowView.findViewById(R.id.machineName);
-        ImageView inRangeIcon = (ImageView) rowView.findViewById(R.id.machineInRange);
-        ImageView warningIcon = (ImageView) rowView.findViewById(R.id.machineWarning);
+        if (null == convertView) {
+
+            mViewHolder = new ViewHolder();
+
+            // 1. Create inflater
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+            // 2. Get rowView from inflater
+            View rowView = inflater.inflate(R.layout.listitem_machine, parent, false);
+
+            // 3. Get the two text view from the rowView
+            TextView valueViewMinor = (TextView) rowView.findViewById(R.id.machineName);
+            ImageView inRangeIcon = (ImageView) rowView.findViewById(R.id.machineInRange);
+            ImageView warningIcon = (ImageView) rowView.findViewById(R.id.machineWarning);
+
+            convertView.setTag(mViewHolder);
+        } else {
+            mViewHolder = (ViewHolder) convertView.getTag();
+        }
 
         // 4. Set the text for textView
-        valueViewMinor.setText(machine.getName());
+        mViewHolder.valueViewMinor.setText(machine.getName());
 
         DatabaseHandler databaseHandler = new DatabaseHandler(context);
         try {
             int beaconsCount = databaseHandler.getAllBeaconsByMachine(machine.getId()).size();
-            warningIcon.setVisibility(beaconsCount == 0 ? View.VISIBLE : View.GONE);
-            inRangeIcon.setVisibility(beaconsCount != 0 ? View.VISIBLE : View.GONE);
+            mViewHolder.warningIcon.setVisibility(beaconsCount == 0 ? View.VISIBLE : View.GONE);
+            mViewHolder.inRangeIcon.setVisibility(beaconsCount != 0 ? View.VISIBLE : View.GONE);
         } finally {
             databaseHandler.close();
         }
 
-        inRangeIcon.setImageResource(machineIdInRange.contains(machine.getId()) ? R.mipmap.circle_green : R.mipmap.circle_grey);
+        mViewHolder.inRangeIcon.setImageResource(machineIdInRange.contains(machine.getId()) ? R.mipmap.circle_green : R.mipmap.circle_grey);
 
         // 5. return rowView
-        return rowView;
+        return convertView;
     }
 }
