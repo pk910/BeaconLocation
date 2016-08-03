@@ -94,7 +94,7 @@ public abstract class AddMachineBaseFragment extends BaseFragment {
             if (beacons.indexOf(beacon) <= beacons.size() - 1) {
                 stBuilder.append(beacon.getMinor().toString()).append(", ");
             } else {
-                stBuilder.append(beacon.getMinor().toString()).append(", ");
+                stBuilder.append(beacon.getMinor().toString()).append(" ");
             }
         }
         String allOverwriteBeacons = stBuilder.toString();
