@@ -8,4 +8,5 @@ public class Constants {
     private Constants() {} // Prevent instantiation by declaring constructor private.
 
     public static final int RSSI_AVERAGE_SECONDS = 2;
+    public static final int BEACONLIST_REFRESH_INTERVAL_SECONDS = 5;
 }

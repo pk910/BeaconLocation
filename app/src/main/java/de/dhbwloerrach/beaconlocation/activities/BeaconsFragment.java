@@ -16,6 +16,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import de.dhbwloerrach.beaconlocation.Constants;
 import de.dhbwloerrach.beaconlocation.R;
 import de.dhbwloerrach.beaconlocation.adapters.BeaconAdapter;
 import de.dhbwloerrach.beaconlocation.bluetooth.IBeaconListView;
@@ -109,7 +110,7 @@ public class BeaconsFragment extends AddMachineBaseFragment implements IBeaconLi
             @Override
             public void run() {
                 adapter.clearItems();
-                adapter.addItems(new BeaconList(beacons).filterByLast(5));
+                adapter.addItems(new BeaconList(beacons).filterByLast(Constants.BEACONLIST_REFRESH_INTERVAL_SECONDS));
                 adapter.notifyDataSetChanged();
             }
         });
