@@ -16,6 +16,23 @@ public class Machine implements Parcelable {
     private Integer id;
 
 
+    protected Machine(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+    }
+
+    public static final Creator<Machine> CREATOR = new Creator<Machine>() {
+        @Override
+        public Machine createFromParcel(Parcel in) {
+            return new Machine(in);
+        }
+
+        @Override
+        public Machine[] newArray(int size) {
+            return new Machine[size];
+        }
+    };
+
     public Integer getId() {
         return id;
     }
