@@ -7,6 +7,7 @@ import static org.hamcrest.Matchers.is;
 
 /**
  * Created by enio on 7/29/16.
+ *  Unittests for class BeaconTest
  */
 public class BeaconTest {
 
