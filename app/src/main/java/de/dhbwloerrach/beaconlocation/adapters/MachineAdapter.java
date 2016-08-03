@@ -96,10 +96,10 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
     public View getView(int position, View convertView, ViewGroup parent) {
         Machine machine = machines.get(position);
 
-
+        View view = convertView;
         ViewHolder mViewHolder;
 
-        if (null == convertView) {
+        if (null == view) {
 
             mViewHolder = new ViewHolder();
 
@@ -107,16 +107,16 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             // 2. Get rowView from inflater
-            convertView = inflater.inflate(R.layout.listitem_machine, parent, false);
+            view = inflater.inflate(R.layout.listitem_machine, parent, false);
 
             // 3. Get the two text view from the rowView
-            mViewHolder.valueViewMinor = (TextView) convertView.findViewById(R.id.machineName);
-            mViewHolder.inRangeIcon = (ImageView) convertView.findViewById(R.id.machineInRange);
-            mViewHolder.warningIcon = (ImageView) convertView.findViewById(R.id.machineWarning);
+            mViewHolder.valueViewMinor = (TextView) view.findViewById(R.id.machineName);
+            mViewHolder.inRangeIcon = (ImageView) view.findViewById(R.id.machineInRange);
+            mViewHolder.warningIcon = (ImageView) view.findViewById(R.id.machineWarning);
 
-            convertView.setTag(mViewHolder);
+            view.setTag(mViewHolder);
         } else {
-            mViewHolder = (ViewHolder) convertView.getTag();
+            mViewHolder = (ViewHolder) view.getTag();
         }
 
         // 4. Set the text for textView
@@ -134,6 +134,6 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
         mViewHolder.inRangeIcon.setImageResource(machineIdInRange.contains(machine.getId()) ? R.mipmap.circle_green : R.mipmap.circle_grey);
 
         // 5. return rowView
-        return convertView;
+        return view;
     }
 }

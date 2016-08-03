@@ -122,25 +122,26 @@ public class BeaconAdapter extends ArrayAdapter<Beacon> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
+        View view = convertView;
         ViewHolder mViewHolder;
 
-        if (null == convertView) {
+        if (null == view) {
             mViewHolder = new ViewHolder();
 
             // 1. Create inflater
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             // 2. Get convertView from inflater
-            convertView = inflater.inflate(R.layout.listitem_beacon, parent, false);
+            view = inflater.inflate(R.layout.listitem_beacon, parent, false);
 
             // 3. Get the two text view from the convertView
-            mViewHolder.valueViewMinor = (TextView) convertView.findViewById(R.id.minor);
-            mViewHolder.valueViewRssi = (TextView) convertView.findViewById(R.id.rssi);
-            mViewHolder.image = (ImageView) convertView.findViewById(R.id.circle);
+            mViewHolder.valueViewMinor = (TextView) view.findViewById(R.id.minor);
+            mViewHolder.valueViewRssi = (TextView) view.findViewById(R.id.rssi);
+            mViewHolder.image = (ImageView) view.findViewById(R.id.circle);
 
-            convertView.setTag(mViewHolder);
+            view.setTag(mViewHolder);
         } else {
-            mViewHolder = (ViewHolder) convertView.getTag();
+            mViewHolder = (ViewHolder) view.getTag();
         }
 
 
@@ -173,6 +174,6 @@ public class BeaconAdapter extends ArrayAdapter<Beacon> {
         mViewHolder.valueViewRssi.setText((rssi == 0) ? "-" : rssiFormat.format(rssi));
 
         // 5. retrn convertView
-        return convertView;
+        return view;
     }
 }
