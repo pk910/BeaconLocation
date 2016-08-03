@@ -49,7 +49,7 @@ task findbugsMain(type: FindBugs, dependsOn: assembleDebug) {
     ignoreFailures = true // Do not stop build on errors (so CI can evaluate the results)
 
     effort = "max"
-    reportLevel = "med"
+    reportLevel = "medium"
     classes = files("$project.buildDir/intermediates/classes")
 
     excludeFilter = file("./config/findbugs-android-exclude.xml")
