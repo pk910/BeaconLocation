@@ -23,7 +23,7 @@ import de.dhbwloerrach.beaconlocation.models.RssiAverageType;
 public class BeaconAdapter extends ArrayAdapter<Beacon> {
     private final Context context;
     private BeaconList beacons = new BeaconList();
-    private DecimalFormat distanceFormat = new DecimalFormat("#m");
+    //private DecimalFormat distanceFormat = new DecimalFormat("#m");
     private DecimalFormat rssiFormat = new DecimalFormat("#");
     private FilterTyp filterTyp = FilterTyp.Minor;
     private RssiAverageType rssiAverageType = RssiAverageType.SmoothedAverage;

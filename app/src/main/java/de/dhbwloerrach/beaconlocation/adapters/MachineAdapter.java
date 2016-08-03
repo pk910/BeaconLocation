@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.text.DecimalFormat;
+//import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -22,7 +22,7 @@ import de.dhbwloerrach.beaconlocation.models.Machine;
 public class MachineAdapter extends ArrayAdapter<Machine> {
     private final Context context;
     private ArrayList<Machine> machines = new ArrayList<>();
-    private DecimalFormat distanceFormat = new DecimalFormat("#m");
+    //private DecimalFormat distanceFormat = new DecimalFormat("#m");
     private ArrayList<Integer> machineIdInRange = new ArrayList<>();
 
     public MachineAdapter(Context context) {
@@ -30,13 +30,15 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
         this.context = context;
     }
 
+    /*
     /**
      * Add one item
      * @param item Machine
-     */
+     * /
     public void addItem(Machine item) {
         machines.add(item);
     }
+    */
 
     /**
      * Add multiple items
@@ -98,7 +100,7 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
         ImageView warningIcon = (ImageView) rowView.findViewById(R.id.machineWarning);
 
         // 4. Set the text for textView
-        valueViewMinor.setText(machine.getName().toString());
+        valueViewMinor.setText(machine.getName());
 
         DatabaseHandler databaseHandler = new DatabaseHandler(context);
         try {
