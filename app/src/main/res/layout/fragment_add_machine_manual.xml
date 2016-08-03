@@ -54,13 +54,13 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/addMachine_enter_machine_name_display_text"
                 android:id="@+id/label"
-                android:labelFor="@id/editText"/>
+                android:labelFor="@+id/editText2"/>
 
             <EditText
                 android:layout_width="200dp"
                 android:layout_height="50dp"
                 android:singleLine="true"
-                android:id="@+id/editText"
+                android:id="@+id/editText2"
                 android:inputType="text" />
 
         </TableRow>

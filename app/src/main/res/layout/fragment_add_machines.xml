@@ -55,7 +55,7 @@ android:stretchColumns="1">
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/addMachine_enter_machine_name_display_text"
             android:id="@+id/label"
-            android:labelFor="@id/editText"/>
+            android:labelFor="@+id/editText"/>
 
         <EditText
             android:layout_width="200dp"
