@@ -99,7 +99,7 @@ public class BeaconsFragment extends AddMachineBaseFragment implements IBeaconLi
     }
 
     @Override
-    public void RefreshList(final ArrayList<Beacon> beacons) {
+    public void refreshList(final ArrayList<Beacon> beacons) {
         if(updatePaused) {
             return;
         }

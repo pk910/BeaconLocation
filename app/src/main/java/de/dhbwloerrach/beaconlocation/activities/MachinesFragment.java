@@ -114,7 +114,7 @@ public class MachinesFragment extends BaseFragment implements IBeaconListView {
     }
 
     @Override
-    public void RefreshList(ArrayList<Beacon> beacons) {
+    public void refreshList(ArrayList<Beacon> beacons) {
         final BeaconList filteredBeacons = new BeaconList(beacons).filterByLast(5);
 
         DatabaseHandler databaseHandler = new DatabaseHandler(activity);

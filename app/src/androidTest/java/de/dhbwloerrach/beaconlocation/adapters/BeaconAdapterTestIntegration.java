@@ -43,7 +43,7 @@ public class BeaconAdapterTestIntegration extends AndroidTestCase {
 
         this.beacons = new BeaconList();
         this.beacons.addAll(beacons);
-        this.beacons.Sort(filterTyp);
+        this.beacons.sort(filterTyp);
     }
 
     public void testClearItems() throws Exception {

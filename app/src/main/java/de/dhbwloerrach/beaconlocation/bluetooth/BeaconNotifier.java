@@ -50,7 +50,7 @@ public class BeaconNotifier implements RangeNotifier {
         }
 
         for (IBeaconListView listView : beaconTools.getBeaconListViews()) {
-            listView.RefreshList(beaconList);
+            listView.refreshList(beaconList);
         }
     }
 

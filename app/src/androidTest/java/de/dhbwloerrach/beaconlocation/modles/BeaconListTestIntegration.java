@@ -45,14 +45,14 @@ public class BeaconListTestIntegration extends AndroidTestCase {
     }
 
     public void testSortByRssi() throws Exception {
-        beacons.Sort(FilterTyp.RSSI);
+        beacons.sort(FilterTyp.RSSI);
         for(int i = 1; i < beacons.size(); i++){
             assertTrue(beacons.get(i).getRssi() <= beacons.get(i-1).getRssi());
         }
     }
 
     public void testSortByMinor() throws Exception {
-        beacons.Sort(FilterTyp.Minor);
+        beacons.sort(FilterTyp.Minor);
         for(int i = 1; i < beacons.size(); i++){
             assertTrue(beacons.get(i).getMinor() >= beacons.get(i-1).getMinor());
         }

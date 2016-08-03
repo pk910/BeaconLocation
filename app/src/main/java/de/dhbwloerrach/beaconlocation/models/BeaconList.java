@@ -28,7 +28,7 @@ public class BeaconList extends ArrayList<Beacon> {
         return result;
     }
 
-    protected BeaconList SortByRSSI() {
+    protected BeaconList sortByRSSI() {
         Collections.sort(this, new Comparator<Beacon>() {
             @Override
             public int compare(Beacon lhs, Beacon rhs) {
@@ -47,7 +47,7 @@ public class BeaconList extends ArrayList<Beacon> {
         return this;
     }
 
-    protected BeaconList SortByMinor() {
+    protected BeaconList sortByMinor() {
         Collections.sort(this, new Comparator<Beacon>() {
             @Override
             public int compare(Beacon lhs, Beacon rhs) {
@@ -65,13 +65,13 @@ public class BeaconList extends ArrayList<Beacon> {
         return this;
     }
 
-    public void Sort(FilterTyp filterTyp){
+    public void sort(FilterTyp filterTyp){
         switch (filterTyp){
             case Minor:
-                SortByMinor();
+                sortByMinor();
                 break;
             case RSSI:
-                SortByRSSI();
+                sortByRSSI();
                 break;
         }
     }

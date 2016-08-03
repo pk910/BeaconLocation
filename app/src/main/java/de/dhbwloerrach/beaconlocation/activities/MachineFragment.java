@@ -174,7 +174,7 @@ public class MachineFragment extends BaseFragment implements IBeaconListView {
     }
 
     @Override
-    public void RefreshList(ArrayList<Beacon> beacons) {
+    public void refreshList(ArrayList<Beacon> beacons) {
         if(updatePaused) {
             return;
         }

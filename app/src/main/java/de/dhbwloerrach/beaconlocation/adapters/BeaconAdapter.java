@@ -75,7 +75,7 @@ public class BeaconAdapter extends ArrayAdapter<Beacon> {
      */
     public void addItem(Beacon item) {
         beacons.add(item);
-        beacons.Sort(filterTyp);
+        beacons.sort(filterTyp);
     }
 
     /**
@@ -84,7 +84,7 @@ public class BeaconAdapter extends ArrayAdapter<Beacon> {
      */
     public void addItems(Collection<Beacon> items) {
         beacons.addAll(items);
-        beacons.Sort(filterTyp);
+        beacons.sort(filterTyp);
     }
 
     /**
