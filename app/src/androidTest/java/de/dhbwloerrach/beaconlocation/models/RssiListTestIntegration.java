@@ -1,11 +1,9 @@
-package de.dhbwloerrach.beaconlocation.modles;
+package de.dhbwloerrach.beaconlocation.models;
 
 import android.test.AndroidTestCase;
 
 import java.util.ArrayList;
 
-import de.dhbwloerrach.beaconlocation.models.RssiList;
-import de.dhbwloerrach.beaconlocation.models.TimedRssi;
 import de.dhbwloerrach.beaconlocation.helpers.IntegrationTestHelper;
 
 /**
