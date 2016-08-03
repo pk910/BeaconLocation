@@ -25,6 +25,6 @@ public class DistanceList extends ArrayList<TimedDistance> {
         for (TimedDistance distance : this)
             sum += distance.getDistance();
 
-        return ((double) sum) / this.size();
+        return sum / this.size();
     }
 }

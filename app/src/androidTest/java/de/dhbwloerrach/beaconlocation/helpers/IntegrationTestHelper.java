@@ -12,6 +12,7 @@ import de.dhbwloerrach.beaconlocation.models.Machine;
  * Implements a set of functions used for other testings classes
  */
 public class IntegrationTestHelper {
+    @SuppressWarnings("MismatchedQueryAndUpdateOfCollection") // Could be looked into, but shouldn't hurt the test
     public List<Beacon> createBeacons(int count)
     {
         List<Beacon> beacons = new ArrayList<>(count);

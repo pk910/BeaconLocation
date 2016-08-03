@@ -29,7 +29,7 @@ public class RssiList extends ArrayList<TimedRssi> {
         for (TimedRssi distance : this)
             sum += distance.getRssi();
 
-        return ((double) sum) / this.size();
+        return sum / this.size();
     }
 
     public Double getSmoothAverage() {
@@ -54,6 +54,6 @@ public class RssiList extends ArrayList<TimedRssi> {
         for (int rssi : ordered)
             sum += rssi;
 
-        return ((double) sum) / ordered.size();
+        return sum / ordered.size();
     }
 }
