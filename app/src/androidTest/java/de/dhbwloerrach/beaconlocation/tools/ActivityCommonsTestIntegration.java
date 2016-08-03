@@ -11,7 +11,7 @@ import de.dhbwloerrach.beaconlocation.helpers.IntegrationTestHelper;
 
 public class ActivityCommonsTestIntegration extends AndroidTestCase {
     private IntegrationTestHelper helper = new IntegrationTestHelper();
-    private ActivityCommons commons;
+    private final ActivityCommons commons;
 
     private static final int COUNT_FRAGMENTS = 10;
 

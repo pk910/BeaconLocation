@@ -11,7 +11,7 @@ import de.dhbwloerrach.beaconlocation.helpers.IntegrationTestHelper;
  * Implements a test class for beacon class
  */
 public class BeaconTestIntegration extends AndroidTestCase {
-    private IntegrationTestHelper helper = new IntegrationTestHelper();
+    private final IntegrationTestHelper helper = new IntegrationTestHelper();
 
     private List<Beacon> beacons;
 

@@ -28,8 +28,7 @@ public class RssiListTestIntegration extends AndroidTestCase {
 
         rssis = new ArrayList<>(count);
         rssiList = new RssiList();
-        for (int index = 0; index < count; index++) {
-            int rssi = index;
+        for (int rssi = 0; rssi < count; rssi++) {
             rssis.add(rssi);
             rssiList.add(new TimedRssi(rssi));
             Thread.sleep(567);

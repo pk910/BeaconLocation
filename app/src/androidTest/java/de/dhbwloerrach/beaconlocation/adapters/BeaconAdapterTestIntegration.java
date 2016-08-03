@@ -18,11 +18,11 @@ import de.dhbwloerrach.beaconlocation.helpers.IntegrationTestHelper;
  * Implements a testing class for BeaconAdapter class
  */
 public class BeaconAdapterTestIntegration extends AndroidTestCase {
-    private IntegrationTestHelper helper = new IntegrationTestHelper();
+    private final IntegrationTestHelper helper = new IntegrationTestHelper();
     private BeaconList beacons;
     private BeaconAdapter adapter;
 
-    private DecimalFormat numberFormat = new DecimalFormat("#");
+    private final DecimalFormat numberFormat = new DecimalFormat("#");
 
     private static final int COUNT_BEACONS = 10;
 

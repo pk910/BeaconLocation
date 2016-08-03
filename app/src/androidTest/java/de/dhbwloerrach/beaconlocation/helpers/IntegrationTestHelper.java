@@ -45,6 +45,7 @@ public class IntegrationTestHelper {
         return beacons;
     }
 
+    @SuppressWarnings("SameParameterValue")
     public List<Machine> createMachines(int count) {
         List<Machine> machines = new ArrayList<>(count);
 
@@ -67,6 +68,7 @@ public class IntegrationTestHelper {
         return (int)(Math.random() * range) + (min <= max ? min : max);
     }
 
+    @SuppressWarnings("SameParameterValue")
     public double createRandom(double min, double max)
     {
         Random random = new Random();

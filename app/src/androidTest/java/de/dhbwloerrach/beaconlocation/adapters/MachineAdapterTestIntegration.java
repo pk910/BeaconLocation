@@ -16,7 +16,7 @@ import de.dhbwloerrach.beaconlocation.helpers.IntegrationTestHelper;
  * Implements a testing class for machine adapter
  */
 public class MachineAdapterTestIntegration extends AndroidTestCase {
-    private IntegrationTestHelper helper = new IntegrationTestHelper();
+    private final IntegrationTestHelper helper = new IntegrationTestHelper();
     private List<Machine> machines;
     private MachineAdapter adapter;
 
