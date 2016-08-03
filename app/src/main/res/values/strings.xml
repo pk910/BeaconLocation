@@ -64,4 +64,13 @@
         <string name="addMachine_cancel_display_text">Create</string>
         <!--Bitte ordnen!!!-->
         <string name="minorId">Minor Id</string>
-</resources>
+        <string name="rssi_average">Rssi average</string>
+        <string name="action_sort">Action sort</string>
+
+        <string name="beacon_scan_display_text">BEACON SCAN</string>
+        <string name="machine_overview_display_text">MACHINE OVERVIEW</string>
+        <string name="blukii_display_text">Blukii</string>
+        <string name="rssi_display_text">RSSI:</string>
+        <string name="save_display_text">Save</string>
+        <string name="addBeacon_display_text">Add Beacon</string>
+    </resources>

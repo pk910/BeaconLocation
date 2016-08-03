@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/add_beacon" android:title="@string/addBeacon" android:showAsAction="ifRoom"/>
-    <item android:id="@+id/delete_machine" android:title="@string/delete" android:showAsAction="ifRoom"/>
-    <item android:id="@+id/delete_beacon" android:title="@string/deleteBeacon" android:showAsAction="ifRoom" android:visible="false" />
-    <item android:id="@+id/rssi_average" android:title="" android:showAsAction="ifRoom" />
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/add_beacon" android:title="@string/addBeacon" app:showAsAction="ifRoom"/>
+    <item android:id="@+id/delete_machine" android:title="@string/delete" app:showAsAction="ifRoom"/>
+    <item android:id="@+id/delete_beacon" android:title="@string/deleteBeacon" app:showAsAction="ifRoom" android:visible="false" />
+    <item android:id="@+id/rssi_average" android:title="" app:showAsAction="ifRoom" />
 </menu>
