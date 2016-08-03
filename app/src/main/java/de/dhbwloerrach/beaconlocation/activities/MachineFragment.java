@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import de.dhbwloerrach.beaconlocation.Constants;
 import de.dhbwloerrach.beaconlocation.R;
 import de.dhbwloerrach.beaconlocation.adapters.BeaconAdapter;
 import de.dhbwloerrach.beaconlocation.bluetooth.IBeaconListView;
@@ -210,7 +211,7 @@ public class MachineFragment extends BaseFragment implements IBeaconListView {
 
         boolean allInRange = beaconList.size() > 0;
         for (Beacon beacon : beaconList) {
-            double rssi = beacon.getRssiByAverageType(adapter.getRssiAverageType(), 2);
+            double rssi = beacon.getRssiByAverageType(adapter.getRssiAverageType(), Constants.RSSI_AVERAGE_SECONDS);
             if(beacon.getRssiDistanceStatus(rssi) != Beacon.RssiDistanceStatus.IN_RANGE) {
                 allInRange = false;
                 break;
