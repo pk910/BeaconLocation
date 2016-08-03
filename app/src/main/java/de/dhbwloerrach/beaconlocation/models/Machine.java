@@ -15,7 +15,12 @@ public class Machine implements Parcelable {
     private String name;
     private Integer id;
 
+    // FIXME: Bad coding practices in this class. If not fixing the design pattern, at least let us check if machine is finalized.
+    public Machine() {
 
+    }
+
+    // Constructor for parcelable
     protected Machine(Parcel in) {
         id = in.readInt();
         name = in.readString();
