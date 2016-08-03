@@ -37,8 +37,7 @@ public abstract class BaseFragment extends Fragment {
      * @param activity MainActivity
      * @return BaseFragment
      */
-    public BaseFragment setActivity(MainActivity activity) {
+    public void setActivity(MainActivity activity) {
         this.activity = activity;
-        return this;
     }
 }

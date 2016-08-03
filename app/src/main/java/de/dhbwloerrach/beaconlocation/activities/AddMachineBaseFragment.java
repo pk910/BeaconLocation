@@ -128,10 +128,9 @@ public abstract class AddMachineBaseFragment extends BaseFragment {
      * @param newMachine Machine
      * @return int
      */
-    private int insertMachine(DatabaseHandler databaseHandler, Machine newMachine) {
+    private void insertMachine(DatabaseHandler databaseHandler, Machine newMachine) {
         int machineId = databaseHandler.createMachine(newMachine);
         newMachine.setId(machineId);
-        return machineId;
     }
 
     /**

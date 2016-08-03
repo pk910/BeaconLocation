@@ -48,9 +48,8 @@ public class BeaconAdapter extends ArrayAdapter<Beacon> {
      * @param filterTyp FilterTyp
      * @return BeaconAdapter
      */
-    public BeaconAdapter setFilterTyp(FilterTyp filterTyp) {
+    public void setFilterTyp(FilterTyp filterTyp) {
         this.filterTyp = filterTyp;
-        return this;
     }
 
     /**
@@ -66,9 +65,8 @@ public class BeaconAdapter extends ArrayAdapter<Beacon> {
      * @param rssiAverageType RssiAverageType
      * @return BeaconAdapter
      */
-    public BeaconAdapter setRssiAverageType(RssiAverageType rssiAverageType) {
+    public void setRssiAverageType(RssiAverageType rssiAverageType) {
         this.rssiAverageType = rssiAverageType;
-        return this;
     }
 
     /**

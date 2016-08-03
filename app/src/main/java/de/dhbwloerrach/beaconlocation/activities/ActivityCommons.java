@@ -51,7 +51,7 @@ public class ActivityCommons implements Drawer.OnDrawerItemClickListener {
      * @param menu Menu
      * @return ActivityCommons
      */
-    public ActivityCommons setMenu(Menu menu) {
+    public void setMenu(Menu menu) {
         this.menu = menu;
 
         if(fragment != null) {
@@ -59,7 +59,6 @@ public class ActivityCommons implements Drawer.OnDrawerItemClickListener {
             fragment.createActionBarMenu(menu);
         }
 
-        return this;
     }
 
     /**

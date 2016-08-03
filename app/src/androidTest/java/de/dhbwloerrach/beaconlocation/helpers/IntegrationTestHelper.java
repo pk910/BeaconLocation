@@ -52,7 +52,8 @@ public class IntegrationTestHelper {
             int id = createRandom(1, 9999);
 
             Machine machine = new Machine();
-            machine.setId(id).setName("Machine " + id);
+            machine.setId(id);
+            machine.setName("Machine " + id);
 
             machines.add(machine);
         }

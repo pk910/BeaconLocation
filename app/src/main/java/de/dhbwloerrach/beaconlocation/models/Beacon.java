@@ -138,63 +138,56 @@ public class Beacon implements Parcelable{
         return (Date) lastSeen.clone();
     }
 
-    public Beacon setLastSeen(Date lastSeen) {
+    public void setLastSeen(Date lastSeen) {
         this.lastSeen =(Date) lastSeen.clone();
-        return this;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public Beacon setId(Integer id) {
+    public void setId(Integer id) {
         this.id = id;
-        return this;
     }
 
     public Integer getMachineId() {
         return machineId;
     }
 
-    public Beacon setMachineId(Integer machineId) {
+    public void setMachineId(Integer machineId) {
         this.machineId = machineId;
-        return this;
     }
 
     public Boolean getFront_left() {
         return front_left;
     }
 
-    public Beacon setFront_left(Boolean bool) {
+    public void setFront_left(Boolean bool) {
         this.front_left = bool;
-        return this;
     }
 
     public Boolean getFront_right() {
         return front_right;
     }
 
-    public Beacon setFront_right(Boolean bool) {
+    public void setFront_right(Boolean bool) {
         this.front_right = bool;
-        return this;
     }
 
     public Boolean getBack_left() {
         return back_left;
     }
 
-    public Beacon setBack_left(Boolean bool) {
+    public void setBack_left(Boolean bool) {
         this.back_left = bool;
-        return this;
     }
 
     public Boolean getBack_right() {
         return back_right;
     }
 
-    public Beacon setBack_right(Boolean bool) {
+    public void setBack_right(Boolean bool) {
         this.back_right = bool;
-        return this;
     }
 
     @Override

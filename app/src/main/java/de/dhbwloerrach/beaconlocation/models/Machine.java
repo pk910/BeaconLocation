@@ -45,7 +45,6 @@ public class Machine implements Parcelable {
     public Machine setId(Integer id) {
         this.id = id;
         return this;
-
     }
 
     public String getName() {
@@ -55,7 +54,6 @@ public class Machine implements Parcelable {
     public Machine setName(String name) {
         this.name = name;
         return this;
-
     }
 
 
