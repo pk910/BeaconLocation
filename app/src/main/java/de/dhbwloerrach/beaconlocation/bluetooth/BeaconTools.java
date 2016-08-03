@@ -34,10 +34,10 @@ public class BeaconTools implements BeaconConsumer {
     public void onBeaconServiceConnect() {
         try {
             //Scan lasts for SCAN_PERIOD time
-            beaconManager.setForegroundScanPeriod(1000l);
+            beaconManager.setForegroundScanPeriod(1000L);
 //        mBeaconManager.setBackgroundScanPeriod(0l);
             //Wait every SCAN_PERIOD_INBETWEEN time
-            beaconManager.setForegroundBetweenScanPeriod(0l);
+            beaconManager.setForegroundBetweenScanPeriod(0L);
             //Update default time with the new one
             beaconManager.updateScanPeriods();
         }catch (RemoteException e){
