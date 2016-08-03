@@ -5,12 +5,10 @@
 
         <!--Menu -->
         <string name="menu_beaconView">Beacons</string>
-        <string name="menu_beaconViewDescription">Scan for Beacons in your environment</string>
-        <string name="menu_machineView">Machines</string>
+            <string name="menu_machineView">Machines</string>
 
         <!--Menu Buttons-->
-        <string name="action_settings">Settings</string>
-        <string name="rssi">Sort: RSSI</string>
+            <string name="rssi">Sort: RSSI</string>
         <string name="minor">Sort: Minor</string>
         <string name="delete">Delete machine</string>
         <string name="addMachine">Add machine</string>
@@ -26,8 +24,7 @@
         <string name="createNewMachine">Create new Machine</string>
         <string name="cancel">Cancel</string>
         <string name="yes">Yes</string>
-        <string name="no">No</string>
-        <string name="activate">Activate</string>
+            <string name="activate">Activate</string>
         <string name="addMachineManual">Create Machine manually</string>
         <string name="addMachineWithScan">Use Beacon Scan</string>
 

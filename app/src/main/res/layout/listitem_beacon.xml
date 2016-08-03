@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="10dp"
@@ -8,7 +9,8 @@
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
 
         <TableRow
             android:layout_width="match_parent"
@@ -23,7 +25,6 @@
                 android:src="@mipmap/circle_grey" />
 
             <TextView
-                android:id="@+id/minor_label"
                 android:text="@string/blukii_display_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -50,7 +51,6 @@
             <TableRow>
 
             <TextView
-                android:id="@+id/rssi_label"
                 android:text="@string/rssi_display_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

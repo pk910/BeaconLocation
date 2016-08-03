@@ -19,7 +19,6 @@
                 android:layout_height="fill_parent"
                 android:icon="@mipmap/add_icon"
                 android:background="#ff009d98"
-                android:id="@+id/imageView"
                 android:src="@mipmap/add_icon"
                 android:contentDescription="@string/addMachine_image_description"
                 android:layout_column="0" />
@@ -53,7 +52,6 @@
                 android:layout_marginTop="10dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/addMachine_enter_machine_name_display_text"
-                android:id="@+id/label"
                 android:labelFor="@+id/editText2"/>
 
             <EditText
@@ -71,8 +69,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/addMachine_minor_ids_display_text"
-                android:id="@+id/minor_label" />
+                android:text="@string/addMachine_minor_ids_display_text" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
