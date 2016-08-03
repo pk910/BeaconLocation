@@ -34,10 +34,6 @@ public class ActivityCommons implements Drawer.OnDrawerItemClickListener {
     private Drawer drawer;
     private BaseFragment fragment;
 
-    private BeaconsFragment beaconsFragment;
-    private MachinesFragment machinesFragment;
-    private AddNewMachineFragment addNewMachineFragment;
-    private AddManualMachineFragment addManualMachineFragment;
     private AddBeaconsToMachineFragment addBeaconsToMachineFragment;
     private MachineFragment machineFragment;
 
@@ -111,27 +107,19 @@ public class ActivityCommons implements Drawer.OnDrawerItemClickListener {
 
         switch (type) {
             case BEACON_SEARCH:
-                beaconsFragment = new BeaconsFragment();
-
-                fragment = beaconsFragment;
+                fragment = new BeaconsFragment();
                 break;
 
             case MACHINES_VIEW:
-                machinesFragment = new MachinesFragment();
-
-                fragment = machinesFragment;
+                fragment = new MachinesFragment();
                 break;
 
             case ADD_MACHINE:
-                addNewMachineFragment = new AddNewMachineFragment();
-
-                fragment = addNewMachineFragment;
+                fragment = new AddNewMachineFragment();
                 allowSwitchBack = false;
                 break;
             case ADD_MACHINE_MANUAL:
-                addManualMachineFragment = new AddManualMachineFragment();
-
-                fragment = addManualMachineFragment;
+                fragment = new AddManualMachineFragment();
                 allowSwitchBack = false;
                 break;
             case ADD_BEACON_TO_MACHINE:
