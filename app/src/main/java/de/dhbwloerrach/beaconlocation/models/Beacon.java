@@ -17,9 +17,9 @@ public class Beacon implements Parcelable{
     private String bluetoothName;
     private int txpower;
     private int rssi;
-    private RssiList rssis = new RssiList();
+    private final RssiList rssis = new RssiList();
     private String bluetoothAddress;
-    private DistanceList distances = new DistanceList();
+    private final DistanceList distances = new DistanceList();
     private Date lastSeen;
     private Integer major = 0;
     private Integer minor = 0;

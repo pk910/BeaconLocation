@@ -32,7 +32,7 @@ import de.dhbwloerrach.beaconlocation.models.RssiAverageType;
 public class MachineFragment extends BaseFragment implements IBeaconListView {
     private BeaconAdapter adapter;
     private Boolean updatePaused = false;
-    private ArrayList<Beacon> selectedBeacons = new ArrayList<>();
+    private final ArrayList<Beacon> selectedBeacons = new ArrayList<>();
     private Menu menu;
     private Machine machine;
 

@@ -22,9 +22,9 @@ import de.dhbwloerrach.beaconlocation.models.Machine;
  */
 public class MachineAdapter extends ArrayAdapter<Machine> {
     private final Context context;
-    private ArrayList<Machine> machines = new ArrayList<>();
+    private final ArrayList<Machine> machines = new ArrayList<>();
     //private DecimalFormat distanceFormat = new DecimalFormat("#m");
-    private ArrayList<Integer> machineIdInRange = new ArrayList<>();
+    private final ArrayList<Integer> machineIdInRange = new ArrayList<>();
 
     public MachineAdapter(Context context) {
         super(context, R.layout.listitem_beacon);

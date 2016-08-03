@@ -24,6 +24,7 @@ public abstract class AddMachineBaseFragment extends BaseFragment {
      * @param beacons ArrayList
      * @param aim FragmentType
      */
+    @SuppressWarnings("SameParameterValue") // ActivityCommons.FragmentType might change when app  is extended.
     void addMachine(final EditText textField, final ArrayList<Beacon> beacons, final ActivityCommons.FragmentType aim) {
         final ActivityCommons commons = activity.getCommons();
         final DatabaseHandler databaseHandler = new DatabaseHandler(activity);
