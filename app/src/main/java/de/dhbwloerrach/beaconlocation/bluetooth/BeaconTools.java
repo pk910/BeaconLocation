@@ -17,10 +17,10 @@ import java.util.ArrayList;
  * Implements a set of tools for beacons
  */
 public class BeaconTools implements BeaconConsumer {
-    Region mRegion = new Region("Region", null, null, null);
-    BeaconManager beaconManager;
-    Context context;
-    ArrayList<IBeaconListView> beaconListViews = new ArrayList<>();
+    private Region mRegion = new Region("Region", null, null, null);
+    private BeaconManager beaconManager;
+    private Context context;
+    private ArrayList<IBeaconListView> beaconListViews = new ArrayList<>();
 
     public BeaconTools(Context context, IBeaconListView listView){
         this.context = context;

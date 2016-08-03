@@ -10,9 +10,9 @@ import android.view.View;
  * Extens the standard fragment with some required elements
  */
 public abstract class BaseFragment extends Fragment {
-    protected MainActivity activity;
+    MainActivity activity;
 
-    protected boolean initialized = false;
+    boolean initialized = false;
 
     /**
      * Set a new custom fragment menu

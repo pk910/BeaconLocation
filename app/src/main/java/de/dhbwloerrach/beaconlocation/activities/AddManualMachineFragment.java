@@ -21,7 +21,7 @@ import de.dhbwloerrach.beaconlocation.models.Beacon;
  * Implements a fragmant that allows an user to manually add a maschine (with entering the mino-ID)
  */
 public class AddManualMachineFragment extends AddMachineBaseFragment {
-    ArrayList<EditText> dynamicMinorIds;
+    private ArrayList<EditText> dynamicMinorIds;
 
     @Nullable
     @Override
@@ -48,7 +48,7 @@ public class AddManualMachineFragment extends AddMachineBaseFragment {
     /**
      * Add a new empty input field for insert a manual beacon minor id
      */
-    protected void addBeaconInputField() {
+    private void addBeaconInputField() {
         LinearLayout layout = (LinearLayout) activity.findViewById(R.id.minors);
 
         EditText editText = new EditText(activity);

@@ -66,7 +66,7 @@ public class Beacon implements Parcelable{
         return this;
     }
 
-    public double getDistance() {
+    private double getDistance() {
         return distance;
     }
 
@@ -130,7 +130,7 @@ public class Beacon implements Parcelable{
         }
     }
 
-    public RssiList getRssis(int seconds) {
+    private RssiList getRssis(int seconds) {
         return this.rssis.getLast(seconds);
     }
 

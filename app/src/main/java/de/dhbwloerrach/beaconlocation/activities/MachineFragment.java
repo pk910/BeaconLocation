@@ -30,11 +30,11 @@ import de.dhbwloerrach.beaconlocation.models.RssiAverageType;
  * Implements a fragment that shows a single machine
  */
 public class MachineFragment extends BaseFragment implements IBeaconListView {
-    protected BeaconAdapter adapter;
-    protected Boolean updatePaused = false;
-    protected ArrayList<Beacon> selectedBeacons = new ArrayList<>();
-    protected Menu menu;
-    protected Machine machine;
+    private BeaconAdapter adapter;
+    private Boolean updatePaused = false;
+    private ArrayList<Beacon> selectedBeacons = new ArrayList<>();
+    private Menu menu;
+    private Machine machine;
 
     @Nullable
     @Override
@@ -98,7 +98,7 @@ public class MachineFragment extends BaseFragment implements IBeaconListView {
     /**
      * Change the menu item title
      */
-    protected void updateMenuButtons() {
+    private void updateMenuButtons() {
         menu.findItem(R.id.add_beacon).setVisible(selectedBeacons.size() == 0);
         menu.findItem(R.id.delete_machine).setVisible(selectedBeacons.size() == 0);
         menu.findItem(R.id.delete_beacon).setVisible(selectedBeacons.size() != 0);
@@ -159,7 +159,7 @@ public class MachineFragment extends BaseFragment implements IBeaconListView {
      * Chang ethe rssi calculation mode
      * @param rssiAverageType RssiAverageType
      */
-    protected void setRSSIMode(RssiAverageType rssiAverageType){
+    private void setRSSIMode(RssiAverageType rssiAverageType){
         switch (rssiAverageType) {
             case None:
                 menu.findItem(R.id.rssi_average).setTitle(R.string.modusRssiNormal);
@@ -211,6 +211,7 @@ public class MachineFragment extends BaseFragment implements IBeaconListView {
 
         boolean allInRange = beaconList.size() > 0;
         for (Beacon beacon : beaconList) {
+            // TODO: Find a better name for constant
             double rssi = beacon.getRssiByAverageType(adapter.getRssiAverageType(), Constants.RSSI_AVERAGE_SECONDS);
             if(beacon.getRssiDistanceStatus(rssi) != Beacon.RssiDistanceStatus.IN_RANGE) {
                 allInRange = false;
@@ -232,7 +233,7 @@ public class MachineFragment extends BaseFragment implements IBeaconListView {
      * Notify the beacon adapter for refresh
      * @param beacons ArrayList
      */
-    protected void updateBeaconListView(final ArrayList<Beacon> beacons) {
+    private void updateBeaconListView(final ArrayList<Beacon> beacons) {
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -247,7 +248,7 @@ public class MachineFragment extends BaseFragment implements IBeaconListView {
      * Delete the beacon from machine and database
      * @param databaseHandler DatabaseHandler
      */
-    protected void menuActionDeleteBeacon(final DatabaseHandler databaseHandler) {
+    private void menuActionDeleteBeacon(final DatabaseHandler databaseHandler) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(R.string.alert_title_deleteBeacon);
 
@@ -287,7 +288,7 @@ public class MachineFragment extends BaseFragment implements IBeaconListView {
      * Delete a machine and all beacons from database
      * @param databaseHandler DatabaseHandler
      */
-    protected void menuActionDeleteMachine(final DatabaseHandler databaseHandler) {
+    private void menuActionDeleteMachine(final DatabaseHandler databaseHandler) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(R.string.alert_title_deleteMachine);
         builder.setMessage(R.string.alert_message_deleteMachine);

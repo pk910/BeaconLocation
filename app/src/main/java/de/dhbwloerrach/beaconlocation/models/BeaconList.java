@@ -29,7 +29,7 @@ public class BeaconList extends ArrayList<Beacon> {
         return result;
     }
 
-    protected BeaconList sortByRSSI() {
+    private BeaconList sortByRSSI() {
         Collections.sort(this, new Comparator<Beacon>() {
             @Override
             public int compare(Beacon lhs, Beacon rhs) {
@@ -48,7 +48,7 @@ public class BeaconList extends ArrayList<Beacon> {
         return this;
     }
 
-    protected BeaconList sortByMinor() {
+    private BeaconList sortByMinor() {
         Collections.sort(this, new Comparator<Beacon>() {
             @Override
             public int compare(Beacon lhs, Beacon rhs) {

@@ -32,10 +32,10 @@ import de.dhbwloerrach.beaconlocation.models.RssiAverageType;
  * Implements the fragmant that shows a list of beacons
  */
 public class BeaconsFragment extends AddMachineBaseFragment implements IBeaconListView {
-    protected BeaconAdapter adapter;
-    protected Boolean updatePaused = false;
-    protected ArrayList<Beacon> selectedBeacons = new ArrayList<>();
-    protected Menu menu;
+    private BeaconAdapter adapter;
+    private Boolean updatePaused = false;
+    private ArrayList<Beacon> selectedBeacons = new ArrayList<>();
+    private Menu menu;
 
     @Nullable
     @Override
@@ -90,7 +90,7 @@ public class BeaconsFragment extends AddMachineBaseFragment implements IBeaconLi
     /**
      * Change the menu item title
      */
-    public void setSortTitle() {
+    private void setSortTitle() {
         MenuItem item = menu.findItem(R.id.action_sort);
         if (adapter.getFilterTyp()== FilterTyp.Minor) {
             item.setTitle(R.string.minor);
@@ -118,7 +118,7 @@ public class BeaconsFragment extends AddMachineBaseFragment implements IBeaconLi
     /**
      * Build a dialog for choose the between AddToMachine and CreateNewMachine
      */
-    public void buildDialog() {
+    private void buildDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(R.string.dialog_title);
 
@@ -147,7 +147,7 @@ public class BeaconsFragment extends AddMachineBaseFragment implements IBeaconLi
     /**
      * Change the Menu button visibility
      */
-    protected void updateMenuButtons() {
+    private void updateMenuButtons() {
         menu.findItem(R.id.action_sort).setVisible(selectedBeacons.size() == 0);
         menu.findItem(R.id.add_beacon).setVisible(selectedBeacons.size() != 0);
         menu.findItem(R.id.rssi_average).setVisible(selectedBeacons.size() == 0);
@@ -274,7 +274,7 @@ public class BeaconsFragment extends AddMachineBaseFragment implements IBeaconLi
      * Change the rssi calculation mode
      * @param rssiAverageType RssiAverageType
      */
-    protected void setRSSIMode(RssiAverageType rssiAverageType){
+    private void setRSSIMode(RssiAverageType rssiAverageType){
         switch (rssiAverageType) {
             case None:
                 menu.findItem(R.id.rssi_average).setTitle(R.string.modusRssiNormal);

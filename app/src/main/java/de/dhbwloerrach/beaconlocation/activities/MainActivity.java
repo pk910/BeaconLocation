@@ -58,7 +58,7 @@ public class MainActivity extends Activity {
     /**
      * Check the bluetooth state and ask the use to enable bluetooth
      */
-    public void checkBluetoothState() {
+    private void checkBluetoothState() {
         BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (mBluetoothAdapter == null) {
             return;

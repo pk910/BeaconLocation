@@ -14,9 +14,9 @@ import java.util.Objects;
  * Created by Lukas on 20.07.2015.
  * Implements a class that manages the distance of the beacon list
  */
-public class BeaconNotifier implements RangeNotifier {
-    protected ArrayList<de.dhbwloerrach.beaconlocation.models.Beacon> beaconList = new ArrayList<>();
-    protected BeaconTools beaconTools;
+class BeaconNotifier implements RangeNotifier {
+    private ArrayList<de.dhbwloerrach.beaconlocation.models.Beacon> beaconList = new ArrayList<>();
+    private BeaconTools beaconTools;
 
     public BeaconNotifier(BeaconTools beaconTools){
         this.beaconTools = beaconTools;

@@ -24,7 +24,7 @@ public abstract class AddMachineBaseFragment extends BaseFragment {
      * @param beacons ArrayList
      * @param aim FragmentType
      */
-    protected void addMachine(final EditText textField, final ArrayList<Beacon> beacons, final ActivityCommons.FragmentType aim) {
+    void addMachine(final EditText textField, final ArrayList<Beacon> beacons, final ActivityCommons.FragmentType aim) {
         final ActivityCommons commons = activity.getCommons();
         final DatabaseHandler databaseHandler = new DatabaseHandler(activity);
 
@@ -51,7 +51,7 @@ public abstract class AddMachineBaseFragment extends BaseFragment {
      * @param databaseHandler DatabaseHandler
      * @return Machine
      */
-    protected Machine createMachine(EditText textField, DatabaseHandler databaseHandler){
+    private Machine createMachine(EditText textField, DatabaseHandler databaseHandler){
         // Wenn Texfeld leer ist
         if (textField.getText() == null || textField.getText().toString().isEmpty()) {
             new AlertDialog.Builder(activity)
@@ -84,7 +84,7 @@ public abstract class AddMachineBaseFragment extends BaseFragment {
      * @param action Delegate
      * @return boolean
      */
-    protected boolean checkBeacons(ArrayList<Beacon> beacons, DatabaseHandler databaseHandler, final Delegate action) {
+    boolean checkBeacons(ArrayList<Beacon> beacons, DatabaseHandler databaseHandler, final Delegate action) {
 
         StringBuilder stBuilder= new StringBuilder();
         for (Beacon beacon : beacons) {
@@ -127,7 +127,7 @@ public abstract class AddMachineBaseFragment extends BaseFragment {
      * @param newMachine Machine
      * @return int
      */
-    protected int insertMachine(DatabaseHandler databaseHandler, Machine newMachine) {
+    private int insertMachine(DatabaseHandler databaseHandler, Machine newMachine) {
         int machineId = databaseHandler.createMachine(newMachine);
         newMachine.setId(machineId);
         return machineId;
@@ -139,7 +139,7 @@ public abstract class AddMachineBaseFragment extends BaseFragment {
      * @param beacons Beacon
      * @param machineID int
      */
-    protected void insertBeacons(DatabaseHandler databaseHandler, ArrayList<Beacon> beacons, int machineID) {
+    void insertBeacons(DatabaseHandler databaseHandler, ArrayList<Beacon> beacons, int machineID) {
         for (Beacon beacon: beacons){
             beacon.setMachineId(machineID);
 

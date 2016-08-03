@@ -229,7 +229,7 @@ public class ActivityCommons implements Drawer.OnDrawerItemClickListener {
      * Returns if the size of the fragmentStack is high enough for use
      * @return int
      */
-    public boolean isFragmentStackCountTooSmall() {
+    private boolean isFragmentStackCountTooSmall() {
         return fragmentStack.size() < 2;
     }
 

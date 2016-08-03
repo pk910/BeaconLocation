@@ -21,7 +21,7 @@ public class Machine implements Parcelable {
     }
 
     // Constructor for parcelable
-    protected Machine(Parcel in) {
+    private Machine(Parcel in) {
         id = in.readInt();
         name = in.readString();
     }

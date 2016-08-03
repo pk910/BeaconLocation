@@ -6,7 +6,7 @@ import java.util.Date;
  * Created by Lukas on 23.07.2015.
  * Implements a class that takes a timestamp and a distance for a beacon
  */
-public class TimedDistance {
+class TimedDistance {
     private double distance;
     private Date timestamp;
 
