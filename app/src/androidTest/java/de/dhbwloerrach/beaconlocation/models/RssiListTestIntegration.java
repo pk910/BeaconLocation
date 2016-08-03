@@ -11,10 +11,9 @@ import de.dhbwloerrach.beaconlocation.helpers.IntegrationTestHelper;
  * Implements a test class for RssiList
  */
 public class RssiListTestIntegration extends AndroidTestCase {
+    @SuppressWarnings("unused")
     private IntegrationTestHelper helper = new IntegrationTestHelper();
     private RssiList rssiList;
-
-    private ArrayList<Integer> rssis;
 
     public RssiListTestIntegration() {
         super();
@@ -26,10 +25,8 @@ public class RssiListTestIntegration extends AndroidTestCase {
 
         int count = 10;
 
-        rssis = new ArrayList<>(count);
         rssiList = new RssiList();
         for (int rssi = 0; rssi < count; rssi++) {
-            rssis.add(rssi);
             rssiList.add(new TimedRssi(rssi));
             Thread.sleep(567);
         }

@@ -42,6 +42,7 @@ public class Machine implements Parcelable {
         return id;
     }
 
+    @SuppressWarnings("UnusedReturnValue") // TODO: Reevaluate - Only used for special notation in integration tests
     public Machine setId(Integer id) {
         this.id = id;
         return this;
@@ -51,6 +52,7 @@ public class Machine implements Parcelable {
         return name;
     }
 
+    @SuppressWarnings("UnusedReturnValue") // TODO: Reevaluate - Only used for special notation in integration tests
     public Machine setName(String name) {
         this.name = name;
         return this;

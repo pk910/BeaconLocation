@@ -10,7 +10,8 @@ import de.dhbwloerrach.beaconlocation.activities.ActivityCommons;
 import de.dhbwloerrach.beaconlocation.helpers.IntegrationTestHelper;
 
 public class ActivityCommonsTestIntegration extends AndroidTestCase {
-    private IntegrationTestHelper helper = new IntegrationTestHelper();
+
+    // --Commented out by Inspection (8/3/16 10:25 PM):private IntegrationTestHelper helper = new IntegrationTestHelper();
     private final ActivityCommons commons;
 
     private static final int COUNT_FRAGMENTS = 10;
@@ -20,6 +21,7 @@ public class ActivityCommonsTestIntegration extends AndroidTestCase {
         commons = new ActivityCommons(null);
     }
 
+    @SuppressWarnings("EmptyMethod") // Leave in for extending.
     @Override
     protected void setUp() throws Exception {
         super.setUp();
@@ -49,6 +51,7 @@ public class ActivityCommonsTestIntegration extends AndroidTestCase {
         }
     }
 
+    @SuppressWarnings("EmptyMethod") // Leave in for extending.
     @Override
     protected void tearDown() throws Exception {
         super.tearDown();

@@ -85,6 +85,7 @@ public class Beacon implements Parcelable{
         return this;
     }
 
+    @SuppressWarnings("unused")
     public Integer getTxpower() {
         return txpower;
     }
@@ -104,6 +105,7 @@ public class Beacon implements Parcelable{
         return this;
     }
 
+    @SuppressWarnings("unused")
     public String getBluetoothAddress() {
         return bluetoothAddress;
     }
@@ -117,10 +119,12 @@ public class Beacon implements Parcelable{
         return !this.distances.getLast(seconds).isEmpty();
     }
 
+    @SuppressWarnings("unused")
     public boolean hasRssiIn(int seconds) {
         return !this.rssis.getLast(seconds).isEmpty();
     }
 
+    @SuppressWarnings("unused")
     public double getAverageDistance(int seconds) {
         DistanceList last = this.distances.getLast(seconds);
         if(last.size() > 0)
@@ -134,6 +138,7 @@ public class Beacon implements Parcelable{
         return this.rssis.getLast(seconds);
     }
 
+    @SuppressWarnings("unused")
     public Date getLastSeen() {
         return (Date) lastSeen.clone();
     }

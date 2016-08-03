@@ -10,6 +10,7 @@ import static org.junit.Assert.*;
  */
 public class DatabaseHandlerTest {
 
+    @SuppressWarnings("EmptyMethod") // Leave in for extending.
     @Test
     public void testGetBeacon() throws Exception {
 

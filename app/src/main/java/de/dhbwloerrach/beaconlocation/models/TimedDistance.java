@@ -19,6 +19,7 @@ class TimedDistance {
         return distance;
     }
 
+    @SuppressWarnings("unused")
     public void setDistance(double distance) {
         this.distance = distance;
     }
@@ -27,6 +28,7 @@ class TimedDistance {
         return (Date) timestamp.clone();
     }
 
+    @SuppressWarnings("unused")
     public void setTimestamp(Date timestamp) {
         this.timestamp =(Date) timestamp.clone();
     }

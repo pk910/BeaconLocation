@@ -56,6 +56,7 @@ public class BeaconListTestIntegration extends AndroidTestCase {
         }
     }
 
+    @SuppressWarnings("EmptyMethod") // Leave in for extending.
     @Override
     protected void tearDown() throws Exception {
         super.tearDown();

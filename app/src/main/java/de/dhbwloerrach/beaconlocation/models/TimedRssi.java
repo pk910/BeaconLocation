@@ -19,6 +19,7 @@ public class TimedRssi {
         return rssi;
     }
 
+    @SuppressWarnings("unused")
     public void setRssi(int rssi) {
         this.rssi = rssi;
     }
@@ -27,6 +28,7 @@ public class TimedRssi {
         return (Date) timestamp.clone();
     }
 
+    @SuppressWarnings("unused")
     public TimedRssi setTimestamp(Date timestamp) {
         this.timestamp =(Date) timestamp.clone();
         return this;

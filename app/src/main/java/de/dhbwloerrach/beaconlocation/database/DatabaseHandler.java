@@ -158,6 +158,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    @SuppressWarnings("unused")
     public int updateMachine(Machine machine) {
         SQLiteDatabase db = getWritableDatabase();
 
@@ -209,6 +210,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return machines;
     }
 
+    @SuppressWarnings("unused")
     public List<Beacon> getAllBeacons() {
         List<Beacon> beacons = new ArrayList<>();
 
@@ -236,6 +238,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return beacons;
     }
 
+    @SuppressWarnings("unused")
     private Beacon getBeacon(int minor, int major, String uuid) {
         SQLiteDatabase db = getReadableDatabase();
 
