@@ -33,10 +33,11 @@ public class BeaconList extends ArrayList<Beacon> {
             @Override
             public int compare(Beacon lhs, Beacon rhs) {
                 double tempDiff = lhs.getRssi() - rhs.getRssi();
-                if (tempDiff == 0) {
+                if (Double.compare(tempDiff, 0.0d) == 0) {
                     return 0;
                 }
-                if (tempDiff < 0) {
+
+                if (Double.compare(tempDiff, 0.0d) == -1) {
                     return 1;
                 } else {
                     return -1;
@@ -51,10 +52,10 @@ public class BeaconList extends ArrayList<Beacon> {
             @Override
             public int compare(Beacon lhs, Beacon rhs) {
                 double tempDiff = lhs.getMinor() - rhs.getMinor();
-                if (tempDiff == 0) {
+                if (Double.compare(tempDiff, 0.0d) == 0) {
                     return 0;
                 }
-                if (tempDiff < 0) {
+                if (Double.compare(tempDiff, 0.0d) == -1) {
                     return -1;
                 } else {
                     return 1;
