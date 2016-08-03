@@ -20,6 +20,7 @@
                 android:layout_column="0"
                 android:background="#ffa0cd43"
                 android:icon="@mipmap/slot_machine"
+                android:contentDescription="@string/machine_overview_image_content_desc"
                 android:src="@mipmap/slot_machine" />
 
 
@@ -31,7 +32,7 @@
                 android:background="#ffa0cd43"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="#ffffff"
-                android:textSize="30dp" />
+                android:textSize="30sp" />
 
         </TableRow>
 

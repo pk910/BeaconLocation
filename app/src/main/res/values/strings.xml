@@ -73,4 +73,8 @@
         <string name="rssi_display_text">RSSI:</string>
         <string name="save_display_text">Save</string>
         <string name="addBeacon_display_text">Add Beacon</string>
+        <string name="machine_overview_image_content_desc">Machine overview icon</string>
+        <string name="machine_distance_indicator_grey">Machine distance indicator not in range</string>
+        <string name="machine_warning_image">Machine warning</string>
+        <string name="beacon_icon">Beacon icon</string>
     </resources>

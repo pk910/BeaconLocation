@@ -20,6 +20,7 @@
                 android:background="#104e8b"
                 android:id="@+id/imageView"
                 android:src="@mipmap/beacon_icon"
+                android:contentDescription="@string/beacon_icon"
                 android:layout_column="0" />
 
             <TextView
@@ -28,7 +29,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/beacon_scan_display_text"
                 android:id="@+id/name_label"
-                android:textSize="30dp"
+                android:textSize="30sp"
                 android:background="#104e8b"
                 android:textColor="#ffffff"
                 android:layout_column="1" />
