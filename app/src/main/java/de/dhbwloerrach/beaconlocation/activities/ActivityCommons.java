@@ -49,7 +49,6 @@ public class ActivityCommons implements Drawer.OnDrawerItemClickListener {
     /**
      * Set a new custom fragment menu
      * @param menu Menu
-     * @return ActivityCommons
      */
     public void setMenu(Menu menu) {
         this.menu = menu;

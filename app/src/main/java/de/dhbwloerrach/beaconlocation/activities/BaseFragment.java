@@ -1,9 +1,7 @@
 package de.dhbwloerrach.beaconlocation.activities;
 
 import android.app.Fragment;
-import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
 
 /**
  * Created by David on 7/31/15.
@@ -35,7 +33,6 @@ public abstract class BaseFragment extends Fragment {
     /**
      * Set the current activity
      * @param activity MainActivity
-     * @return BaseFragment
      */
     public void setActivity(MainActivity activity) {
         this.activity = activity;

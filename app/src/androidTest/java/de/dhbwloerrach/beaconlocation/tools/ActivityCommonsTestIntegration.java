@@ -7,7 +7,6 @@ import java.util.AbstractMap;
 import java.util.Map;
 
 import de.dhbwloerrach.beaconlocation.activities.ActivityCommons;
-import de.dhbwloerrach.beaconlocation.helpers.IntegrationTestHelper;
 
 public class ActivityCommonsTestIntegration extends AndroidTestCase {
 

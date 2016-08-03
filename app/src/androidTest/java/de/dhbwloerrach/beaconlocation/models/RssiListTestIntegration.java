@@ -2,8 +2,6 @@ package de.dhbwloerrach.beaconlocation.models;
 
 import android.test.AndroidTestCase;
 
-import java.util.ArrayList;
-
 import de.dhbwloerrach.beaconlocation.helpers.IntegrationTestHelper;
 
 /**
