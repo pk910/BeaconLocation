@@ -107,12 +107,12 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             // 2. Get rowView from inflater
-            View rowView = inflater.inflate(R.layout.listitem_machine, parent, false);
+            convertView = inflater.inflate(R.layout.listitem_machine, parent, false);
 
             // 3. Get the two text view from the rowView
-            TextView valueViewMinor = (TextView) rowView.findViewById(R.id.machineName);
-            ImageView inRangeIcon = (ImageView) rowView.findViewById(R.id.machineInRange);
-            ImageView warningIcon = (ImageView) rowView.findViewById(R.id.machineWarning);
+            mViewHolder.valueViewMinor = (TextView) convertView.findViewById(R.id.machineName);
+            mViewHolder.inRangeIcon = (ImageView) convertView.findViewById(R.id.machineInRange);
+            mViewHolder.warningIcon = (ImageView) convertView.findViewById(R.id.machineWarning);
 
             convertView.setTag(mViewHolder);
         } else {
