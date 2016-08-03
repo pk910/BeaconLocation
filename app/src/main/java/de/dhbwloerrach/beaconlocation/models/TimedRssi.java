@@ -23,11 +23,11 @@ public class TimedRssi {
     }
 
     public Date getTimestamp() {
-        return timestamp;
+        return (Date) timestamp.clone();
     }
 
     public TimedRssi setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
+        this.timestamp =(Date) timestamp.clone();
         return this;
     }
 }

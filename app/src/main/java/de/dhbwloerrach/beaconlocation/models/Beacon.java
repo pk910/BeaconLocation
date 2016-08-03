@@ -134,11 +134,11 @@ public class Beacon implements Parcelable{
     }
 
     public Date getLastSeen() {
-        return lastSeen;
+        return (Date) lastSeen.clone();
     }
 
     public Beacon setLastSeen(Date lastSeen) {
-        this.lastSeen = lastSeen;
+        this.lastSeen =(Date) lastSeen.clone();
         return this;
     }
 

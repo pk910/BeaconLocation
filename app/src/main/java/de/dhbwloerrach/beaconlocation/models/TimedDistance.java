@@ -23,10 +23,10 @@ public class TimedDistance {
     }
 
     public Date getTimestamp() {
-        return timestamp;
+        return (Date) timestamp.clone();
     }
 
     public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
+        this.timestamp =(Date) timestamp.clone();
     }
 }
