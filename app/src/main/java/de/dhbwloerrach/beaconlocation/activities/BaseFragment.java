@@ -32,12 +32,6 @@ public abstract class BaseFragment extends Fragment {
      */
     protected abstract void disconnectView();
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-    }
-
     /**
      * Set the current activity
      * @param activity MainActivity
