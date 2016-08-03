@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import java.text.DecimalFormat;
 import java.util.Collection;
+import java.util.Locale;
 
 import de.dhbwloerrach.beaconlocation.R;
 import de.dhbwloerrach.beaconlocation.models.Beacon;
@@ -130,7 +131,7 @@ public class BeaconAdapter extends ArrayAdapter<Beacon> {
 
 
         // 4. Set the text for textView
-        valueViewMinor.setText(String.format("%d",beacons.get(position).getMinor()));
+        valueViewMinor.setText(String.format(Locale.ENGLISH, "%d",beacons.get(position).getMinor()));
 
         double rssi = beacons.get(position).getRssiByAverageType(rssiAverageType, 2);
         switch (beacons.get(position).getRssiDistanceStatus(rssi)) {
