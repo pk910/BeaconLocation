@@ -130,7 +130,7 @@ public class BeaconAdapter extends ArrayAdapter<Beacon> {
 
 
         // 4. Set the text for textView
-        valueViewMinor.setText(beacons.get(position).getMinor().toString());
+        valueViewMinor.setText(String.format("%d",beacons.get(position).getMinor()));
 
         double rssi = beacons.get(position).getRssiByAverageType(rssiAverageType, 2);
         switch (beacons.get(position).getRssiDistanceStatus(rssi)) {
