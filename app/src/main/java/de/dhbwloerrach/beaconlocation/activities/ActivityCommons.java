@@ -139,10 +139,6 @@ public class ActivityCommons implements Drawer.OnDrawerItemClickListener {
                 break;
         }
 
-        if(fragment == null) {
-            return;
-        }
-
         if (allowSwitchBack) {
             fragmentStack.add(new AbstractMap.SimpleEntry<>(type, bundle));
         }
