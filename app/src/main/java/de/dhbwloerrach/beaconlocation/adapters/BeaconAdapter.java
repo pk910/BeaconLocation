@@ -24,9 +24,9 @@ import de.dhbwloerrach.beaconlocation.models.RssiAverageType;
  */
 public class BeaconAdapter extends ArrayAdapter<Beacon> {
     private final Context context;
-    private BeaconList beacons = new BeaconList();
+    private final BeaconList beacons = new BeaconList();
     //private DecimalFormat distanceFormat = new DecimalFormat("#m");
-    private DecimalFormat rssiFormat = new DecimalFormat("#");
+    private final DecimalFormat rssiFormat = new DecimalFormat("#");
     private FilterTyp filterTyp = FilterTyp.Minor;
     private RssiAverageType rssiAverageType = RssiAverageType.SmoothedAverage;
 
@@ -116,49 +116,67 @@ public class BeaconAdapter extends ArrayAdapter<Beacon> {
         return true;
     }
 
+    static class ViewHolder {
+
+        private TextView valueViewMinor;
+        private TextView valueViewRssi;
+        private ImageView image;
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // 1. Create inflater
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        // 2. Get rowView from inflater
-        View rowView = inflater.inflate(R.layout.listitem_beacon, parent, false);
+        ViewHolder mViewHolder;
 
-        // 3. Get the two text view from the rowView
-        TextView valueViewMinor = (TextView) rowView.findViewById(R.id.minor);
-        TextView valueViewRssi = (TextView) rowView.findViewById(R.id.rssi);
-        ImageView image = (ImageView) rowView.findViewById(R.id.circle);
+        if (null == convertView) {
+            mViewHolder = new ViewHolder();
+
+            // 1. Create inflater
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+            // 2. Get convertView from inflater
+            convertView = inflater.inflate(R.layout.listitem_beacon, parent, false);
+
+            // 3. Get the two text view from the convertView
+            mViewHolder.valueViewMinor = (TextView) convertView.findViewById(R.id.minor);
+            mViewHolder.valueViewRssi = (TextView) convertView.findViewById(R.id.rssi);
+            mViewHolder.image = (ImageView) convertView.findViewById(R.id.circle);
+
+            convertView.setTag(mViewHolder);
+        } else {
+            mViewHolder = (ViewHolder) convertView.getTag();
+        }
 
 
         // 4. Set the text for textView
-        valueViewMinor.setText(String.format(Locale.ENGLISH, "%d",beacons.get(position).getMinor()));
+        mViewHolder.valueViewMinor.setText(String.format(Locale.ENGLISH, "%d",beacons.get(position).getMinor()));
 
         double rssi = beacons.get(position).getRssiByAverageType(rssiAverageType, 2);
         switch (beacons.get(position).getRssiDistanceStatus(rssi)) {
             case IN_RANGE:
-                image.setImageResource(R.mipmap.circle_green);
+                mViewHolder.image.setImageResource(R.mipmap.circle_green);
                 break;
 
             case NEAR_BY_RANGE:
-                image.setImageResource(R.mipmap.circle_yellow);
+                mViewHolder.image.setImageResource(R.mipmap.circle_yellow);
                 break;
 
             case AWAY:
-                image.setImageResource(R.mipmap.circle_orange);
+                mViewHolder.image.setImageResource(R.mipmap.circle_orange);
                 break;
 
             case FAR_AWAY:
-                image.setImageResource(R.mipmap.circle_red);
+                mViewHolder.image.setImageResource(R.mipmap.circle_red);
                 break;
 
             case UNKNOWN:
-                image.setImageResource(R.mipmap.circle_grey);
+                mViewHolder.image.setImageResource(R.mipmap.circle_grey);
                 break;
         }
 
-        valueViewRssi.setText((rssi == 0) ? "-" : rssiFormat.format(rssi));
+        mViewHolder.valueViewRssi.setText((rssi == 0) ? "-" : rssiFormat.format(rssi));
 
-        // 5. retrn rowView
-        return rowView;
+        // 5. retrn convertView
+        return convertView;
     }
 }
