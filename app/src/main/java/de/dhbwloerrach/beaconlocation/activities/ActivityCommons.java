@@ -29,7 +29,7 @@ import de.dhbwloerrach.beaconlocation.bluetooth.IBeaconListView;
  */
 public class ActivityCommons implements Drawer.OnDrawerItemClickListener {
     private Menu menu;
-    private MainActivity context;
+    private final MainActivity context;
     private BeaconTools beaconTools;
     private Drawer drawer;
     private BaseFragment fragment;
@@ -37,7 +37,7 @@ public class ActivityCommons implements Drawer.OnDrawerItemClickListener {
     private AddBeaconsToMachineFragment addBeaconsToMachineFragment;
     private MachineFragment machineFragment;
 
-    protected List<Map.Entry<FragmentType, Bundle>> fragmentStack = new ArrayList<>();
+    private final List<Map.Entry<FragmentType, Bundle>> fragmentStack = new ArrayList<>();
 
     /**
      * @param context MainActivity
