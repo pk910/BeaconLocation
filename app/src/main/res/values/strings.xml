@@ -55,7 +55,13 @@
         <string name="emptyList_add_machines">I\'m empty and happy :)</string>
         <string name="emptyList_machine">I\'m empty and happy :)</string>
         <string name="emptyList_machines">I\'m empty and happy :)</string>
-
+        <!-- ImageView Descriptions -->
+        <string name="addMachine_image_description"> Plus sign for adding a machine</string>
+        <string name="addMachine_display_text">ADD MACHINE</string>
+        <string name="addMachine_enter_machine_name_display_text">Enter Machine Name:</string>
+        <string name="addMachine_minor_ids_display_text">Minor IDs:</string>
+        <string name="addMachine_create_display_text">Create</string>
+        <string name="addMachine_cancel_display_text">Create</string>
         <!--Bitte ordnen!!!-->
         <string name="minorId">Minor Id</string>
 </resources>
