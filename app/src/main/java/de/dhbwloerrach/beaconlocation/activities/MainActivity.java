@@ -1,5 +1,6 @@
 package de.dhbwloerrach.beaconlocation.activities;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
@@ -20,7 +21,12 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#d3d3d3")));
+        ColorDrawable color = new ColorDrawable(Color.parseColor("#d3d3d3"));
+        ActionBar ab = getActionBar();
+        if (null != ab) {
+            ab.setBackgroundDrawable(color);
+        }
+
         //getActionBar().setElevation(0);
         setContentView(R.layout.activity_main);
 
