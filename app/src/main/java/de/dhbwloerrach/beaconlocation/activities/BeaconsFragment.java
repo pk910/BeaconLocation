@@ -149,9 +149,9 @@ public class BeaconsFragment extends AddMachineBaseFragment implements IBeaconLi
      * Change the Menu button visibility
      */
     private void updateMenuButtons() {
-        menu.findItem(R.id.action_sort).setVisible(selectedBeacons.size() == 0);
-        menu.findItem(R.id.add_beacon).setVisible(selectedBeacons.size() != 0);
-        menu.findItem(R.id.rssi_average).setVisible(selectedBeacons.size() == 0);
+        menu.findItem(R.id.action_sort).setVisible(selectedBeacons.isEmpty());
+        menu.findItem(R.id.add_beacon).setVisible(!selectedBeacons.isEmpty());
+        menu.findItem(R.id.rssi_average).setVisible(selectedBeacons.isEmpty());
 
         Integer machine = getBeaconsMachine();
         if(machine == null){
@@ -170,7 +170,7 @@ public class BeaconsFragment extends AddMachineBaseFragment implements IBeaconLi
         Integer machine = null;
         for(Beacon beacon : selectedBeacons){
             Beacon dbBeacon = databaseHandler.getBeacon(beacon.getMinor());
-            if(dbBeacon == null || dbBeacon.getMachineId() <= 0 || (machine != null && !Objects.equals(machine, dbBeacon.getMachineId()))){
+            if(dbBeacon == null || dbBeacon.getMachineId() <= 0 || machine != null && !Objects.equals(machine, dbBeacon.getMachineId())){
                 machine = null;
                 break;
             }

@@ -100,9 +100,9 @@ public class MachineFragment extends BaseFragment implements IBeaconListView {
      * Change the menu item title
      */
     private void updateMenuButtons() {
-        menu.findItem(R.id.add_beacon).setVisible(selectedBeacons.size() == 0);
-        menu.findItem(R.id.delete_machine).setVisible(selectedBeacons.size() == 0);
-        menu.findItem(R.id.delete_beacon).setVisible(selectedBeacons.size() != 0);
+        menu.findItem(R.id.add_beacon).setVisible(selectedBeacons.isEmpty());
+        menu.findItem(R.id.delete_machine).setVisible(selectedBeacons.isEmpty());
+        menu.findItem(R.id.delete_beacon).setVisible(!selectedBeacons.isEmpty());
     }
 
     @Override

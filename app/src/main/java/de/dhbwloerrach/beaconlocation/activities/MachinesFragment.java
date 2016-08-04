@@ -72,16 +72,11 @@ public class MachinesFragment extends BaseFragment implements IBeaconListView {
 
     @Override
     protected boolean handleMenuClick(int itemId) {
-        switch (itemId) {
-            case R.id.add_machine:
-                buildDialog();
-                break;
-
-            default:
-                return false;
+        if (itemId==R.id.add_machine) {
+            buildDialog();
+            return true;
         }
-
-        return true;
+        else {return false;}
     }
 
     /**

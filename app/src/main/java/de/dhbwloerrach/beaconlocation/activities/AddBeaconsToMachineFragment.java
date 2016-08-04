@@ -25,7 +25,6 @@ import de.dhbwloerrach.beaconlocation.models.Machine;
  */
 public class AddBeaconsToMachineFragment extends AddMachineBaseFragment {
     private ArrayList<Beacon> selectedBeacons = new ArrayList<>();
-    private Machine machine;
     private ActivityCommons commons;
     private MachineAdapter adapter;
 
@@ -55,6 +54,7 @@ public class AddBeaconsToMachineFragment extends AddMachineBaseFragment {
                         .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                Machine machine;
                                 selectedBeacons = getArguments().getParcelableArrayList("selectedBeacons");
                                 machine = adapter.getItem(position);
                                 final DatabaseHandler databaseHandler = new DatabaseHandler(activity);
