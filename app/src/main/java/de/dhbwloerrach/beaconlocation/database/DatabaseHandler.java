@@ -240,9 +240,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         Beacon beacon;
 
-        if (cursor != null) {
+        if (cursor == null) {
+            db.close();
+            return null;
+        }else {
             if(cursor.moveToFirst()) {
-
                 beacon = new Beacon();
                 beacon.setId(Integer.parseInt(cursor.getString(0)));
                 beacon.setMinor(Integer.parseInt(cursor.getString(1)));
@@ -259,9 +261,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             }else {
                 return null;
             }
-        }else {
-            db.close();
-            return null;
         }
     }
     public ArrayList<Beacon> getAllBeaconsByMachine(int machineId) {

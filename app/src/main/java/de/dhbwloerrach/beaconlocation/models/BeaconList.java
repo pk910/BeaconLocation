@@ -67,13 +67,11 @@ public class BeaconList extends ArrayList<Beacon> {
     }
 
     public void sort(FilterTyp filterTyp){
-        switch (filterTyp){
-            case Minor:
-                sortByMinor();
-                break;
-            case RSSI:
-                sortByRSSI();
-                break;
+        if(filterTyp== FilterTyp.Minor){
+            sortByMinor();
+        }
+        else if(filterTyp== FilterTyp.RSSI){
+            sortByRSSI();
         }
     }
 

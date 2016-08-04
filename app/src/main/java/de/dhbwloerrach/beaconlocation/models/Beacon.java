@@ -31,7 +31,13 @@ public class Beacon implements Parcelable{
     private Boolean back_left;
     private Boolean back_right;
 
+    /**
+     * Default constructor. Do not use beacon created with this constructor until uuid, major and minor are change manually.
+     */
     public Beacon(){
+        uuid="generic beacon... ";
+        major=-1;
+        minor=-1;
     }
 
     private Beacon(Parcel in){

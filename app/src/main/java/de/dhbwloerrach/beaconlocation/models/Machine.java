@@ -17,7 +17,9 @@ public class Machine implements Parcelable {
 
     // FIXME: Bad coding practices in this class. If not fixing the design pattern, at least let us check if machine is finalized.
     public Machine() {
-
+        super();
+        id=-1;
+        name="unset";
     }
 
     // Constructor for parcelable

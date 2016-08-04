@@ -1,6 +1,7 @@
 package de.dhbwloerrach.beaconlocation.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -169,6 +170,8 @@ public class BeaconAdapter extends ArrayAdapter<Beacon> {
             case UNKNOWN:
                 mViewHolder.image.setImageResource(R.mipmap.circle_grey);
                 break;
+            default:
+                Log.e("Error","Unkown beacon distance");
         }
 
         mViewHolder.valueViewRssi.setText((rssi == 0) ? "-" : rssiFormat.format(rssi));

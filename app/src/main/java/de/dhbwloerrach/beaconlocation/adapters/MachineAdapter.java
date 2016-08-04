@@ -126,7 +126,7 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
         try {
             int beaconsCount = databaseHandler.getAllBeaconsByMachine(machine.getId()).size();
             mViewHolder.warningIcon.setVisibility(beaconsCount == 0 ? View.VISIBLE : View.GONE);
-            mViewHolder.inRangeIcon.setVisibility(beaconsCount != 0 ? View.VISIBLE : View.GONE);
+            mViewHolder.inRangeIcon.setVisibility(beaconsCount == 0 ? View.GONE: View.VISIBLE);
         } finally {
             databaseHandler.close();
         }
