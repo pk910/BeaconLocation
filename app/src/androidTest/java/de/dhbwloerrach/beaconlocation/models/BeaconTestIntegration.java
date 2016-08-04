@@ -17,6 +17,7 @@ public class BeaconTestIntegration extends AndroidTestCase {
 
     private static final int COUNT_BEACONS = 10;
 
+    @SuppressWarnings("unused")
     public BeaconTestIntegration() {
         super();
     }
@@ -33,6 +34,7 @@ public class BeaconTestIntegration extends AndroidTestCase {
         this.beacons = beacons;
     }
 
+    @SuppressWarnings("unused")
     public void testDistanceStatus() {
         for (Beacon beacon : beacons) {
             Beacon.RssiDistanceStatus status = beacon.getRssiDistanceStatus(beacon.getRssi());

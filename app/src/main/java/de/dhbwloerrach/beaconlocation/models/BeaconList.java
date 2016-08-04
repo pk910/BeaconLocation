@@ -10,6 +10,7 @@ import java.util.Comparator;
  */
 public class BeaconList extends ArrayList<Beacon> {
 
+    @SuppressWarnings("unused")
     static final long serialVersionUID = 3456456L;
 
     public BeaconList() {

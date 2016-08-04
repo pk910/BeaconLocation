@@ -13,6 +13,8 @@ public class RssiListTestIntegration extends AndroidTestCase {
     private IntegrationTestHelper helper = new IntegrationTestHelper();
     private RssiList rssiList;
 
+
+    @SuppressWarnings("unused")
     public RssiListTestIntegration() {
         super();
     }
@@ -30,16 +32,19 @@ public class RssiListTestIntegration extends AndroidTestCase {
         }
     }
 
+    @SuppressWarnings("unused")
     public void testGetLast() throws Exception {
         RssiList lastRssis = rssiList.getLast(2);
         assertEquals(3, lastRssis.size());
     }
 
+    @SuppressWarnings("unused")
     public void testGetAverage() throws Exception {
         double average = rssiList.getAverage();
         assertEquals(4.5, average);
     }
 
+    @SuppressWarnings("unused")
     public void testGetSmoothAverage() throws Exception {
         double average = rssiList.getSmoothAverage();
         assertEquals(4.5, average);

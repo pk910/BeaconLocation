@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class RssiList extends ArrayList<TimedRssi> {
 
+    @SuppressWarnings("unused")
     static final long serialVersionUID = 3456458L;
 
     public RssiList getLast(int seconds){

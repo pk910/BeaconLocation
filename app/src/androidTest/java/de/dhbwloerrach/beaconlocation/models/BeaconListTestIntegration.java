@@ -17,6 +17,7 @@ public class BeaconListTestIntegration extends AndroidTestCase {
 
     private static final int COUNT_BEACONS = 10;
 
+    @SuppressWarnings("unused")
     public BeaconListTestIntegration() {
         super();
     }
@@ -37,11 +38,13 @@ public class BeaconListTestIntegration extends AndroidTestCase {
         this.beacons.addAll(beacons);
     }
 
+    @SuppressWarnings("unused")
     public void testFilterByLast() throws Exception {
         BeaconList filteredList = beacons.filterByLast(2);
         assertEquals(3, filteredList.size());
     }
 
+    @SuppressWarnings("unused")
     public void testSortByRssi() throws Exception {
         beacons.sort(FilterTyp.RSSI);
         for(int i = 1; i < beacons.size(); i++){
@@ -49,6 +52,7 @@ public class BeaconListTestIntegration extends AndroidTestCase {
         }
     }
 
+    @SuppressWarnings("unused")
     public void testSortByMinor() throws Exception {
         beacons.sort(FilterTyp.Minor);
         for(int i = 1; i < beacons.size(); i++){

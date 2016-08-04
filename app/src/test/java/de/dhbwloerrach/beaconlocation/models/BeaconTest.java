@@ -9,6 +9,7 @@ import static org.hamcrest.Matchers.is;
  * Created by enio on 7/29/16.
  *  Unittests for class BeaconTest
  */
+@SuppressWarnings("all")
 public class BeaconTest {
 
     // TODO: Extend unit tests.

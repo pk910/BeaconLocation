@@ -22,6 +22,7 @@ public class MachineAdapterTestIntegration extends AndroidTestCase {
 
     private static final int COUNT_MACHINES = 10;
 
+    @SuppressWarnings("unused")
     public MachineAdapterTestIntegration() {
         super();
     }
@@ -39,28 +40,33 @@ public class MachineAdapterTestIntegration extends AndroidTestCase {
         this.machines.addAll(machines);
     }
 
+    @SuppressWarnings("unused")
     public void testClearItems() throws Exception {
         adapter.clearItems();
         assertTrue(adapter.getCount() == 0);
     }
 
+    @SuppressWarnings("unused")
     public void testGetCount() throws Exception {
         assertEquals(adapter.getCount(), COUNT_MACHINES);
         assertEquals(adapter.getCount(), machines.size());
     }
 
+    @SuppressWarnings("unused")
     public void testGetItem() throws Exception {
         for (int index = 0; index < machines.size(); index++) {
             assertEquals(adapter.getItem(index), machines.get(index));
         }
     }
 
+    @SuppressWarnings("unused")
     public void testGetPosition() throws Exception {
         for (int index = 0; index < machines.size(); index++) {
             assertEquals(adapter.getPosition(machines.get(index)), index);
         }
     }
 
+    @SuppressWarnings("unused")
     public void testGetView() {
         for (int index = 0; index < machines.size(); index++) {
             View view = adapter.getView(index, null, null);
