@@ -120,7 +120,7 @@ public class MachinesFragment extends BaseFragment implements IBeaconListView {
             for(Machine machine : databaseHandler.getAllMachines()) {
                 ArrayList<Beacon> machineBeacons = databaseHandler.getAllBeaconsByMachine(machine.getId());
 
-                boolean machineInRange = machineBeacons.size() > 0;
+                boolean machineInRange = !machineBeacons.isEmpty();
                 for (Beacon beacon : machineBeacons) {
                     Beacon currentRealBeacon = filteredBeacons.getBeacon(beacon.getMinor());
 

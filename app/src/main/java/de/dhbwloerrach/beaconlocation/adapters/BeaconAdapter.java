@@ -172,6 +172,7 @@ public class BeaconAdapter extends ArrayAdapter<Beacon> {
                 break;
             default:
                 Log.e("Error","Unkown beacon distance");
+                break;
         }
 
         mViewHolder.valueViewRssi.setText((rssi == 0) ? "-" : rssiFormat.format(rssi));
