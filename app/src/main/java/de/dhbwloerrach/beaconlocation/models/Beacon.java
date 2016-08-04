@@ -11,6 +11,7 @@ import de.dhbwloerrach.beaconlocation.database.DatabaseHandler;
  * Created by alirei on 20.07.2015.
  * Implements a class that represents a single beacon
  */
+@SuppressWarnings("PMD.AvoidDuplicateLiterals")
 public class Beacon implements Parcelable{
     private String uuid = "";
     private double distance;
