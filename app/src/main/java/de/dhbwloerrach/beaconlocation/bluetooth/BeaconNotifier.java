@@ -27,7 +27,7 @@ class BeaconNotifier implements RangeNotifier {
         for(Beacon beacon : collection){
             de.dhbwloerrach.beaconlocation.models.Beacon existing;
             synchronized (beaconList) {
-                existing = GetBeacon(beacon.getId1(), beacon.getId2(), beacon.getId3());
+                existing = getBeacon(beacon.getId1(), beacon.getId2(), beacon.getId3());
                 if (existing == null) {
                     existing = new de.dhbwloerrach.beaconlocation.models.Beacon();
                     existing.setUuid(beacon.getId1().toString())
@@ -55,7 +55,7 @@ class BeaconNotifier implements RangeNotifier {
         }
     }
 
-    private de.dhbwloerrach.beaconlocation.models.Beacon GetBeacon(Identifier uuid, Identifier major, Identifier minor){
+    private de.dhbwloerrach.beaconlocation.models.Beacon getBeacon(Identifier uuid, Identifier major, Identifier minor){
         for(de.dhbwloerrach.beaconlocation.models.Beacon beacon : beaconList){
             if(Objects.equals(beacon.getUuid(), uuid.toString()) &&
                     beacon.getMajor() == major.toInt() &&
