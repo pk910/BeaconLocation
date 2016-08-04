@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class DistanceList extends ArrayList<TimedDistance> {
 
+    @SuppressWarnings("unused")
     static final long serialVersionUID = 3456457L;
 
     public DistanceList getLast(int seconds){

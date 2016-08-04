@@ -16,6 +16,7 @@ public class DistanceListTestIntegration extends AndroidTestCase {
 
     private ArrayList<Double> distances;
 
+    @SuppressWarnings("unused")
     public DistanceListTestIntegration() {
         super();
     }
@@ -36,11 +37,13 @@ public class DistanceListTestIntegration extends AndroidTestCase {
         }
     }
 
+    @SuppressWarnings("unused")
     public void testGetLast() throws Exception {
         DistanceList lastDistances = distanceList.getLast(2);
         assertEquals(3, lastDistances.size());
     }
 
+    @SuppressWarnings("unused")
     public void testAverageDistance() throws Exception {
         double sum = 0;
         for(Double distance : distances)

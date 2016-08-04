@@ -26,6 +26,7 @@ public class BeaconAdapterTestIntegration extends AndroidTestCase {
 
     private static final int COUNT_BEACONS = 10;
 
+    @SuppressWarnings("unused")
     public BeaconAdapterTestIntegration() {
         super();
     }
@@ -47,28 +48,33 @@ public class BeaconAdapterTestIntegration extends AndroidTestCase {
         this.beacons.sort(filterTyp);
     }
 
+    @SuppressWarnings("unused")
     public void testClearItems() throws Exception {
         adapter.clearItems();
         assertTrue(adapter.getCount() == 0);
     }
 
+    @SuppressWarnings("unused")
     public void testGetCount() throws Exception {
         assertEquals(adapter.getCount(), COUNT_BEACONS);
         assertEquals(adapter.getCount(), beacons.size());
     }
 
+    @SuppressWarnings("unused")
     public void testGetItem() throws Exception {
         for (int index = 0; index < beacons.size(); index++) {
             assertEquals(adapter.getItem(index), beacons.get(index));
         }
     }
 
+    @SuppressWarnings("unused")
     public void testGetPosition() throws Exception {
         for (int index = 0; index < beacons.size(); index++) {
             assertEquals(adapter.getPosition(beacons.get(index)), index);
         }
     }
 
+    @SuppressWarnings("unused")
     public void testGetView() {
         for (int index = 0; index < beacons.size(); index++) {
             View view = adapter.getView(index, null, null);

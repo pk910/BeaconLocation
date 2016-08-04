@@ -15,6 +15,7 @@ public class ActivityCommonsTestIntegration extends AndroidTestCase {
 
     private static final int COUNT_FRAGMENTS = 10;
 
+    @SuppressWarnings("unused")
     public ActivityCommonsTestIntegration() {
         super();
         commons = new ActivityCommons(null);
@@ -26,6 +27,7 @@ public class ActivityCommonsTestIntegration extends AndroidTestCase {
         super.setUp();
     }
 
+    @SuppressWarnings("unused")
     public void testFragmentStack() throws Exception {
         for (int index = 0; index < COUNT_FRAGMENTS; index++) {
             Bundle bundle = null;
