@@ -9,6 +9,9 @@ import java.util.concurrent.TimeUnit;
  * Implements a list of distance values for beacons
  */
 public class DistanceList extends ArrayList<TimedDistance> {
+
+    static final long serialVersionUID = 3456457L;
+
     public DistanceList getLast(int seconds){
         DistanceList result = new DistanceList();
         long margin = new Date().getTime() - TimeUnit.SECONDS.toMillis(seconds);

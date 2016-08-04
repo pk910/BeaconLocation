@@ -10,6 +10,9 @@ import java.util.concurrent.TimeUnit;
  * Implements a list of timedRssi values
  */
 public class RssiList extends ArrayList<TimedRssi> {
+
+    static final long serialVersionUID = 3456458L;
+
     public RssiList getLast(int seconds){
         RssiList result = new RssiList();
         long margin = new Date().getTime() - TimeUnit.SECONDS.toMillis(seconds);
