@@ -3,6 +3,7 @@ package de.dhbwloerrach.beaconlocation.activities;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -135,6 +136,9 @@ public class ActivityCommons implements Drawer.OnDrawerItemClickListener {
 
                 fragment = machineFragment;
                 break;
+            default:
+                Log.e("Error","Wrong machine type");
+                break;
         }
 
         if (allowSwitchBack) {
@@ -142,10 +146,11 @@ public class ActivityCommons implements Drawer.OnDrawerItemClickListener {
         }
 
         fragment.setActivity(context);
-        if(bundle != null) {
-            fragment.setArguments(bundle);
-        } else {
+        if(bundle == null) {
             fragment.setArguments(new Bundle());
+        } else {
+            fragment.setArguments(bundle);
+
         }
 
         if(menu != null) {

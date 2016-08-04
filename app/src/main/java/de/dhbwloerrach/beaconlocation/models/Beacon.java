@@ -128,8 +128,9 @@ public class Beacon implements Parcelable{
     @SuppressWarnings("unused")
     public double getAverageDistance(int seconds) {
         DistanceList last = this.distances.getLast(seconds);
-        if(last.size() > 0)
+        if(last.size() > 0) {
             return last.getAverageDistance();
+        }
         else {
             return this.getDistance();
         }
@@ -203,8 +204,8 @@ public class Beacon implements Parcelable{
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o){ return true;}
+        if (o == null || getClass() != o.getClass()){ return false;}
 
         Beacon beacon = (Beacon) o;
 

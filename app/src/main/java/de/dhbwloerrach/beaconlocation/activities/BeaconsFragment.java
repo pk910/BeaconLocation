@@ -154,10 +154,10 @@ public class BeaconsFragment extends AddMachineBaseFragment implements IBeaconLi
         menu.findItem(R.id.rssi_average).setVisible(selectedBeacons.size() == 0);
 
         Integer machine = getBeaconsMachine();
-        if(machine != null){
-            menu.findItem(R.id.to_machine).setVisible(true);
-        } else {
+        if(machine == null){
             menu.findItem(R.id.to_machine).setVisible(false);
+        } else {
+            menu.findItem(R.id.to_machine).setVisible(true);
         }
     }
 
@@ -196,10 +196,14 @@ public class BeaconsFragment extends AddMachineBaseFragment implements IBeaconLi
         switch (itemId) {
             case R.id.add_beacon:
                 Machine machine = null;
-                if(getArguments() != null)
+                if(getArguments() != null) {
                     machine = getArguments().getParcelable("oldMachine");
+                }
                 if (updatePaused) {
-                    if (machine != null) {
+                    if (machine == null) {
+                        buildDialog();
+                    }
+                    else {
                         final DatabaseHandler databaseHandler = new DatabaseHandler(activity);
 
                         final int machineId = machine.getId();
@@ -214,9 +218,6 @@ public class BeaconsFragment extends AddMachineBaseFragment implements IBeaconLi
                         if(checkBeacons(selectedBeacons, databaseHandler, action)){
                             action.execute();
                         }
-                    }
-                    else {
-                        buildDialog();
                     }
                 }
                 break;
@@ -251,7 +252,9 @@ public class BeaconsFragment extends AddMachineBaseFragment implements IBeaconLi
                 break;
             case R.id.to_machine:
                 Integer machineId = getBeaconsMachine();
-                if(machineId != null) {
+                if(machineId == null) {
+                    menu.findItem(R.id.to_machine).setVisible(false);
+                } else {
                     DatabaseHandler databaseHandler = new DatabaseHandler(activity);
                     machine = databaseHandler.getMachine(machineId);
                     databaseHandler.close();
@@ -260,8 +263,6 @@ public class BeaconsFragment extends AddMachineBaseFragment implements IBeaconLi
                     bundle.putParcelable("machine", machine);
                     // got to AddBeaconsToMachineFragement if selected Beacons notEmpty?
                     activity.getCommons().switchFragment(ActivityCommons.FragmentType.MACHINE, bundle);
-                } else {
-                    menu.findItem(R.id.to_machine).setVisible(false);
                 }
                 break;
             default:
