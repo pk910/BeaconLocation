@@ -107,14 +107,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         Machine machine = null;
 
-        if (cursor != null) {
-            if(cursor.moveToFirst()) {
-
-                machine = new Machine();
-                machine.setId(Integer.parseInt(cursor.getString(0)));
-                machine.setName(cursor.getString(1));
-                cursor.close();
-            }
+        if (cursor != null && cursor.moveToFirst()) {
+            machine = new Machine();
+            machine.setId(Integer.parseInt(cursor.getString(0)));
+            machine.setName(cursor.getString(1));
+            cursor.close();
         }
         db.close();
         return machine;
@@ -126,21 +123,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Cursor cursor = db.query(TABLE_BEACON, new String[]{KEY_BEACON_ID, KEY_BEACON_MINOR, KEY_BEACON_MAJOR, KEY_BEACON_UUID, KEY_BEACON_MACHINEID, KEY_BEACON_FRONT_LEFT, KEY_BEACON_FRONT_RIGHT, KEY_BEACON_BACK_LEFT, KEY_BEACON_BACK_RIGHT}, KEY_BEACON_MINOR + "=?", new String[]{String.valueOf(minor)}, null, null, null, null);
 
         Beacon beacon = null;
-        if (cursor != null) {
-            if(cursor.moveToFirst()) {
-
-                beacon = new Beacon();
-                beacon.setId(Integer.parseInt(cursor.getString(0)));
-                beacon.setMinor(Integer.parseInt(cursor.getString(1)));
-                beacon.setMajor(Integer.parseInt(cursor.getString(2)));
-                beacon.setUuid(cursor.getString(3));
-                beacon.setMachineId(Integer.parseInt(cursor.getString(4)));
-                beacon.setFront_left(Boolean.parseBoolean(cursor.getString(5)));
-                beacon.setFront_right(Boolean.parseBoolean(cursor.getString(6)));
-                beacon.setBack_left(Boolean.parseBoolean(cursor.getString(7)));
-                beacon.setBack_right(Boolean.parseBoolean(cursor.getString(8)));
-                cursor.close();
-            }
+        if (cursor != null && cursor.moveToFirst()) {
+            beacon = new Beacon();
+            beacon.setId(Integer.parseInt(cursor.getString(0)));
+            beacon.setMinor(Integer.parseInt(cursor.getString(1)));
+            beacon.setMajor(Integer.parseInt(cursor.getString(2)));
+            beacon.setUuid(cursor.getString(3));
+            beacon.setMachineId(Integer.parseInt(cursor.getString(4)));
+            beacon.setFront_left(Boolean.parseBoolean(cursor.getString(5)));
+            beacon.setFront_right(Boolean.parseBoolean(cursor.getString(6)));
+            beacon.setBack_left(Boolean.parseBoolean(cursor.getString(7)));
+            beacon.setBack_right(Boolean.parseBoolean(cursor.getString(8)));
+            cursor.close();
         }
         db.close();
         return beacon;
@@ -303,15 +297,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         Cursor cursor = db.query(TABLE_MACHINE, new String[]{KEY_MACHINE_ID, KEY_MACHINE_NAME}, KEY_MACHINE_NAME + "=?", new String[]{String.valueOf(name)}, null, null, null, null);
 
-        if (cursor != null) {
-            if(cursor.moveToFirst()) {
-                Machine machine = new Machine();
-                machine.setId(Integer.parseInt(cursor.getString(0)));
-                machine.setName(cursor.getString(1));
-                cursor.close();
-                db.close();
-                return machine;
-            }
+        if (cursor != null && cursor.moveToFirst()) {
+            Machine machine = new Machine();
+            machine.setId(Integer.parseInt(cursor.getString(0)));
+            machine.setName(cursor.getString(1));
+            cursor.close();
+            db.close();
+            return machine;
         }
         db.close();
         return null;

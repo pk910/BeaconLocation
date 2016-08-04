@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.RemoteException;
+import android.util.Log;
 
 import org.altbeacon.beacon.BeaconConsumer;
 import org.altbeacon.beacon.BeaconManager;
@@ -41,7 +42,7 @@ public class BeaconTools implements BeaconConsumer {
             //Update default time with the new one
             beaconManager.updateScanPeriods();
         }catch (RemoteException e){
-            e.printStackTrace();
+            Log.e("Error",e.toString());
         }
 
         BeaconNotifier notifier = new BeaconNotifier(this);
@@ -51,7 +52,7 @@ public class BeaconTools implements BeaconConsumer {
             //Start Monitoring
             beaconManager.startRangingBeaconsInRegion(mRegion);
         } catch (RemoteException e) {
-            e.printStackTrace();
+            Log.e("Error",e.toString());
         }
     }
 

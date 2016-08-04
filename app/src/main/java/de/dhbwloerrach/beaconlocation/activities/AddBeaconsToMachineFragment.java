@@ -73,6 +73,11 @@ public class AddBeaconsToMachineFragment extends AddMachineBaseFragment {
                                 }
                             }})
                         .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                            /**
+                             * Implements a click handler for cancel button
+                             * @param dialog Dialog reference
+                             * @param which Button ID
+                             */
                             public void onClick(DialogInterface dialog, int which) {
                             }
                         })

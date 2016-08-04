@@ -80,13 +80,10 @@ public class BeaconList extends ArrayList<Beacon> {
 
     public Beacon getBeacon(int minor) {
         for (Beacon beacon : this) {
-            if (beacon.getMinor() != minor) {
-                continue;
+            if (beacon.getMinor() == minor) {
+                return beacon;
             }
-
-            return beacon;
         }
-
         return null;
     }
 }

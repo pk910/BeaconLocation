@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -147,6 +148,8 @@ public class MachineFragment extends BaseFragment implements IBeaconListView {
                             return false;
                     }
                     break;
+                default:
+                    Log.e("Error","unkown ItemID");
             }
 
             return false;

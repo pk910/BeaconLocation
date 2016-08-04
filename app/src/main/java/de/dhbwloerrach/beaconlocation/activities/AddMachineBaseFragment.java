@@ -96,7 +96,7 @@ public abstract class AddMachineBaseFragment extends BaseFragment {
             if (beacons.indexOf(beacon) <= beacons.size() - 1) {
                 stBuilder.append(beacon.getMinor().toString()).append(", ");
             } else {
-                stBuilder.append(beacon.getMinor().toString()).append(" ");
+                stBuilder.append(beacon.getMinor().toString()).append(' ');
             }
         }
         String allOverwriteBeacons = stBuilder.toString();
@@ -112,6 +112,11 @@ public abstract class AddMachineBaseFragment extends BaseFragment {
                         }
                     })
                     .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                        /**
+                         * Implements a click handler for no button
+                         * @param dialog Dialog reference
+                         * @param which Button ID
+                         */
                         public void onClick(DialogInterface dialog, int which) {
                         }
                     })
@@ -144,12 +149,12 @@ public abstract class AddMachineBaseFragment extends BaseFragment {
 
             Beacon databaseBeacon = databaseHandler.getBeacon(beacon.getMinor()); //, beacon.getMajor(), beacon.getUuid()
 
-            if (databaseBeacon != null) {
-                beacon.setId(databaseBeacon.getId());
-                databaseHandler.updateBeacon(beacon);
+            if (databaseBeacon == null) {
+                databaseHandler.createBeacon(beacon);
             }
             else{
-                databaseHandler.createBeacon(beacon);
+                beacon.setId(databaseBeacon.getId());
+                databaseHandler.updateBeacon(beacon);
             }
         }
 
