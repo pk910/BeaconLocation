@@ -1,3 +1,5 @@
+[![Build Status](http://ci.asdfd.de/buildStatus/icon?job=BeaconLocation)](http://ci.asdfd.de/job/BeaconLocation)
+
 # BeaconLocation / MachineLocation Projektdokumentation
 
 ## Richtlinien
