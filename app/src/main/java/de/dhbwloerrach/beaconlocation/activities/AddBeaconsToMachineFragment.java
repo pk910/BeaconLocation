@@ -79,6 +79,7 @@ public class AddBeaconsToMachineFragment extends AddMachineBaseFragment {
                              * @param which Button ID
                              */
                             public void onClick(DialogInterface dialog, int which) {
+                                // Intentionally left empty: "Do not do anyting on cancel."
                             }
                         })
                         .setIcon(android.R.drawable.ic_dialog_alert)
@@ -92,7 +93,7 @@ public class AddBeaconsToMachineFragment extends AddMachineBaseFragment {
 
     @Override
     protected void createActionBarMenu(Menu menu) {
-        //
+        // Intentionally left empty: "Do not create an action bar component opposed to superclass behavior."
     }
 
     @Override
