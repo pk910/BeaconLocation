@@ -276,7 +276,7 @@ public class MachineFragment extends BaseFragment implements IBeaconListView {
                     selectedBeacons.remove(beacon);
                     databaseHandler.deleteBeacon(beacon);
                 }
-                DatabaseHandler databaseHandler = new DatabaseHandler(activity);
+                // DatabaseHandler databaseHandler = new DatabaseHandler(activity);
                 updateBeaconListView(databaseHandler.getAllBeaconsByMachine(machine.getId()));
                 databaseHandler.close();
                 updateMenuButtons();
