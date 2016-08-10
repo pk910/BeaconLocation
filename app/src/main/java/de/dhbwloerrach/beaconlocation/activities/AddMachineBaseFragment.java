@@ -118,6 +118,7 @@ public abstract class AddMachineBaseFragment extends BaseFragment {
                          * @param which Button ID
                          */
                         public void onClick(DialogInterface dialog, int which) {
+                            // Intentionally left empty: "Do not do anyting on cancel."
                         }
                     })
                     .setIcon(android.R.drawable.ic_dialog_alert)
