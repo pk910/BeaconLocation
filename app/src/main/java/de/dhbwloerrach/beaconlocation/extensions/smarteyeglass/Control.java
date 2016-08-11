@@ -39,6 +39,8 @@ import com.sony.smarteyeglass.extension.util.SmartEyeglassControlUtils;
 import com.sonyericsson.extras.liveware.extension.util.control.ControlExtension;
 import com.sonyericsson.extras.liveware.extension.util.control.ControlTouchEvent;
 
+import de.dhbwloerrach.beaconlocation.R;
+
 /**
  * Demonstrates how to communicate between an Android activity and its
  * corresponding SmartEyeglass app.
@@ -122,8 +124,11 @@ public final class Control extends ControlExtension {
      *  Update the display with the dynamic message text.
      */
     private void updateLayout() {
+        /* Commented out since we don't want to use the HelloWorld activity,
+           but need it as source of information for now.
+
         showLayout(R.layout.layout, null);
-        sendText(R.id.btn_update_this, "Hello World!");
+        sendText(R.id.btn_update_this, "Hello World!");*/
     }
 
     /**

@@ -38,10 +38,12 @@ import com.sonyericsson.extras.liveware.aef.registration.Registration.ExtensionC
 import com.sonyericsson.extras.liveware.extension.util.ExtensionUtils;
 import com.sonyericsson.extras.liveware.extension.util.registration.RegistrationInformation;
 
+import de.dhbwloerrach.beaconlocation.R;
+
 /**
  * Provides information needed during extension registration.
  */
-public final class RegistrationInformation
+public final class MachineLocatorRegistrationInformation
         extends com.sonyericsson.extras.liveware.extension.util.registration.RegistrationInformation {
 
     /** The application context. */
@@ -55,7 +57,7 @@ public final class RegistrationInformation
      *
      * @param context The context.
      */
-    public RegistrationInformation(final Context context) {
+    public MachineLocatorRegistrationInformation(final Context context) {
         this.context = context;
     }
 

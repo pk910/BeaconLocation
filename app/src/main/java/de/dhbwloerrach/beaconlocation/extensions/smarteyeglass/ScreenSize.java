@@ -34,6 +34,8 @@ package de.dhbwloerrach.beaconlocation.extensions.smarteyeglass;
 import android.content.Context;
 import android.content.res.Resources;
 
+import de.dhbwloerrach.beaconlocation.R;
+
 /**
  * Provides screen size.
  *

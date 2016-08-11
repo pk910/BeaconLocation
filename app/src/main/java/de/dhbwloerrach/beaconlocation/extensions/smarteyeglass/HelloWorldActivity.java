@@ -42,6 +42,8 @@ import android.widget.Toast;
 
 import com.sonyericsson.extras.liveware.aef.registration.Registration;
 
+import de.dhbwloerrach.beaconlocation.R;
+
 /**
  * The Hello World activity provides a button on the phone that starts
  * the  SmartEyeglass app.

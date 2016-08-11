@@ -74,4 +74,16 @@
         <string name="machine_distance_indicator_grey">Machine distance indicator not in range</string>
         <string name="machine_warning_image">Machine warning</string>
         <string name="beacon_icon">Beacon icon</string>
+
+        <!-- SmartEye Glass Integration TODO: Remove uneeded strings! -->
+        <string name="preference_activity_title">Hello World Settings</string>
+        <!-- Name of extension, shown in preferences -->
+        <string name="extension_name">Hello World</string>
+        <!-- Text used on control layout -->
+        <string name="text_title_layout">Sample Text</string>
+        <!-- Text in -->
+        <string name="text_phone_to_smarteyeglass">Hello SmartEyeglass</string>
+
+        <!-- Configuration title shown in preferences -->
+        <string name="configuration_text">Hello World Activity</string>
     </resources>

@@ -70,7 +70,7 @@ public final class ExtensionService extends com.sonyericsson.extras.liveware.ext
 
     @Override
     protected com.sonyericsson.extras.liveware.extension.util.registration.RegistrationInformation getRegistrationInformation() {
-        return new RegistrationInformation(this);
+        return new MachineLocatorRegistrationInformation(this);
     }
 
     @Override
