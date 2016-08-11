@@ -1,1 +1,1 @@
-include ':app'
+include ':app', ':SmartExtensionAPI', ':SmartExtensionUtils', ':SmartEyeglassAPI'
