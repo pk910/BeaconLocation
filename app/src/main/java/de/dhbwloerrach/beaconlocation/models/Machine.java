@@ -44,20 +44,16 @@ public class Machine implements Parcelable {
         return id;
     }
 
-    @SuppressWarnings("UnusedReturnValue") // TODO: Reevaluate - Only used for special notation in integration tests
-    public Machine setId(Integer id) {
+    public void setId(Integer id) {
         this.id = id;
-        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    @SuppressWarnings("UnusedReturnValue") // TODO: Reevaluate - Only used for special notation in integration tests
-    public Machine setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return this;
     }
 
 

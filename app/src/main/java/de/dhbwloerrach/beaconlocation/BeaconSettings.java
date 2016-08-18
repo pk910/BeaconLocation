@@ -2,11 +2,11 @@ package de.dhbwloerrach.beaconlocation;
 
 /**
  * Created by enio on 8/3/16.
- * Holder for global Constants
+ * Holder for global BeaconSettings
  */
-public final class Constants {
+public final class BeaconSettings {
     public static final int RSSI_AVERAGE_SECONDS = 2;
     public static final int BEACONLIST_REFRESH_INTERVAL_SECONDS = 5;
 
-    private Constants() {} // Prevent instantiation by declaring constructor private.
+    private BeaconSettings() {} // Prevent instantiation by declaring constructor private.
 }
