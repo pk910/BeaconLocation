@@ -54,7 +54,7 @@ public abstract class AddMachineBaseFragment extends BaseFragment {
      */
     private Machine createMachine(EditText textField, DatabaseHandler databaseHandler){
         // Wenn Texfeld leer ist
-        if (textField.getText() == null || textField.getText().toString().isEmpty()) {
+        if (textField==null || textField.getText() == null || textField.getText().toString().isEmpty()) {
             new AlertDialog.Builder(activity)
                     .setTitle(R.string.alert_title_warning)
                     .setMessage(R.string.alert_message_enterName)

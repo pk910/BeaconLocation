@@ -58,7 +58,7 @@
         <string name="addMachine_enter_machine_name_display_text">Enter Machine Name:</string>
         <string name="addMachine_minor_ids_display_text">Minor IDs:</string>
         <string name="addMachine_create_display_text">Create</string>
-        <string name="addMachine_cancel_display_text">Create</string>
+        <string name="addMachine_cancel_display_text">Cancel</string>
         <!--Bitte ordnen!!!-->
         <string name="minorId">Minor Id</string>
         <string name="rssi_average">Rssi average</string>

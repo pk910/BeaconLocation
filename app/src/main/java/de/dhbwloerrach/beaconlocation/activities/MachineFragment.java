@@ -227,7 +227,8 @@ public class MachineFragment extends BaseFragment implements IBeaconListView {
             @Override
             public void run() {
                 TextView rangeView = (TextView) activity.findViewById(R.id.allBeaconsInRange);
-                rangeView.setVisibility(finalAllInRange ? View.VISIBLE : View.GONE);
+                if(rangeView!=null)
+                    rangeView.setVisibility(finalAllInRange ? View.VISIBLE : View.GONE);
             }
         });
     }

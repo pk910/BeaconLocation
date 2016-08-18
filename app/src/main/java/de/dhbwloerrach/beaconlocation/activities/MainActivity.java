@@ -91,7 +91,7 @@ public class MainActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        if(commons.getDrawer() == null || !commons.isFragmentStackCountTooSmall()) {
+        if(commons.getDrawer() == null || commons.isFragmentStackCountTooSmall()) {
             super.onBackPressed();
             return;
         }

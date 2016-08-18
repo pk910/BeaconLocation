@@ -80,7 +80,7 @@ public class AddManualMachineFragment extends AddMachineBaseFragment {
                 // save machine to database
                 DatabaseHandler databaseHandler = new DatabaseHandler(activity);
 
-                EditText editText = (EditText) activity.findViewById(R.id.editText);
+                EditText editText = (EditText) activity.findViewById(R.id.editText2);
 
                 ArrayList<Beacon> beacons = new ArrayList<>();
                 for(EditText minor : dynamicMinorIds){

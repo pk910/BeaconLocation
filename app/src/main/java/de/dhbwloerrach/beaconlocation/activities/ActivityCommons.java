@@ -115,11 +115,11 @@ public class ActivityCommons implements Drawer.OnDrawerItemClickListener {
 
             case ADD_MACHINE:
                 fragment = new AddNewMachineFragment();
-                allowSwitchBack = false;
+                allowSwitchBack = true;
                 break;
             case ADD_MACHINE_MANUAL:
                 fragment = new AddManualMachineFragment();
-                allowSwitchBack = false;
+                allowSwitchBack = true;
                 break;
             case ADD_BEACON_TO_MACHINE:
                 if(addBeaconsToMachineFragment==null){
@@ -127,7 +127,7 @@ public class ActivityCommons implements Drawer.OnDrawerItemClickListener {
                 }
 
                 fragment = addBeaconsToMachineFragment;
-                allowSwitchBack = false;
+                allowSwitchBack = true;
                 break;
             case MACHINE:
                 if(machineFragment==null){
