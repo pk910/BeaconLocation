@@ -28,15 +28,13 @@
         </activity>
 
         <service android:name="de.dhbwloerrach.beaconlocation.extensions.smarteyeglass.ExtensionService" />
-        <service android:name="com.sonyericsson.extras.liveware.extension.util.TunnelService"
-            android:exported="false">
+        <service android:name="com.sonyericsson.extras.liveware.extension.util.TunnelService">
             <intent-filter>
                 <action android:name="com.sonyericsson.extras.liveware.aef.tunnel.action.BIND" />
             </intent-filter>
         </service>
 
-        <receiver android:name="de.dhbwloerrach.beaconlocation.extensions.smarteyeglass.ExtensionReceiver"
-            android:exported="false">
+        <receiver android:name="de.dhbwloerrach.beaconlocation.extensions.smarteyeglass.ExtensionReceiver">
             <intent-filter>
 
                 <!-- Generic extension intents. -->
