@@ -75,12 +75,12 @@ public final class Control extends ControlExtension {
         ExtensionService.Object.SmartEyeglassControl = this;
 
         /*
-         * Show the message that was set Iif any) when this Control started
+         * Show the message that was set if any) when this Control started
          */
-        if (message != null) {
-            showToast(message);
-        } else {
+        if (message == null) {
             updateLayout();
+        } else {
+            showToast(message);
         }
     }
 
