@@ -37,9 +37,6 @@ import android.util.Log;
 import com.sony.smarteyeglass.SmartEyeglassControl;
 import com.sony.smarteyeglass.extension.util.SmartEyeglassControlUtils;
 import com.sonyericsson.extras.liveware.extension.util.control.ControlExtension;
-import com.sonyericsson.extras.liveware.extension.util.control.ControlTouchEvent;
-
-import de.dhbwloerrach.beaconlocation.R;
 
 /**
  * Demonstrates how to communicate between an Android activity and its
@@ -107,18 +104,19 @@ public final class Control extends ControlExtension {
     public void onDestroy() {
         Log.d(Constants.LOG_TAG, "onDestroy: Control");
         utils.deactivate();
-    };
+    }
 
+    // TODO: Decide if we want to have Glass -> App messaging
     /**
      * Process Touch events.
      * This starts the Android Activity for the app, passing a startup message.
      */
-    @Override
-    public void onTouch(final ControlTouchEvent event) {
-        super.onTouch(event);
-        ExtensionService.Object
-                .sendMessageToActivity("Hello Activity");
-    }
+    // @Override
+    // public void onTouch(final ControlTouchEvent event) {
+    //     super.onTouch(event);
+    //     ExtensionService.Object
+    //             .sendMessageToActivity("Hello Activity");
+    // }
 
     /**
      *  Update the display with the dynamic message text.

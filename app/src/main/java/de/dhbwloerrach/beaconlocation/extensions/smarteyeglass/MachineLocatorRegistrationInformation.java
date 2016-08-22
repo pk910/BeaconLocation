@@ -36,9 +36,9 @@ import android.content.Context;
 
 import com.sonyericsson.extras.liveware.aef.registration.Registration.ExtensionColumns;
 import com.sonyericsson.extras.liveware.extension.util.ExtensionUtils;
-import com.sonyericsson.extras.liveware.extension.util.registration.RegistrationInformation;
 
 import de.dhbwloerrach.beaconlocation.R;
+import de.dhbwloerrach.beaconlocation.activities.MainActivity;
 
 /**
  * Provides information needed during extension registration.
@@ -90,13 +90,13 @@ public final class MachineLocatorRegistrationInformation
 
     @Override
     public ContentValues getExtensionRegistrationConfiguration() {
-        String iconHostapp = getUriString(R.drawable.icon);
-        String iconExtension = getUriString(R.drawable.icon_extension);
-        String iconExtension48 = getUriString(R.drawable.icon_extension48);
+        String iconHostapp = getUriString(R.mipmap.beacon_icon);
+        String iconExtension = getUriString(R.mipmap.beacon_icon);
+        String iconExtension48 = getUriString(R.mipmap.beacon_icon);
 
         ContentValues values = new ContentValues();
         values.put(ExtensionColumns.CONFIGURATION_ACTIVITY,
-                HelloWorldActivity.class.getName());
+                MainActivity.class.getName());
         values.put(ExtensionColumns.CONFIGURATION_TEXT,
                 context.getString(R.string.configuration_text));
         values.put(ExtensionColumns.NAME,

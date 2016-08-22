@@ -104,16 +104,17 @@ public final class ExtensionService extends com.sonyericsson.extras.liveware.ext
                 "com.sony.smarteyeglass", intent);
     }
 
+    // TODO: Decide if we want to have Glass -> App messaging
     /**
      * Sends a  message to be shown in Android activity
      */
-    public void sendMessageToActivity(final String message) {
-        Intent intent = new Intent();
-        intent.setClass(getBaseContext(), HelloWorldActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra("Message", message);
-        startActivity(intent);
-    }
+    //public void sendMessageToActivity(final String message) {
+    //    Intent intent = new Intent();
+    //    intent.setClass(getBaseContext(), HelloWorldActivity.class);
+    //    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    //    intent.putExtra("Message", message);
+    //    startActivity(intent);
+    //}
 
     /**
      * Creates ControlExtension object for the accessory.
