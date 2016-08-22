@@ -84,5 +84,5 @@
         <!--string name="text_phone_to_smarteyeglass">Hello SmartEyeglass</string-->
 
         <!-- Configuration title shown in preferences -->
-        <!--string name="configuration_text">Hello World Activity</string-->
+        <string name="configuration_text">MainActivity</string>
     </resources>
