@@ -15,11 +15,9 @@ public class Machine implements Parcelable {
     private String name;
     private Integer id;
 
-    // FIXME: Bad coding practices in this class. If not fixing the design pattern, at least let us check if machine is finalized.
-    public Machine() {
-        super();
-        id=-1;
-        name="unset";
+    public Machine(int id, String name){
+        this.id=id;
+        this.name=name;
     }
 
     // Constructor for parcelable
@@ -52,10 +50,11 @@ public class Machine implements Parcelable {
         return name;
     }
 
+    /* Not needed anymore
     public void setName(String name) {
         this.name = name;
     }
-
+    */
 
     @Override
     public int describeContents() {
