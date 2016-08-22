@@ -6,6 +6,12 @@
         <Class name="~.*\.R\$.*"/>
     </Match>
     <Match>
-    <Class name="~.*\.Manifest\$.*"/>
+        <Class name="~.*\.Manifest\$.*"/>
+    </Match>
+    <Match>
+        <Class name="~.*ExtensionService.*"/>
+    </Match>
+    <Match>
+        <Class name="~.*Control.*"/>
     </Match>
 </FindBugsFilter>
