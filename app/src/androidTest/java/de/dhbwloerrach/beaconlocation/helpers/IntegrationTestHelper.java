@@ -53,10 +53,7 @@ public class IntegrationTestHelper {
         for (int index = 0; index < count; index ++) {
             int id = createRandom(1, 9999);
 
-            Machine machine = new Machine();
-            machine.setId(id);
-            machine.setName("Machine " + id);
-
+            Machine machine = new Machine(id, "Machine " + id);
             machines.add(machine);
         }
 

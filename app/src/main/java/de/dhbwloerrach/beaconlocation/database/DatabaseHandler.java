@@ -108,9 +108,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Machine machine = null;
 
         if (cursor != null && cursor.moveToFirst()) {
-            machine = new Machine();
-            machine.setId(Integer.parseInt(cursor.getString(0)));
-            machine.setName(cursor.getString(1));
+            machine = new Machine(Integer.parseInt(cursor.getString(0)),cursor.getString(1));
             cursor.close();
         }
         db.close();
@@ -192,9 +190,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                Machine machine = new Machine();
-                machine.setId(Integer.parseInt(cursor.getString(0)));
-                machine.setName(cursor.getString(1));
+                Machine machine = new Machine(Integer.parseInt(cursor.getString(0)),cursor.getString(1));
                 machines.add(machine);
             }
             while (cursor.moveToNext());
@@ -297,9 +293,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Cursor cursor = db.query(TABLE_MACHINE, new String[]{KEY_MACHINE_ID, KEY_MACHINE_NAME}, KEY_MACHINE_NAME + "=?", new String[]{String.valueOf(name)}, null, null, null, null);
 
         if (cursor != null && cursor.moveToFirst()) {
-            Machine machine = new Machine();
-            machine.setId(Integer.parseInt(cursor.getString(0)));
-            machine.setName(cursor.getString(1));
+            Machine machine = new Machine(Integer.parseInt(cursor.getString(0)),cursor.getString(1));
             cursor.close();
             db.close();
             return machine;
