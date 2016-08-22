@@ -6,7 +6,7 @@ import android.util.Log;
 
 public class LogExtension implements ExtensionInterface {
 
-    private String TAG = "LogExtension";
+    private static final String TAG = "LogExtension";
 
     @Override
     public void connect(Context context) {

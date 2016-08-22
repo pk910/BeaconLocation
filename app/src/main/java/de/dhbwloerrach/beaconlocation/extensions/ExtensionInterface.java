@@ -7,8 +7,8 @@ import android.content.Context;
  */
 public interface ExtensionInterface {
 
-    public void connect(Context context);
-    public void disconnect();
-    public void sendMessage(String message);
+    void connect(Context context);
+    void disconnect();
+    void sendMessage(String message);
 
 }
