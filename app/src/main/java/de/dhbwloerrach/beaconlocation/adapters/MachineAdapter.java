@@ -14,7 +14,9 @@ import java.util.Collection;
 
 import de.dhbwloerrach.beaconlocation.R;
 import de.dhbwloerrach.beaconlocation.database.DatabaseHandler;
+import de.dhbwloerrach.beaconlocation.models.Beacon;
 import de.dhbwloerrach.beaconlocation.models.Machine;
+import de.dhbwloerrach.beaconlocation.models.RssiAverageType;
 
 /**
  * Created by Lukas on 31.07.2015.
@@ -63,6 +65,55 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
     public void setMachineIdInRange(ArrayList<Integer> machineIdInRange) {
         this.machineIdInRange.clear();
         this.machineIdInRange.addAll(machineIdInRange);
+    }
+
+    public Machine getClosestMachine(Context context){
+        DatabaseHandler databaseHandler = new DatabaseHandler(context);
+        double distanceValues[]=new double[machines.size()];
+        for(int i=0;i<machines.size();i++) {
+            ArrayList<Beacon> machineBeacons = databaseHandler.getAllBeaconsByMachine(machines.get(i).getId());
+            distanceValues[i]=0;
+            for(int j=0;j<machineBeacons.size();j++)
+            {
+                distanceValues[i]+= translateRssiDistanceStatus(machineBeacons.get(j).getRssiDistanceStatus(machineBeacons.get(j).getRssiByAverageType(RssiAverageType.None, 2)));
+            }
+            distanceValues[i]=distanceValues[i]/machineBeacons.size();
+        }
+        return machines.get(getMinValue(distanceValues));
+    }
+
+    private int getMinValue(double[] array){
+        int index=0;
+        for(int i=1;i<array.length;i++){
+            if(array[i] < array[index]){
+                index=i;
+            }
+        }
+        return index;
+    }
+
+    private int translateRssiDistanceStatus(Beacon.RssiDistanceStatus status){
+        if(status== Beacon.RssiDistanceStatus.IN_RANGE)
+        {
+            return 0;
+        }
+        else if(status== Beacon.RssiDistanceStatus.NEAR_BY_RANGE)
+        {
+            return 1;
+        }
+        else if(status== Beacon.RssiDistanceStatus.AWAY)
+        {
+            return 2;
+        }
+        else if(status== Beacon.RssiDistanceStatus.FAR_AWAY)
+        {
+            return 3;
+        }
+        else if(status== Beacon.RssiDistanceStatus.UNKNOWN)
+        {
+            return 5;
+        }
+        return -1;
     }
 
     @Override
