@@ -274,15 +274,15 @@ public class Beacon implements Parcelable{
     }
 
     public RssiDistanceStatus getRssiDistanceStatus(double rssi) {
-        if (rssi >= -70 && rssi < 0) {
+        if (rssi >= -70 && rssi < 0) { // zwischen 0 und -70
             return RssiDistanceStatus.IN_RANGE;
-        } else if (rssi < -70 && rssi >= -80) {
+        } else if (rssi < -70 && rssi >= -80) { // zwischen -70 und -80
             return RssiDistanceStatus.NEAR_BY_RANGE;
-        } else if (rssi < -80 && rssi >= -85) {
+        } else if (rssi < -80 && rssi >= -85) { // zwischen -80 und -85
             return RssiDistanceStatus.AWAY;
-        } else if (rssi < -85 && rssi >= -99) {
+        } else if (rssi < -85 && rssi >= -99) { // zwischen -85 und -99
             return RssiDistanceStatus.FAR_AWAY;
-        } else {
+        } else {                                // niedriger
             return RssiDistanceStatus.UNKNOWN;
         }
     }
