@@ -15,6 +15,7 @@ import de.dhbwloerrach.beaconlocation.R;
 import de.dhbwloerrach.beaconlocation.extensions.ExtensionInterface;
 import de.dhbwloerrach.beaconlocation.extensions.LogExtension;
 import de.dhbwloerrach.beaconlocation.extensions.SmartEyeGlassExtension;
+import de.dhbwloerrach.beaconlocation.extensions.ToastExtension;
 
 
 public class MainActivity extends Activity {
@@ -37,7 +38,7 @@ public class MainActivity extends Activity {
         checkBluetoothState();
 
 
-        extension = new SmartEyeGlassExtension();
+        extension = new ToastExtension();
         //extension = new LogExtension();
         extension.connect(getApplicationContext());
 
