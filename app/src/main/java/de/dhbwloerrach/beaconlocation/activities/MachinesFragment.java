@@ -1,5 +1,6 @@
 package de.dhbwloerrach.beaconlocation.activities;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -17,6 +18,8 @@ import de.dhbwloerrach.beaconlocation.R;
 import de.dhbwloerrach.beaconlocation.adapters.MachineAdapter;
 import de.dhbwloerrach.beaconlocation.bluetooth.IBeaconListView;
 import de.dhbwloerrach.beaconlocation.database.DatabaseHandler;
+import de.dhbwloerrach.beaconlocation.extensions.ExtensionInterface;
+import de.dhbwloerrach.beaconlocation.extensions.ToastExtension;
 import de.dhbwloerrach.beaconlocation.models.Beacon;
 import de.dhbwloerrach.beaconlocation.models.BeaconList;
 import de.dhbwloerrach.beaconlocation.models.Machine;
@@ -28,6 +31,8 @@ import de.dhbwloerrach.beaconlocation.models.RssiAverageType;
  */
 public class MachinesFragment extends BaseFragment implements IBeaconListView {
     private MachineAdapter adapter;
+    private Thread glassAdpaterThread;
+    private ExtensionInterface extension;
 
     @Nullable
     @Override
@@ -63,6 +68,27 @@ public class MachinesFragment extends BaseFragment implements IBeaconListView {
 
         listView.setAdapter(adapter);
         listView.setEmptyView(activity.findViewById(R.id.emptyList_machines));
+
+        extension = new ToastExtension();
+        extension.connect(this.getActivity());
+        final Activity context=this.getActivity();
+        glassAdpaterThread=new Thread(new Runnable() {
+            public void run() {
+                while(!Thread.currentThread().isInterrupted())
+                {
+                    extension.sendMessage("You are close to maschine \"" + adapter.getClosestMachine(context).getName()+"\"");
+                    try {
+                        wait(5000);
+                    }
+                    catch (InterruptedException e)
+                    {
+                        e.printStackTrace();
+                        break;
+                    }
+                }
+            }
+        });
+        glassAdpaterThread.start();
     }
 
     @Override
@@ -107,6 +133,8 @@ public class MachinesFragment extends BaseFragment implements IBeaconListView {
     @Override
     protected void disconnectView() {
         activity.getCommons().stopMonitoring(this);
+        glassAdpaterThread.interrupt();
+        extension.disconnect();
     }
 
     @Override

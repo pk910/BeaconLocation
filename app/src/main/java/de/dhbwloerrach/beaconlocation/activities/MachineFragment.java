@@ -21,6 +21,8 @@ import de.dhbwloerrach.beaconlocation.R;
 import de.dhbwloerrach.beaconlocation.adapters.BeaconAdapter;
 import de.dhbwloerrach.beaconlocation.bluetooth.IBeaconListView;
 import de.dhbwloerrach.beaconlocation.database.DatabaseHandler;
+import de.dhbwloerrach.beaconlocation.extensions.ExtensionInterface;
+import de.dhbwloerrach.beaconlocation.extensions.ToastExtension;
 import de.dhbwloerrach.beaconlocation.models.Beacon;
 import de.dhbwloerrach.beaconlocation.models.BeaconList;
 import de.dhbwloerrach.beaconlocation.models.Machine;
@@ -36,6 +38,8 @@ public class MachineFragment extends BaseFragment implements IBeaconListView {
     private final ArrayList<Beacon> selectedBeacons = new ArrayList<>();
     private Menu menu;
     private Machine machine;
+    private Thread glassAdpaterThread;
+    private ExtensionInterface extension;
 
     @Nullable
     @Override
@@ -84,6 +88,26 @@ public class MachineFragment extends BaseFragment implements IBeaconListView {
 
         listView.setAdapter(adapter);
         listView.setEmptyView(activity.findViewById(R.id.emptyList_machine));
+
+        extension = new ToastExtension();
+        extension.connect(this.getActivity());
+        glassAdpaterThread=new Thread(new Runnable() {
+            public void run() {
+                while(!Thread.currentThread().isInterrupted())
+                {
+                    extension.sendMessage("Looking at maschine \"" + machine.getName()+"\"");
+                    try {
+                        wait(5000);
+                    }
+                    catch (InterruptedException e)
+                    {
+                        e.printStackTrace();
+                        break;
+                    }
+                }
+            }
+        });
+        glassAdpaterThread.start();
     }
 
     /**
@@ -324,5 +348,8 @@ public class MachineFragment extends BaseFragment implements IBeaconListView {
 
         updatePaused = false;
         adapter.clear();
+
+        glassAdpaterThread.interrupt();
+        extension.disconnect();
     }
 }

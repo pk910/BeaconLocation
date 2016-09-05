@@ -12,15 +12,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import de.dhbwloerrach.beaconlocation.R;
-import de.dhbwloerrach.beaconlocation.extensions.ExtensionInterface;
-import de.dhbwloerrach.beaconlocation.extensions.LogExtension;
-import de.dhbwloerrach.beaconlocation.extensions.SmartEyeGlassExtension;
-import de.dhbwloerrach.beaconlocation.extensions.ToastExtension;
 
 
 public class MainActivity extends Activity {
     private ActivityCommons commons;
-    private ExtensionInterface extension;
+    // For testing
+    //private ExtensionInterface extension;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +34,10 @@ public class MainActivity extends Activity {
 
         checkBluetoothState();
 
-
+        /* for testing
         extension = new ToastExtension();
-        //extension = new LogExtension();
         extension.connect(getApplicationContext());
-
+        */
 
 
         commons = new ActivityCommons(this);
@@ -50,7 +46,8 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onDestroy() {
-        extension.disconnect();
+        // For testing
+        //extension.disconnect();
         commons.unbind();
         super.onDestroy();
     }
@@ -105,7 +102,8 @@ public class MainActivity extends Activity {
     @Override
     public void onBackPressed() {
 
-        extension.sendMessage("Test");
+        // For testing only
+        //extension.sendMessage("Test");
 
         if (commons.getDrawer().isDrawerOpen()) {
             commons.getDrawer().closeDrawer();
