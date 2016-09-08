@@ -1,5 +1,6 @@
 package de.dhbwloerrach.beaconlocation.extensions;
 
+import android.app.Activity;
 import android.content.Context;
 import android.widget.Toast;
 
@@ -18,7 +19,11 @@ public class ToastExtension implements ExtensionInterface {
     }
 
     @Override
-    public void sendMessage(String message) {
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+    public void sendMessage(final String message) {
+        ((Activity)context).runOnUiThread(new Runnable() {
+            public void run() {
+                Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }

@@ -68,18 +68,33 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
     }
 
     public Machine getClosestMachine(Context context){
-        DatabaseHandler databaseHandler = new DatabaseHandler(context);
-        double distanceValues[]=new double[machines.size()];
-        for(int i=0;i<machines.size();i++) {
-            ArrayList<Beacon> machineBeacons = databaseHandler.getAllBeaconsByMachine(machines.get(i).getId());
-            distanceValues[i]=0;
-            for(int j=0;j<machineBeacons.size();j++)
-            {
-                distanceValues[i]+= translateRssiDistanceStatus(machineBeacons.get(j).getRssiDistanceStatus(machineBeacons.get(j).getRssiByAverageType(RssiAverageType.None, 2)));
-            }
-            distanceValues[i]=distanceValues[i]/machineBeacons.size();
+        if(machines.size()==0)
+        {
+            return null;
         }
-        return machines.get(getMinValue(distanceValues));
+        try {
+            DatabaseHandler databaseHandler = new DatabaseHandler(context);
+            double distanceValues[]=new double[machines.size()];
+            for(int i=0;i<machines.size();i++) {
+                ArrayList<Beacon> machineBeacons = databaseHandler.getAllBeaconsByMachine(machines.get(i).getId());
+                if(machineBeacons.size()==0)
+                {
+                    distanceValues[i]=10;
+                    continue;
+                }
+                distanceValues[i]=0;
+                for(int j=0;j<machineBeacons.size();j++)
+                {
+                    distanceValues[i]+= translateRssiDistanceStatus(machineBeacons.get(j).getRssiDistanceStatus(machineBeacons.get(j).getRssiByAverageType(RssiAverageType.None, 2)));
+                }
+                distanceValues[i]=distanceValues[i]/machineBeacons.size();
+            }
+            return machines.get(getMinValue(distanceValues));
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
     }
 
     private int getMinValue(double[] array){

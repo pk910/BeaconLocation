@@ -36,12 +36,19 @@ public class SmartEyeGlassExtension implements ExtensionInterface {
 
     @Override
     public void sendMessage(String message) {
-        Log.d("MachineLocator", "Debug - startExtension();");
         // Check ExtensionService is ready and referenced
-        if (ExtensionService.Object != null) {
-            ExtensionService.Object
-                    .sendMessageToExtension(message);
-            }
+        try {
+            if (ExtensionService.Object != null) {
+                ExtensionService.Object
+                        .sendMessageToExtension(message);
+                }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            Log.e("SmartEyeGlass","Nonection problem");
+        }
+
 
     }
 }

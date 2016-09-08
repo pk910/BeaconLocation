@@ -97,9 +97,18 @@ public class MachineFragment extends BaseFragment implements IBeaconListView {
                 {
                     extension.sendMessage("Looking at maschine \"" + machine.getName()+"\"");
                     try {
-                        wait(5000);
+                        Thread.sleep(5000);
+                        if(Thread.currentThread().isInterrupted())
+                        {
+                            break;
+                        }
                     }
                     catch (InterruptedException e)
+                    {
+                        e.printStackTrace();
+                        break;
+                    }
+                    catch (Exception e)
                     {
                         e.printStackTrace();
                         break;
