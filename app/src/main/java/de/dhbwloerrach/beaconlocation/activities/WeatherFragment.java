@@ -113,8 +113,8 @@ public class WeatherFragment extends BaseFragment implements WeatherListener {
         StringBuilder strb = new StringBuilder();
         strb.append(weather.getDate());
         strb.append("\n");
-        strb.append(weather.getCodeDesc());
-        strb.append("\n");
+        /*strb.append(weather.getCodeDesc());  // Does not work.
+        strb.append("\n");*/
         strb.append("Temp: ");
         strb.append(weather.getTempAvg());
         strb.append(" (Min: ");
@@ -138,8 +138,8 @@ public class WeatherFragment extends BaseFragment implements WeatherListener {
         strb = new StringBuilder();
         strb.append(weather.getDate());
         strb.append("\n");
-        strb.append(weather.getCodeDesc());
-        strb.append("\n");
+        /*strb.append(weather.getCodeDesc()); // Does not work.
+        strb.append("\n");*/
         strb.append("Temp: ");
         strb.append(weather.getTempAvg());
         strb.append(" (Min: ");
@@ -162,8 +162,8 @@ public class WeatherFragment extends BaseFragment implements WeatherListener {
         strb = new StringBuilder();
         strb.append(weather.getDate());
         strb.append("\n");
-        strb.append(weather.getCodeDesc());
-        strb.append("\n");
+        /*strb.append(weather.getCodeDesc()); // Does not work.
+        strb.append("\n");*/
         strb.append("Temp: ");
         strb.append(weather.getTempAvg());
         strb.append(" (Min: ");
