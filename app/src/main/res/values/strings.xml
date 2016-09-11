@@ -5,7 +5,8 @@
 
         <!--Menu -->
         <string name="menu_beaconView">Beacons</string>
-            <string name="menu_machineView">Machines</string>
+        <string name="menu_machineView">Machines</string>
+        <string name="menu_weatherView">Weather</string>
 
         <!--Menu Buttons-->
             <string name="rssi">Sort: RSSI</string>
@@ -85,4 +86,5 @@
 
         <!-- Configuration title shown in preferences -->
         <string name="configuration_text">MainActivity</string>
+        <string name="action_weather">Weather</string>
     </resources>

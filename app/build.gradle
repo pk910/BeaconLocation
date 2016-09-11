@@ -30,6 +30,7 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'org.altbeacon:android-beacon-library:2.3.3'
+    compile 'com.loopj.android:android-async-http:1.4.9'
     compile('com.mikepenz:materialdrawer:3.1.2@aar') {
         transitive = true
     }

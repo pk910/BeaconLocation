@@ -136,6 +136,10 @@ public class ActivityCommons implements Drawer.OnDrawerItemClickListener {
 
                 fragment = machineFragment;
                 break;
+            case WEATHER:
+                    fragment = new WeatherFragment();
+                    fragment.setActivity(context);
+                break;
             default:
                 Log.e("Error","Wrong machine type");
                 break;
@@ -173,7 +177,9 @@ public class ActivityCommons implements Drawer.OnDrawerItemClickListener {
                 .addDrawerItems(
                         new SecondaryDrawerItem().withTag(FragmentType.MACHINES_VIEW).withName(R.string.menu_machineView),
                         new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withTag(FragmentType.BEACON_SEARCH).withName(R.string.menu_beaconView)
+                        new SecondaryDrawerItem().withTag(FragmentType.BEACON_SEARCH).withName(R.string.menu_beaconView),
+                        new DividerDrawerItem(),
+                        new SecondaryDrawerItem().withTag(FragmentType.WEATHER).withName(R.string.menu_weatherView)
                 )
                 .withOnDrawerItemClickListener(this)
                 .build();
@@ -260,5 +266,6 @@ public class ActivityCommons implements Drawer.OnDrawerItemClickListener {
         ADD_MACHINE_MANUAL,
         ADD_BEACON_TO_MACHINE,
         MACHINE,
+        WEATHER
     }
 }
