@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 /**
  * Created by pk910 on 18.08.2016.
+ *
  */
 public class WeatherRequest extends JsonRequestHelper implements LocationListener {
     private static final String METEOBLUE_APIKEY = "f0daa1b8a7a1";

@@ -15,6 +15,7 @@ import cz.msebera.android.httpclient.Header;
 
 /**
  * Created by pk910 on 09.03.2016.
+ *
  */
 public abstract class JsonRequestHelper {
 
@@ -35,10 +36,14 @@ public abstract class JsonRequestHelper {
                 try {
                     jsonObj = new JSONObject(recvStr);
                 } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.e("JsonRequestHelper",e.toString());
                 }
                 try {
                     jsonArr = new JSONArray(recvStr);
                 } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.e("JsonRequestHelper",e.toString());
                 }
                 if(jsonObj != null)
                     onJsonReceived(jsonObj);
@@ -54,6 +59,8 @@ public abstract class JsonRequestHelper {
                 try {
                     error = new String(errorResponse, StandardCharsets.UTF_8);
                 } catch (Exception e1) {
+                    e.printStackTrace();
+                    Log.e("JsonRequestHelper",e.toString());
                 }
                 Log.i("HTTPClient", "  Error: " + statusCode + " - " + error);
                 onJsonRequestFail(statusCode, error);
