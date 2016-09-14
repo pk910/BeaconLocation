@@ -89,7 +89,15 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
                 }
                 distanceValues[i]=distanceValues[i]/machineBeacons.size();
             }
-            return machines.get(getMinValue(distanceValues));
+            int pos=getMaxIndex(distanceValues);
+            if(distanceValues[pos]==0)
+            {
+                return null;
+            }
+            else
+            {
+                return machines.get(pos);
+            }
         }
         catch (Exception e)
         {
@@ -97,10 +105,10 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
         }
     }
 
-    private int getMinValue(double[] array){
+    private int getMaxIndex(double[] array){
         int index=0;
         for(int i=1;i<array.length;i++){
-            if(array[i] < array[index]){
+            if(array[i] > array[index]){
                 index=i;
             }
         }
@@ -110,11 +118,11 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
     private int translateRssiDistanceStatus(Beacon.RssiDistanceStatus status){
         if(status== Beacon.RssiDistanceStatus.IN_RANGE)
         {
-            return 0;
+            return 4;
         }
         else if(status== Beacon.RssiDistanceStatus.NEAR_BY_RANGE)
         {
-            return 1;
+            return 3;
         }
         else if(status== Beacon.RssiDistanceStatus.AWAY)
         {
@@ -122,11 +130,11 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
         }
         else if(status== Beacon.RssiDistanceStatus.FAR_AWAY)
         {
-            return 3;
+            return 1;
         }
         else if(status== Beacon.RssiDistanceStatus.UNKNOWN)
         {
-            return 5;
+            return 0;
         }
         return -1;
     }
