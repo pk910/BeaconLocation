@@ -7,10 +7,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Iterator;
+import java.util.Locale;
 
 /**
  * Created by pk910 on 18.08.2016.
+ *
  */
+
 public class WeatherData {
     private static Context appContext;
 
@@ -38,6 +41,37 @@ public class WeatherData {
 
     private WeatherData() {
         // internal constructor
+    }
+
+    // Copy constructor for reducing lint warnings :)
+    public WeatherData(WeatherData weather)
+    {
+        this.nextDay=weather.getNextDay();
+        this.dataDate=weather.getDate();
+        this.dataCode=weather.getCode();
+        this.dataCodeDesc=weather.getCodeDesc();
+        this.dataCodeDayPicId=weather.getCodeDayPic();
+        this.dataCodeNightPicId=weather.getCodeNightPic();
+        this.dataUVIndex=weather.getUVIndex();
+        this.dataTempMax=weather.getTempMax();
+        this.dataTempMin=weather.getTempMin();
+        this.dataTempAvg=weather.getTempAvg();
+        this.dataFeltTempMax=weather.getFeltTempMax();
+        this.dataFeltTempMin=weather.getFeltTempMin();
+        this.dataRainValue=weather.getRainValue();
+        this.dataSnowValue=weather.getSnowValue();
+        this.dataWindMin=weather.getWindMin();
+        this.dataWindMax=weather.getWindMax();
+        this.dataWindAvg=weather.getWindAvg();
+        this.dataHumidityMin=weather.getHumidityMin();
+        this.dataHumidityMax=weather.getHumidityMax();
+        this.dataHumidityAvg=weather.getHumidityAvg();
+        this.dataHumidityAvg=weather.getHumidityAvg();
+        this.dataWindDir=weather.getWindDir();
+        this.dataRainPossibility=weather.getRainPossibility();
+        this.dataAccuracy=weather.getAccuracy();
+
+
     }
 
     public WeatherData getNextDay() {
@@ -70,13 +104,13 @@ public class WeatherData {
                             int pictocode = values.getInt(i);
                             data.dataCode = pictocode;
 
-                            String dataCodeDayPic = String.format("meteoblue_%02d_day", pictocode);
+                            String dataCodeDayPic = String.format(Locale.GERMANY,"meteoblue_%02d_day", pictocode);
                             data.dataCodeDayPicId = appContext.getResources().getIdentifier(dataCodeDayPic, "drawable", appContext.getPackageName());
 
-                            String dataCodeNightPic = String.format("meteoblue_%02d_night", pictocode);
+                            String dataCodeNightPic = String.format(Locale.GERMANY,"meteoblue_%02d_night", pictocode);
                             data.dataCodeNightPicId = appContext.getResources().getIdentifier(dataCodeNightPic, "drawable", appContext.getPackageName());
 
-                            String dataCodeDescRes = String.format("meteoblue_code%02d", pictocode);
+                            String dataCodeDescRes = String.format(Locale.GERMANY,"meteoblue_code%02d", pictocode);
                             int dataCodeDescResId = appContext.getResources().getIdentifier(dataCodeDescRes, "string", appContext.getPackageName());
                             if(dataCodeDescResId != 0)
                                 data.dataCodeDesc = appContext.getString(dataCodeDescResId);
@@ -114,10 +148,14 @@ public class WeatherData {
                             data.dataHumidityMin = values.getDouble(i);
                         else if (key.equalsIgnoreCase("relativehumidity_mean"))
                             data.dataHumidityAvg = values.getDouble(i);
-                    } catch(JSONException e){}
+                    } catch(JSONException e){
+                        e.printStackTrace();
+                    }
                 }
             }
-        } catch (JSONException e) {}
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public String getDate() {
