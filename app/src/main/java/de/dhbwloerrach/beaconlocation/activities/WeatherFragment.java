@@ -122,6 +122,25 @@ public class WeatherFragment extends BaseFragment implements WeatherListener {
         strb.append(", Max: ");
         strb.append(weather.getTempMax());
         strb.append(")\n");
+        strb.append("Wind: ");
+        strb.append(weather.getWindAvg());
+        strb.append(" ");
+        strb.append(weather.getWindDir());
+        strb.append(" (Min: ");
+        strb.append(weather.getWindMin());
+        strb.append(", Max: ");
+        strb.append(weather.getWindMax());
+        strb.append(")\n");
+        strb.append("Precipitation Probability: ");
+        strb.append(weather.getRainPossibility());
+        strb.append("%\n");
+        strb.append("Rel. Humidity: ");
+        strb.append(weather.getHumidityAvg());
+        strb.append(" (Min: ");
+        strb.append(weather.getHumidityMin());
+        strb.append(", Max: ");
+        strb.append(weather.getHumidityMax());
+        strb.append(")\n");
 
         ImageView weatherImageView = (ImageView) currentView.findViewById(R.id.weatherImage);
         weatherImageView.setImageResource(weather.getCodeDayPic());
