@@ -32,7 +32,7 @@ public class WeatherData {
     private double dataFeltTempMax, dataFeltTempMin;
     private double dataRainValue, dataSnowValue;
     private double dataWindMin, dataWindMax, dataWindAvg, dataHumidityMin, dataHumidityMax, dataHumidityAvg;
-    private int dataWindDir;
+    private String dataWindDir;
     private int dataRainPossibility, dataAccuracy;
 
     public WeatherData(JSONObject json) {
@@ -127,7 +127,7 @@ public class WeatherData {
                         else if (key.equalsIgnoreCase("felttemperature_min"))
                             data.dataFeltTempMin = values.getDouble(i);
                         else if (key.equalsIgnoreCase("winddirection"))
-                            data.dataWindDir = values.getInt(i);
+                            data.dataWindDir = getWindDir(values.getInt(i));
                         else if (key.equalsIgnoreCase("precipitation_probability"))
                             data.dataRainPossibility = values.getInt(i);
                         else if (key.equalsIgnoreCase("predictability"))
@@ -156,6 +156,21 @@ public class WeatherData {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    private String getWindDir(int dir){
+        if (intBetween(dir, 23, 67)) return "Northeast";
+        if (intBetween(dir, 68, 112)) return "East";
+        if (intBetween(dir, 113, 157)) return "Southeast";
+        if (intBetween(dir, 158, 202)) return "South";
+        if (intBetween(dir, 203, 246)) return "Southwest";
+        if (intBetween(dir, 247, 291)) return "West";
+        if (intBetween(dir, 292, 336)) return "Northwest";
+        return "North";
+    }
+
+    private boolean intBetween( int cmp, int a, int b){
+        return cmp >= a && cmp <= b;
     }
 
     public String getDate() {
@@ -238,7 +253,7 @@ public class WeatherData {
         return dataRainPossibility;
     }
 
-    public int getWindDir() {
+    public String getWindDir() {
         return dataWindDir;
     }
 
