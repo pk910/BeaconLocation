@@ -77,7 +77,7 @@ public class MachinesFragment extends BaseFragment implements IBeaconListView {
                 while(!Thread.currentThread().isInterrupted())
                 {
                     Machine closest=adapter.getClosestMachine(context);
-                    String maschineName=closest== null ? "No maschine close to you.":"You are close to maschine \"" + closest.getName()+"\"";
+                    String maschineName=closest== null ? "No machine close to you.":"You are close to machine \"" + closest.getName()+"\"";
                     extension.sendMessage(maschineName);
                     try {
                         Thread.sleep(5000);
