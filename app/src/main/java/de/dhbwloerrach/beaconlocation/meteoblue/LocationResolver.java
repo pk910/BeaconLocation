@@ -117,6 +117,7 @@ public class LocationResolver implements LocationListener {
             for(LocationListener listener : locationListeners)
                 listener.onLocationChanged(location);
         }
+        Log.e("Test","GPS");
     }
 
     @Override

@@ -55,7 +55,7 @@ public class WeatherFragment extends BaseFragment implements WeatherListener {
     @Override
     public void onResume() {
         super.onResume();
-
+        weather.requestWeather(false);
         locationResolver.startLocationListener();
     }
 
@@ -101,7 +101,6 @@ public class WeatherFragment extends BaseFragment implements WeatherListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //inflate fragment
         currentView = inflater.inflate(R.layout.fragment_weather, container, false);
-        weather.requestWeather(false);
 
         return currentView;
     }
