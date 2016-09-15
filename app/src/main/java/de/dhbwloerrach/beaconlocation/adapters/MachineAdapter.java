@@ -15,6 +15,7 @@ import java.util.Collection;
 import de.dhbwloerrach.beaconlocation.R;
 import de.dhbwloerrach.beaconlocation.database.DatabaseHandler;
 import de.dhbwloerrach.beaconlocation.models.Beacon;
+import de.dhbwloerrach.beaconlocation.models.BeaconList;
 import de.dhbwloerrach.beaconlocation.models.Machine;
 import de.dhbwloerrach.beaconlocation.models.RssiAverageType;
 
@@ -67,7 +68,7 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
         this.machineIdInRange.addAll(machineIdInRange);
     }
 
-    public Machine getClosestMachine(Context context){
+    public Machine getClosestMachine(Context context, BeaconList beacons){
         if(machines.size()==0)
         {
             return null;
@@ -79,13 +80,13 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
                 ArrayList<Beacon> machineBeacons = databaseHandler.getAllBeaconsByMachine(machines.get(i).getId());
                 if(machineBeacons.size()==0)
                 {
-                    distanceValues[i]=10;
+                    distanceValues[i]=0;
                     continue;
                 }
                 distanceValues[i]=0;
                 for(int j=0;j<machineBeacons.size();j++)
                 {
-                    distanceValues[i]+= translateRssiDistanceStatus(machineBeacons.get(j).getRssiDistanceStatus(machineBeacons.get(j).getRssiByAverageType(RssiAverageType.None, 2)));
+                    distanceValues[i]+= translateRssiDistanceStatus(machineBeacons.get(j).getRssiDistanceStatus(beacons.getBeacon(machineBeacons.get(j).getMinor()).getRssiByAverageType(RssiAverageType.None, 2)));
                 }
                 distanceValues[i]=distanceValues[i]/machineBeacons.size();
             }

@@ -34,6 +34,7 @@ public class MachinesFragment extends BaseFragment implements IBeaconListView {
     private MachineAdapter adapter;
     private Thread glassAdpaterThread;
     private ExtensionInterface extension;
+    private ArrayList<Beacon> beaconsList;
 
     @Nullable
     @Override
@@ -77,9 +78,13 @@ public class MachinesFragment extends BaseFragment implements IBeaconListView {
             public void run() {
                 while(!Thread.currentThread().isInterrupted())
                 {
-                    Machine closest=adapter.getClosestMachine(context);
-                    String maschineName=closest== null ? "No machine close to you.":"You are close to machine \"" + closest.getName()+"\"";
-                    extension.sendMessage(maschineName);
+                    if(beaconsList!=null)
+                    {
+                        final BeaconList filteredBeacons = new BeaconList(beaconsList).filterByLast(5);
+                        Machine closest=adapter.getClosestMachine(context,filteredBeacons);
+                        String maschineName=closest== null ? "No machine close to you.":"You are close to machine \"" + closest.getName()+"\"";
+                        extension.sendMessage(maschineName);
+                    }
                     try {
                         Thread.sleep(5000);
                         if(Thread.currentThread().isInterrupted())
@@ -151,7 +156,8 @@ public class MachinesFragment extends BaseFragment implements IBeaconListView {
 
     @Override
     public void refreshList(ArrayList<Beacon> beacons) {
-        final BeaconList filteredBeacons = new BeaconList(beacons).filterByLast(5);
+        beaconsList=beacons;
+        final BeaconList filteredBeacons = new BeaconList(beaconsList).filterByLast(5);
 
         DatabaseHandler databaseHandler = new DatabaseHandler(activity);
         try {
