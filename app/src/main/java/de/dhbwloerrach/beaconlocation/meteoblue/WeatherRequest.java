@@ -43,11 +43,15 @@ public class WeatherRequest extends JsonRequestHelper implements LocationListene
         String asl = Integer.toString((int)currentLocation.getAltitude());
 
         StringBuilder url = new StringBuilder("http://my.meteoblue.com/packages/basic-day");
-        url.append("?lat="+lat);
-        url.append("&lon="+lon);
-        url.append("&asl="+asl);
+        url.append("?lat=");
+        url.append(lat);
+        url.append("&lon=");
+        url.append(lon);
+        url.append("&asl=");
+        url.append(asl);
         url.append("&tz=Europe%2FBerlin");
-        url.append("&apikey="+METEOBLUE_APIKEY);
+        url.append("&apikey=");
+        url.append(METEOBLUE_APIKEY);
         url.append("&temperature=C");
         url.append("&windspeed=ms-1");
         url.append("&winddirection=degree");
