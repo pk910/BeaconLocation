@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.sonyericsson.extras.liveware.aef.registration.Registration;
 
+import de.dhbwloerrach.beaconlocation.extensions.smarteyeglass.Control;
 import de.dhbwloerrach.beaconlocation.extensions.smarteyeglass.ExtensionService;
 
 
@@ -34,21 +35,28 @@ public class SmartEyeGlassExtension implements ExtensionInterface {
         // Nothing to do for now.
     }
 
+    int a=0;
+
     @Override
     public void sendMessage(String message) {
         // Check ExtensionService is ready and referenced
+        message+= " - "+ (a++);
         try {
-            if (ExtensionService.Object != null) {
-                ExtensionService.Object
-                        .sendMessageToExtension(message);
+            if(Control.cont==null)
+            {
+                if (ExtensionService.Object != null) {
+                    ExtensionService.Object.sendMessageToExtension("\r\n"+message);
                 }
+            }
+            else
+            {
+                Control.cont.updateLayout(message);
+            }
         }
         catch (Exception e)
         {
             e.printStackTrace();
             Log.e("SmartEyeGlass","Nonection problem");
         }
-
-
     }
 }

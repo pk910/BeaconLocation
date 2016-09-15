@@ -19,6 +19,7 @@ import de.dhbwloerrach.beaconlocation.adapters.MachineAdapter;
 import de.dhbwloerrach.beaconlocation.bluetooth.IBeaconListView;
 import de.dhbwloerrach.beaconlocation.database.DatabaseHandler;
 import de.dhbwloerrach.beaconlocation.extensions.ExtensionInterface;
+import de.dhbwloerrach.beaconlocation.extensions.SmartEyeGlassExtension;
 import de.dhbwloerrach.beaconlocation.extensions.ToastExtension;
 import de.dhbwloerrach.beaconlocation.models.Beacon;
 import de.dhbwloerrach.beaconlocation.models.BeaconList;
@@ -69,7 +70,7 @@ public class MachinesFragment extends BaseFragment implements IBeaconListView {
         listView.setAdapter(adapter);
         listView.setEmptyView(activity.findViewById(R.id.emptyList_machines));
 
-        extension = new ToastExtension();
+        extension = new SmartEyeGlassExtension();
         extension.connect(this.getActivity());
         final Activity context=this.getActivity();
         glassAdpaterThread=new Thread(new Runnable() {

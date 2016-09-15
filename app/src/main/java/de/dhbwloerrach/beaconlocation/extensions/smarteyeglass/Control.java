@@ -38,6 +38,8 @@ import com.sony.smarteyeglass.SmartEyeglassControl;
 import com.sony.smarteyeglass.extension.util.SmartEyeglassControlUtils;
 import com.sonyericsson.extras.liveware.extension.util.control.ControlExtension;
 
+import de.dhbwloerrach.beaconlocation.R;
+
 /**
  * Demonstrates how to communicate between an Android activity and its
  * corresponding SmartEyeglass app.
@@ -47,6 +49,8 @@ public final class Control extends ControlExtension {
 
     /** Instance of the SmartEyeglass Control Utility class. */
     private final SmartEyeglassControlUtils utils;
+    String message;
+    public static Control cont;
 
     /** The SmartEyeglass API version that this app uses */
     private static final int SMARTEYEGLASS_API_VERSION = 1;
@@ -61,13 +65,13 @@ public final class Control extends ControlExtension {
      * @param context            The context.
      * @param hostAppPackageName Package name of SmartEyeglass host application.
      */
-    public Control(final Context context,
-                   final String hostAppPackageName, final String message) {
+    public Control(final Context context,final String hostAppPackageName, final String message) {
         super(context, hostAppPackageName);
         utils = new SmartEyeglassControlUtils(hostAppPackageName, null);
         utils.setRequiredApiVersion(SMARTEYEGLASS_API_VERSION);
         utils.activate(context);
-
+        this.message="";
+        cont=null;
         /*
          * Set reference back to this Control object
          * in ExtensionService class to allow access to SmartEyeglass Control
@@ -103,6 +107,7 @@ public final class Control extends ControlExtension {
     @Override
     public void onDestroy() {
         Log.d(Constants.LOG_TAG, "onDestroy: Control");
+        cont=null;
         utils.deactivate();
     }
 
@@ -123,10 +128,18 @@ public final class Control extends ControlExtension {
      */
     private void updateLayout() {
         /* Commented out since we don't want to use the HelloWorld activity,
-           but need it as source of information for now.
+           but need it as source of information for now. */
 
         showLayout(R.layout.layout, null);
-        sendText(R.id.btn_update_this, "Hello World!");*/
+        sendText(R.id.btn_update_this, message);
+        cont=this;
+    }
+
+    public void updateLayout(String message) {
+        /* Commented out since we don't want to use the HelloWorld activity,
+           but need it as source of information for now. */
+
+        sendText(R.id.btn_update_this, message);
     }
 
     /**
@@ -135,6 +148,7 @@ public final class Control extends ControlExtension {
      * This shows a timeout dialog with the specified message.
      */
     public void showToast(final String message) {
+        this.message=message;
         Log.d(Constants.LOG_TAG, "Timeout Dialog : Control");
         utils.showDialogMessage(message,
                 SmartEyeglassControl.Intents.DIALOG_MODE_TIMEOUT);
