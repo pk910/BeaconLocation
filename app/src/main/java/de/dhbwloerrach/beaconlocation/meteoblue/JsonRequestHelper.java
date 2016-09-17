@@ -24,6 +24,9 @@ public abstract class JsonRequestHelper {
 
         Log.i("HTTPClient", "Request: " + url);
         client.get(url, new AsyncHttpResponseHandler() {
+            /**
+             * Methode not needed. Only implemented to satisfy extension/implemention
+             */
             @Override
             public void onStart() {
             }
@@ -45,12 +48,13 @@ public abstract class JsonRequestHelper {
                     e.printStackTrace();
                     Log.e("JsonRequestHelper",e.toString());
                 }
-                if(jsonObj != null)
+                if(jsonObj != null) {
                     onJsonReceived(jsonObj);
-                else if(jsonArr != null)
+                } else if(jsonArr != null) {
                     onJsonReceived(jsonArr);
-                else
+                } else {
                     onTextReceived(recvStr);
+                }
             }
 
             @Override
@@ -66,6 +70,10 @@ public abstract class JsonRequestHelper {
                 onJsonRequestFail(statusCode, error);
             }
 
+            /**
+             * Methode not needed. Only implemented to satisfy extension/implemention
+             * @param retryNo unused parameter
+             */
             @Override
             public void onRetry(int retryNo) {
             }

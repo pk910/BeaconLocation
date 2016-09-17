@@ -59,8 +59,9 @@ public class WeatherFragment extends BaseFragment implements WeatherListener {
         weather.requestWeather(false);
         locationResolver.startLocationListener();
         Location loc = locationResolver.getLastKnownLocation();
-        if(loc != null)
+        if(loc != null) {
             weather.onLocationChanged(loc);
+        }
 
     }
 
@@ -114,37 +115,31 @@ public class WeatherFragment extends BaseFragment implements WeatherListener {
     public void onWeatherReceived(WeatherData weather) {
         TextView weatherView = (TextView) currentView.findViewById(R.id.weatherData);
 
-        StringBuilder strb = new StringBuilder();
-        strb.append(weather.getDate());
-        strb.append("\n");
-        /*strb.append(weather.getCodeDesc());  // Does not work.
-        strb.append("\n");*/
-        strb.append("Temp: ");
-        strb.append(weather.getTempAvg());
-        strb.append(" (Min: ");
-        strb.append(weather.getTempMin());
-        strb.append(", Max: ");
-        strb.append(weather.getTempMax());
-        strb.append(")\n");
-        strb.append("Wind: ");
-        strb.append(weather.getWindAvg());
-        strb.append(" ");
-        strb.append(weather.getWindDir());
-        strb.append(" (Min: ");
-        strb.append(weather.getWindMin());
-        strb.append(", Max: ");
-        strb.append(weather.getWindMax());
-        strb.append(")\n");
-        strb.append("Precipitation Probability: ");
-        strb.append(weather.getRainPossibility());
-        strb.append("%\n");
-        strb.append("Rel. Humidity: ");
-        strb.append(weather.getHumidityAvg());
-        strb.append(" (Min: ");
-        strb.append(weather.getHumidityMin());
-        strb.append(", Max: ");
-        strb.append(weather.getHumidityMax());
-        strb.append(")\n");
+        StringBuilder strb = new StringBuilder(120);
+        strb.append(weather.getDate())
+        .append("\nTemp: ")
+        .append(weather.getTempAvg())
+        .append(" (Min: ")
+        .append(weather.getTempMin())
+        .append(", Max: ")
+        .append(weather.getTempMax())
+        .append(")\nWind: ")
+        .append(weather.getWindAvg())
+        .append(' ')
+        .append(weather.getWindDir())
+        .append(" (Min: ")
+        .append(weather.getWindMin())
+        .append(", Max: ")
+        .append(weather.getWindMax())
+        .append(")\nPrecipitation Probability: ")
+        .append(weather.getRainPossibility())
+        .append("%\nRel. Humidity: ")
+        .append(weather.getHumidityAvg())
+        .append(" (Min: ")
+        .append(weather.getHumidityMin())
+        .append(", Max: ")
+        .append(weather.getHumidityMax())
+        .append(")\n");
 
         ImageView weatherImageView = (ImageView) currentView.findViewById(R.id.weatherImage);
         weatherImageView.setImageResource(weather.getCodeDayPic());
@@ -153,42 +148,37 @@ public class WeatherFragment extends BaseFragment implements WeatherListener {
 
 
         weather = weather.getNextDay();
-        if(weather == null)
+        if(weather == null) {
             return;
+        }
 
         weatherView = (TextView) currentView.findViewById(R.id.weatherData2);
 
         strb = new StringBuilder();
-        strb.append(weather.getDate());
-        strb.append("\n");
-        /*strb.append(weather.getCodeDesc()); // Does not work.
-        strb.append("\n");*/
-        strb.append("Temp: ");
-        strb.append(weather.getTempAvg());
-        strb.append(" (Min: ");
-        strb.append(weather.getTempMin());
-        strb.append(", Max: ");
-        strb.append(weather.getTempMax());
-        strb.append(")\n");
-        strb.append("Wind: ");
-        strb.append(weather.getWindAvg());
-        strb.append(" ");
-        strb.append(weather.getWindDir());
-        strb.append(" (Min: ");
-        strb.append(weather.getWindMin());
-        strb.append(", Max: ");
-        strb.append(weather.getWindMax());
-        strb.append(")\n");
-        strb.append("Precipitation Probability: ");
-        strb.append(weather.getRainPossibility());
-        strb.append("%\n");
-        strb.append("Rel. Humidity: ");
-        strb.append(weather.getHumidityAvg());
-        strb.append(" (Min: ");
-        strb.append(weather.getHumidityMin());
-        strb.append(", Max: ");
-        strb.append(weather.getHumidityMax());
-        strb.append(")\n");
+        strb.append(weather.getDate())
+        .append("\nTemp: ")
+        .append(weather.getTempAvg())
+        .append(" (Min: ")
+        .append(weather.getTempMin())
+        .append(", Max: ")
+        .append(weather.getTempMax())
+        .append(")\nWind: ")
+        .append(weather.getWindAvg())
+        .append(' ')
+        .append(weather.getWindDir())
+        .append(" (Min: ")
+        .append(weather.getWindMin())
+        .append(", Max: ")
+        .append(weather.getWindMax())
+        .append(")\nPrecipitation Probability: ")
+        .append(weather.getRainPossibility())
+        .append("%\nRel. Humidity: ")
+        .append(weather.getHumidityAvg())
+        .append(" (Min: ")
+        .append(weather.getHumidityMin())
+        .append(", Max: ")
+        .append(weather.getHumidityMax())
+        .append(")\n");
 
         weatherImageView = (ImageView) currentView.findViewById(R.id.weatherImage2);
         weatherImageView.setImageResource(weather.getCodeDayPic());
@@ -196,42 +186,37 @@ public class WeatherFragment extends BaseFragment implements WeatherListener {
         weatherView.setText(strb.toString());
 
         weather = weather.getNextDay();
-        if(weather == null)
+        if(weather == null) {
             return;
+        }
 
         weatherView = (TextView) currentView.findViewById(R.id.weatherData3);
 
         strb = new StringBuilder();
-        strb.append(weather.getDate());
-        strb.append("\n");
-        /*strb.append(weather.getCodeDesc()); // Does not work.
-        strb.append("\n");*/
-        strb.append("Temp: ");
-        strb.append(weather.getTempAvg());
-        strb.append(" (Min: ");
-        strb.append(weather.getTempMin());
-        strb.append(", Max: ");
-        strb.append(weather.getTempMax());
-        strb.append(")\n");
-        strb.append("Wind: ");
-        strb.append(weather.getWindAvg());
-        strb.append(" ");
-        strb.append(weather.getWindDir());
-        strb.append(" (Min: ");
-        strb.append(weather.getWindMin());
-        strb.append(", Max: ");
-        strb.append(weather.getWindMax());
-        strb.append(")\n");
-        strb.append("Precipitation Probability: ");
-        strb.append(weather.getRainPossibility());
-        strb.append("%\n");
-        strb.append("Rel. Humidity: ");
-        strb.append(weather.getHumidityAvg());
-        strb.append(" (Min: ");
-        strb.append(weather.getHumidityMin());
-        strb.append(", Max: ");
-        strb.append(weather.getHumidityMax());
-        strb.append(")\n");
+        strb.append(weather.getDate())
+        .append("\nTemp: ")
+        .append(weather.getTempAvg())
+        .append(" (Min: ")
+        .append(weather.getTempMin())
+        .append(", Max: ")
+        .append(weather.getTempMax())
+        .append(")\nWind: ")
+        .append(weather.getWindAvg())
+        .append(' ')
+        .append(weather.getWindDir())
+        .append(" (Min: ")
+        .append(weather.getWindMin())
+        .append(", Max: ")
+        .append(weather.getWindMax())
+        .append(")\nPrecipitation Probability: ")
+        .append(weather.getRainPossibility())
+        .append("%\nRel. Humidity: ")
+        .append(weather.getHumidityAvg())
+        .append(" (Min: ")
+        .append(weather.getHumidityMin())
+        .append(", Max: ")
+        .append(weather.getHumidityMax())
+        .append(")\n");
 
 
         weatherImageView = (ImageView) currentView.findViewById(R.id.weatherImage3);

@@ -17,10 +17,6 @@ import java.util.Locale;
 public class WeatherData {
     private static Context appContext;
 
-    public static void setAppContext(Context context) {
-        appContext = context;
-    }
-
     private WeatherData nextDay = null;
 
     private String dataDate;
@@ -35,6 +31,10 @@ public class WeatherData {
     private String dataWindDir;
     private int dataRainPossibility, dataAccuracy;
 
+    public static void setAppContext(Context context) {
+        appContext = context;
+    }
+
     public WeatherData(JSONObject json) {
         parseJsonData(json);
     }
@@ -44,6 +44,7 @@ public class WeatherData {
     }
 
     // Copy constructor for reducing lint warnings :)
+
     public WeatherData(WeatherData weather)
     {
         this.nextDay=weather.getNextDay();
@@ -97,8 +98,8 @@ public class WeatherData {
                     WeatherData data = weatherDays[i];
 
                     try {
-                        if (key.equalsIgnoreCase("time"))
-                            data.dataDate = values.getString(i);
+                        if ("time".equalsIgnoreCase(key)){
+                            data.dataDate = values.getString(i);}
                         else if (key.equalsIgnoreCase("pictocode")) {
                             int pictocode = values.getInt(i);
                             data.dataCode = pictocode;
@@ -111,42 +112,43 @@ public class WeatherData {
 
                             String dataCodeDescRes = String.format(Locale.GERMANY,"meteoblue_code%02d", pictocode);
                             int dataCodeDescResId = appContext.getResources().getIdentifier(dataCodeDescRes, "string", appContext.getPackageName());
-                            if(dataCodeDescResId != 0)
-                                data.dataCodeDesc = appContext.getString(dataCodeDescResId);
-                        } else if (key .equalsIgnoreCase("uvindex"))
-                            data.dataUVIndex = values.getInt(i);
-                        else if (key.equalsIgnoreCase("temperature_max"))
-                            data.dataTempMax = values.getDouble(i);
-                        else if (key.equalsIgnoreCase("temperature_min"))
-                            data.dataTempMin = values.getDouble(i);
-                        else if (key.equalsIgnoreCase("temperature_mean"))
-                            data.dataTempAvg = values.getDouble(i);
-                        else if (key.equalsIgnoreCase("felttemperature_max"))
-                            data.dataFeltTempMax = values.getDouble(i);
-                        else if (key.equalsIgnoreCase("felttemperature_min"))
-                            data.dataFeltTempMin = values.getDouble(i);
-                        else if (key.equalsIgnoreCase("winddirection"))
-                            data.dataWindDir = getWindDir(values.getInt(i));
-                        else if (key.equalsIgnoreCase("precipitation_probability"))
-                            data.dataRainPossibility = values.getInt(i);
-                        else if (key.equalsIgnoreCase("predictability"))
+                            if(dataCodeDescResId != 0){
+                                data.dataCodeDesc = appContext.getString(dataCodeDescResId);}
+                        } else if ("uvindex".equalsIgnoreCase(key)){
+                            data.dataUVIndex = values.getInt(i);}
+                        else if ("temperature_max".equalsIgnoreCase(key)){
+                            data.dataTempMax = values.getDouble(i);}
+                        else if ("temperature_min".equalsIgnoreCase(key)){
+                            data.dataTempMin = values.getDouble(i);}
+                        else if ("temperature_mean".equalsIgnoreCase(key)){
+                            data.dataTempAvg = values.getDouble(i);}
+                        else if ("felttemperature_max".equalsIgnoreCase(key)){
+                            data.dataFeltTempMax = values.getDouble(i);}
+                        else if ("felttemperature_min".equalsIgnoreCase(key)){
+                            data.dataFeltTempMin = values.getDouble(i);}
+                        else if ("winddirection".equalsIgnoreCase(key)){
+                            data.dataWindDir = getWindDir(values.getInt(i));}
+                        else if ("precipitation_probability".equalsIgnoreCase(key)){
+                            data.dataRainPossibility = values.getInt(i);}
+                        else if ("predictability".equalsIgnoreCase(key)) {
                             data.dataAccuracy = values.getInt(i);
-                        else if (key.equalsIgnoreCase("precipitation"))
+                        } else if ("precipitation".equalsIgnoreCase(key)) {
                             data.dataRainValue = values.getDouble(i);
-                        else if (key.equalsIgnoreCase("snowfraction"))
+                        } else if ("snowfraction".equalsIgnoreCase(key)) {
                             data.dataSnowValue = values.getDouble(i);
-                        else if (key.equalsIgnoreCase("windspeed_max"))
+                        } else if ("windspeed_max".equalsIgnoreCase(key)) {
                             data.dataWindMax = values.getDouble(i);
-                        else if (key.equalsIgnoreCase("windspeed_min"))
+                        } else if ("windspeed_min".equalsIgnoreCase(key)) {
                             data.dataWindMin = values.getDouble(i);
-                        else if (key.equalsIgnoreCase("windspeed_mean"))
+                        } else if ("windspeed_mean".equalsIgnoreCase(key)) {
                             data.dataWindAvg = values.getDouble(i);
-                        else if (key.equalsIgnoreCase("relativehumidity_max"))
+                        } else if ("relativehumidity_max".equalsIgnoreCase(key)) {
                             data.dataHumidityMax = values.getDouble(i);
-                        else if (key.equalsIgnoreCase("relativehumidity_min"))
+                        } else if ("relativehumidity_min".equalsIgnoreCase(key)) {
                             data.dataHumidityMin = values.getDouble(i);
-                        else if (key.equalsIgnoreCase("relativehumidity_mean"))
+                        } else if ("relativehumidity_mean".equalsIgnoreCase(key)) {
                             data.dataHumidityAvg = values.getDouble(i);
+                        }
                     } catch(JSONException e){
                         e.printStackTrace();
                     }
@@ -158,13 +160,27 @@ public class WeatherData {
     }
 
     private String getWindDir(int dir){
-        if (intBetween(dir, 23, 67)) return "Northeast";
-        if (intBetween(dir, 68, 112)) return "East";
-        if (intBetween(dir, 113, 157)) return "Southeast";
-        if (intBetween(dir, 158, 202)) return "South";
-        if (intBetween(dir, 203, 246)) return "Southwest";
-        if (intBetween(dir, 247, 291)) return "West";
-        if (intBetween(dir, 292, 336)) return "Northwest";
+        if (intBetween(dir, 23, 67)) {
+            return "Northeast";
+        }
+        if (intBetween(dir, 68, 112)) {
+            return "East";
+        }
+        if (intBetween(dir, 113, 157)) {
+            return "Southeast";
+        }
+        if (intBetween(dir, 158, 202)) {
+            return "South";
+        }
+        if (intBetween(dir, 203, 246)) {
+            return "Southwest";
+        }
+        if (intBetween(dir, 247, 291)) {
+            return "West";
+        }
+        if (intBetween(dir, 292, 336)) {
+            return "Northwest";
+        }
         return "North";
     }
 

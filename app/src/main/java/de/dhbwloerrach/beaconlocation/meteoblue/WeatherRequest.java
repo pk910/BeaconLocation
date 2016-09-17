@@ -31,8 +31,9 @@ public class WeatherRequest extends JsonRequestHelper implements LocationListene
     }
 
     private void requestWeather() {
-        if(requestRunning)
+        if(requestRunning) {
             return;
+        }
         requestPending = false;
         requestRunning = true;
         weatherLocation = currentLocation;
@@ -42,22 +43,16 @@ public class WeatherRequest extends JsonRequestHelper implements LocationListene
         String lat = Double.toString(currentLocation.getLatitude());
         String asl = Integer.toString((int)currentLocation.getAltitude());
 
-        StringBuilder url = new StringBuilder("http://my.meteoblue.com/packages/basic-day");
-        url.append("?lat=");
-        url.append(lat);
-        url.append("&lon=");
-        url.append(lon);
-        url.append("&asl=");
-        url.append(asl);
-        url.append("&tz=Europe%2FBerlin");
-        url.append("&apikey=");
-        url.append(METEOBLUE_APIKEY);
-        url.append("&temperature=C");
-        url.append("&windspeed=ms-1");
-        url.append("&winddirection=degree");
-        url.append("&precipitationamount=mm");
-        url.append("&timeformat=iso8601");
-        url.append("&format=json");
+        StringBuilder url = new StringBuilder(190);
+        url.append("http://my.meteoblue.com/packages/basic-day?lat=")
+        .append(lat)
+        .append("&lon=")
+        .append(lon)
+        .append("&asl=")
+        .append(asl)
+        .append("&tz=Europe%2FBerlin&apikey=")
+        .append(METEOBLUE_APIKEY)
+        .append("&temperature=C&windspeed=ms-1&winddirection=degree&precipitationamount=mm&timeformat=iso8601&format=json");
 
         requestJsonFromWeb(url.toString());
     }
@@ -68,7 +63,7 @@ public class WeatherRequest extends JsonRequestHelper implements LocationListene
         }
         else if(weatherLocation != null && weatherLocation.distanceTo(currentLocation) < 1000 && !refresh) {
             for (WeatherListener listener : weatherListener) {
-                listener.OnWeatherReceived(weatherData);
+                listener.onWeatherReceived(weatherData);
             }
         }
         else {
@@ -84,14 +79,22 @@ public class WeatherRequest extends JsonRequestHelper implements LocationListene
         weatherData = new WeatherData(json);
 
         for (WeatherListener listener : weatherListener) {
-            listener.OnWeatherReceived(weatherData);
+            listener.onWeatherReceived(weatherData);
         }
     }
 
+    /**
+     * Methode not needed. Only implemented to satisfy extension/implemention
+     * @param json unused parameter
+     */
     @Override
     protected void onJsonReceived(JSONArray json) {
     }
 
+    /**
+     * Methode not needed. Only implemented to satisfy extension/implemention
+     * @param response unused parameter
+     */
     @Override
     protected void onTextReceived(String response) {
 
@@ -110,16 +113,30 @@ public class WeatherRequest extends JsonRequestHelper implements LocationListene
         }
     }
 
+    /**
+     * Methode not needed. Only implemented to satisfy extension/implemention
+     * @param provider unused parameter
+     * @param status unused parameter
+     * @param extras unused parameter
+     */
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
 
     }
 
+    /**
+     * Methode not needed. Only implemented to satisfy extension/implemention
+     * @param provider unused parameter
+     */
     @Override
     public void onProviderEnabled(String provider) {
 
     }
 
+    /**
+     * Methode not needed. Only implemented to satisfy extension/implemention
+     * @param provider unused parameter
+     */
     @Override
     public void onProviderDisabled(String provider) {
 
