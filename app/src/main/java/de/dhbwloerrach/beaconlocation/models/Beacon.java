@@ -273,7 +273,7 @@ public class Beacon implements Parcelable{
         }
     }
 
-    public RssiDistanceStatus getRssiDistanceStatus(double rssi) {
+    public static RssiDistanceStatus getRssiDistanceStatus(double rssi) {
         if (rssi >= -70 && rssi < 0) { // zwischen 0 und -70
             return RssiDistanceStatus.IN_RANGE;
         } else if (rssi < -70 && rssi >= -80) { // zwischen -70 und -80
