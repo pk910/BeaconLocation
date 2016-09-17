@@ -111,7 +111,7 @@ public class WeatherFragment extends BaseFragment implements WeatherListener {
     }
 
     @Override
-    public void OnWeatherReceived(WeatherData weather) {
+    public void onWeatherReceived(WeatherData weather) {
         TextView weatherView = (TextView) currentView.findViewById(R.id.weatherData);
 
         StringBuilder strb = new StringBuilder();

@@ -66,7 +66,6 @@ public class WeatherData {
         this.dataHumidityMin=weather.getHumidityMin();
         this.dataHumidityMax=weather.getHumidityMax();
         this.dataHumidityAvg=weather.getHumidityAvg();
-        this.dataHumidityAvg=weather.getHumidityAvg();
         this.dataWindDir=weather.getWindDir();
         this.dataRainPossibility=weather.getRainPossibility();
         this.dataAccuracy=weather.getAccuracy();
