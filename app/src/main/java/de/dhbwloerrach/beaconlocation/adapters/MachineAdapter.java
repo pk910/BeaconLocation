@@ -94,7 +94,7 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
                 distanceValues[i]=distanceValues[i]/machineBeacons.size();
             }
             int pos=getMaxIndex(distanceValues);
-            if(distanceValues[pos]==0)
+            if(distanceValues[pos]<3)
             {
                 return null;
             }
