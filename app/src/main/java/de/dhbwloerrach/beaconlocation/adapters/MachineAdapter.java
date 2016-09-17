@@ -12,6 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import de.dhbwloerrach.beaconlocation.Flags;
 import de.dhbwloerrach.beaconlocation.R;
 import de.dhbwloerrach.beaconlocation.database.DatabaseHandler;
 import de.dhbwloerrach.beaconlocation.models.Beacon;
@@ -28,10 +29,12 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
     private final ArrayList<Machine> machines = new ArrayList<>();
     //private DecimalFormat distanceFormat = new DecimalFormat("#m");
     private final ArrayList<Integer> machineIdInRange = new ArrayList<>();
+    public String DebugRSSIValues;
 
     public MachineAdapter(Context context) {
         super(context, R.layout.listitem_beacon);
         this.context = context;
+        DebugRSSIValues="";
     }
 
     /*
@@ -97,6 +100,18 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
             }
             else
             {
+                if(Flags.DEBUG)
+                {
+                    ArrayList<Beacon> machineBeacons = databaseHandler.getAllBeaconsByMachine(machines.get(pos).getId());
+                    DebugRSSIValues="";
+                    for(int i=0;i<machineBeacons.size();i++)
+                    {
+                        if(i!=0)
+                            DebugRSSIValues+=",";
+                        Beacon a=beacons.getBeacon(machineBeacons.get(i).getMinor());
+                        DebugRSSIValues+=a.getMinor()+" "+a.getRssi();
+                    }
+                }
                 return machines.get(pos);
             }
         }

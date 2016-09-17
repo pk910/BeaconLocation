@@ -40,12 +40,12 @@ public class SmartEyeGlassExtension implements ExtensionInterface {
     @Override
     public void sendMessage(String message) {
         // Check ExtensionService is ready and referenced
-        message+= " - "+ (a++);
+        //message+= " - "+ (a++);
         try {
             if(Control.cont==null)
             {
                 if (ExtensionService.Object != null) {
-                    ExtensionService.Object.sendMessageToExtension("\r\n"+message);
+                    ExtensionService.Object.sendMessageToExtension(message);
                 }
             }
             else
