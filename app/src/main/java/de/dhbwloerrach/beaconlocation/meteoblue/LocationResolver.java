@@ -56,6 +56,16 @@ public class LocationResolver implements LocationListener {
         }
     }
 
+    public Location getLastKnownLocation() {
+        Location lastKnownLocationGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        if (lastKnownLocationGPS != null) {
+            return lastKnownLocationGPS;
+        } else {
+            Location loc =  locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            return loc;
+        }
+    }
+
     /** Determines whether one location reading is better than the current location fix
      * @param location  The new location that you want to evaluate
      * @param currentBestLocation  The current location fix, to which you want to compare the new one.

@@ -1,6 +1,7 @@
 package de.dhbwloerrach.beaconlocation.activities;
 
 import android.app.Activity;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -57,6 +58,10 @@ public class WeatherFragment extends BaseFragment implements WeatherListener {
         super.onResume();
         weather.requestWeather(false);
         locationResolver.startLocationListener();
+        Location loc = locationResolver.getLastKnownLocation();
+        if(loc != null)
+            weather.onLocationChanged(loc);
+
     }
 
     @Override
