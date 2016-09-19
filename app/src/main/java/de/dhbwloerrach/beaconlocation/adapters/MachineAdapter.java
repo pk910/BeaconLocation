@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import de.dhbwloerrach.beaconlocation.Flags;
+import de.dhbwloerrach.beaconlocation.BeaconSettings;
 import de.dhbwloerrach.beaconlocation.R;
 import de.dhbwloerrach.beaconlocation.database.DatabaseHandler;
 import de.dhbwloerrach.beaconlocation.models.Beacon;
@@ -91,7 +91,7 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
             }
             else
             {
-                if(Flags.DEBUG)
+                if(BeaconSettings.DEBUG)
                 {
                     ArrayList<Beacon> machineBeacons = databaseHandler.getAllBeaconsByMachine(machines.get(pos).getId());
                     debugRSSIValues ="";

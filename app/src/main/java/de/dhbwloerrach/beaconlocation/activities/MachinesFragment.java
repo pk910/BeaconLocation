@@ -14,7 +14,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import de.dhbwloerrach.beaconlocation.Flags;
+import de.dhbwloerrach.beaconlocation.BeaconSettings;
 import de.dhbwloerrach.beaconlocation.R;
 import de.dhbwloerrach.beaconlocation.adapters.MachineAdapter;
 import de.dhbwloerrach.beaconlocation.bluetooth.IBeaconListView;
@@ -83,7 +83,7 @@ public class MachinesFragment extends BaseFragment implements IBeaconListView {
                         final BeaconList filteredBeacons = new BeaconList(beaconsList).filterByLast(5);
                         Machine closest=adapter.getClosestMachine(context,filteredBeacons);
                         @SuppressWarnings("all") // For ignoring allways true/false warings for debug flag. Replace "all" with specified warning if you find needed keyword
-                        String maschineName=closest== null ? "No machine close to you.":("Close to \"" + closest.getName()+"\"" + (Flags.DEBUG?" ("+ adapter.debugRSSIValues +")":""));
+                        String maschineName=closest== null ? "No machine close to you.":("Close to \"" + closest.getName()+"\"" + (BeaconSettings.DEBUG?" ("+ adapter.debugRSSIValues +")":""));
                         extension.sendMessage(maschineName);
                     }
                     try {
