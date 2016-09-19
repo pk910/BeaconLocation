@@ -190,11 +190,11 @@ public class MachinesFragment extends BaseFragment implements IBeaconListView {
                     {
                         double rssi = currentRealBeacon.getRssiByAverageType(RssiAverageType.None, 2);
                         machinesRSSIValue+=rssi;
-                        beaconsValueList+= beacon.getUuid()+ " " + rssi;
+                        beaconsValueList+= "Blukii "+beacon.getId()+ " " + rssi;
                     }
                 }
                 machinesRSSIValue= machinesRSSIValue/machineBeacons.size();
-                machineDistanceInfo.add(new Machine.MachineInfoContainer(machine.getId(), Beacon.getRssiDistanceStatus(machinesRSSIValue), ""));
+                machineDistanceInfo.add(new Machine.MachineInfoContainer(machine.getId(), Beacon.getRssiDistanceStatus(machinesRSSIValue), beaconsValueList));
             }
 
             adapter.setMachineDistanceInfo(machineDistanceInfo);

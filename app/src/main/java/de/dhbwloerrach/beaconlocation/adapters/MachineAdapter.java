@@ -58,7 +58,13 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
     public void setMachineDistanceInfo(ArrayList<Machine.MachineInfoContainer> machineDistanceInfo) {
         for(Machine.MachineInfoContainer container: machineDistanceInfo)
         {
-            machines.get(container.machineID).incertMachineInfos(container);
+            for(int i=0;i<machines.size();i++)
+            {
+                if(container.machineID== machines.get(i).getId())
+                {
+                    machines.get(i).incertMachineInfos(container);
+                }
+            }
         }
     }
 
