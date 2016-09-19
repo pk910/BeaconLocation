@@ -12,9 +12,11 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import de.dhbwloerrach.beaconlocation.BeaconSettings;
 import de.dhbwloerrach.beaconlocation.R;
 import de.dhbwloerrach.beaconlocation.database.DatabaseHandler;
 import de.dhbwloerrach.beaconlocation.models.Beacon;
+import de.dhbwloerrach.beaconlocation.models.BeaconList;
 import de.dhbwloerrach.beaconlocation.models.Machine;
 import de.dhbwloerrach.beaconlocation.models.RssiAverageType;
 
@@ -26,22 +28,13 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
     private final Context context;
     private final ArrayList<Machine> machines = new ArrayList<>();
     //private DecimalFormat distanceFormat = new DecimalFormat("#m");
-    private final ArrayList<Integer> machineIdInRange = new ArrayList<>();
+    public String debugRSSIValues;
 
     public MachineAdapter(Context context) {
         super(context, R.layout.listitem_beacon);
         this.context = context;
+        debugRSSIValues ="";
     }
-
-    /*
-    /**
-     * Add one item
-     * @param item Machine
-     * /
-    public void addItem(Machine item) {
-        machines.add(item);
-    }
-    */
 
     /**
      * Add multiple items
@@ -59,15 +52,23 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
     }
 
     /**
-     * Set machine which are currently in range
-     * @param machineIdInRange ArrayList
+     * Updates the machine status of each machine
+     * @param machineDistanceInfo ArrayList
      */
-    public void setMachineIdInRange(ArrayList<Integer> machineIdInRange) {
-        this.machineIdInRange.clear();
-        this.machineIdInRange.addAll(machineIdInRange);
+    public void setMachineDistanceInfo(ArrayList<Machine.MachineInfoContainer> machineDistanceInfo) {
+        for(Machine.MachineInfoContainer container: machineDistanceInfo)
+        {
+            for(int i=0;i<machines.size();i++)
+            {
+                if(container.machineID== machines.get(i).getId())
+                {
+                    machines.get(i).incertMachineInfos(container);
+                }
+            }
+        }
     }
 
-    public Machine getClosestMachine(Context context){
+    public Machine getClosestMachine(Context context, BeaconList beacons){
         if(machines.size()==0)
         {
             return null;
@@ -79,23 +80,36 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
                 ArrayList<Beacon> machineBeacons = databaseHandler.getAllBeaconsByMachine(machines.get(i).getId());
                 if(machineBeacons.size()==0)
                 {
-                    distanceValues[i]=10;
+                    distanceValues[i]=0;
                     continue;
                 }
                 distanceValues[i]=0;
                 for(int j=0;j<machineBeacons.size();j++)
                 {
-                    distanceValues[i]+= translateRssiDistanceStatus(machineBeacons.get(j).getRssiDistanceStatus(machineBeacons.get(j).getRssiByAverageType(RssiAverageType.None, 2)));
+                    distanceValues[i]+= translateRssiDistanceStatus(Beacon.getRssiDistanceStatus(beacons.getBeacon(machineBeacons.get(j).getMinor()).getRssiByAverageType(RssiAverageType.None, 2)));
                 }
                 distanceValues[i]=distanceValues[i]/machineBeacons.size();
             }
             int pos=getMaxIndex(distanceValues);
-            if(distanceValues[pos]==0)
+            if(distanceValues[pos]<3)
             {
                 return null;
             }
             else
             {
+                if(BeaconSettings.DEBUG)
+                {
+                    ArrayList<Beacon> machineBeacons = databaseHandler.getAllBeaconsByMachine(machines.get(pos).getId());
+                    debugRSSIValues ="";
+                    for(int i=0;i<machineBeacons.size();i++)
+                    {
+                        if(i!=0) {
+                            debugRSSIValues += ",";
+                        }
+                        Beacon a=beacons.getBeacon(machineBeacons.get(i).getMinor());
+                        debugRSSIValues +=a.getMinor()+" "+a.getRssi();
+                    }
+                }
                 return machines.get(pos);
             }
         }
@@ -162,6 +176,7 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
     static class ViewHolder {
 
         private TextView valueViewMinor;
+        private TextView valueBeaconInfo;
         private ImageView inRangeIcon;
         private ImageView warningIcon;
     }
@@ -185,6 +200,7 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
 
             // 3. Get the two text view from the rowView
             mViewHolder.valueViewMinor = (TextView) view.findViewById(R.id.machineName);
+            mViewHolder.valueBeaconInfo = (TextView) view.findViewById(R.id.machineBeacons);
             mViewHolder.inRangeIcon = (ImageView) view.findViewById(R.id.machineInRange);
             mViewHolder.warningIcon = (ImageView) view.findViewById(R.id.machineWarning);
 
@@ -195,6 +211,8 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
 
         // 4. Set the text for textView
         mViewHolder.valueViewMinor.setText(machine.getName());
+        mViewHolder.valueBeaconInfo.setText(machine.getBeaconsValueList());
+
 
         DatabaseHandler databaseHandler = new DatabaseHandler(context);
         try {
@@ -204,10 +222,31 @@ public class MachineAdapter extends ArrayAdapter<Machine> {
         } finally {
             databaseHandler.close();
         }
-
-        mViewHolder.inRangeIcon.setImageResource(machineIdInRange.contains(machine.getId()) ? R.mipmap.circle_green : R.mipmap.circle_grey);
+        mViewHolder.inRangeIcon.setImageResource(getAccordingImage(machine.getStatus()));
 
         // 5. return rowView
         return view;
+    }
+
+    private int getAccordingImage(Beacon.RssiDistanceStatus status){
+        if(status== Beacon.RssiDistanceStatus.IN_RANGE)
+        {
+            return R.mipmap.circle_green;
+        }
+        else if(status == Beacon.RssiDistanceStatus.NEAR_BY_RANGE)
+        {
+            return R.mipmap.circle_yellow;
+        }
+        else if(status == Beacon.RssiDistanceStatus.AWAY)
+        {
+            return R.mipmap.circle_orange;
+        }
+        else if(status == Beacon.RssiDistanceStatus.FAR_AWAY)
+        {
+            return R.mipmap.circle_grey;
+        }
+        else{
+            return R.mipmap.circle_grey;
+        }
     }
 }

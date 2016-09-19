@@ -5,6 +5,6 @@ package de.dhbwloerrach.beaconlocation.meteoblue;
  *
  */
 public interface WeatherListener {
-    void OnWeatherReceived(WeatherData weather);
+    void onWeatherReceived(WeatherData weather);
     void OnWeatherLocatorStatusChanged(boolean isLocationServiceEnabled);
 }

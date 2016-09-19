@@ -7,6 +7,7 @@ package de.dhbwloerrach.beaconlocation;
 public final class BeaconSettings {
     public static final int RSSI_AVERAGE_SECONDS = 2;
     public static final int BEACONLIST_REFRESH_INTERVAL_SECONDS = 5;
+    public static final boolean DEBUG=true;
 
     private BeaconSettings() {} // Prevent instantiation by declaring constructor private.
 }

@@ -33,8 +33,9 @@ public class LocationResolver implements LocationListener {
 
     public void addLocationListener(LocationListener listener) {
         locationListeners.add(listener);
-        if(currentBestLocation != null)
+        if(currentBestLocation != null) {
             listener.onLocationChanged(currentBestLocation);
+        }
     }
 
     public void delLocationListener(LocationListener listener) {
@@ -50,10 +51,14 @@ public class LocationResolver implements LocationListener {
     }
 
     public void stopLocationListener() {
-        if(isRunning) try {
-            locationManager.removeUpdates(this);
-            isRunning = false;
-        } catch(SecurityException e) {
+        if(isRunning) {
+            try {
+                locationManager.removeUpdates(this);
+                isRunning = false;
+            } catch (SecurityException e) {
+                e.printStackTrace();
+                Log.e("LocationResolver", e.toString());
+            }
         }
     }
 
@@ -135,26 +140,31 @@ public class LocationResolver implements LocationListener {
     public void onLocationChanged(Location location) {
         if (currentBestLocation == null || isBetterLocation(location, currentBestLocation)) {
             currentBestLocation = location;
-            for(LocationListener listener : locationListeners)
+            for(LocationListener listener : locationListeners) {
                 listener.onLocationChanged(location);
+            }
         }
+        Log.e("Test","GPS");
     }
 
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
-        for(LocationListener listener : locationListeners)
+        for(LocationListener listener : locationListeners) {
             listener.onStatusChanged(provider, status, extras);
+        }
     }
 
     @Override
     public void onProviderEnabled(String provider) {
-        for(LocationListener listener : locationListeners)
+        for(LocationListener listener : locationListeners) {
             listener.onProviderEnabled(provider);
+        }
     }
 
     @Override
     public void onProviderDisabled(String provider) {
-        for(LocationListener listener : locationListeners)
+        for(LocationListener listener : locationListeners) {
             listener.onProviderDisabled(provider);
+        }
     }
 }

@@ -14,13 +14,13 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import de.dhbwloerrach.beaconlocation.BeaconSettings;
 import de.dhbwloerrach.beaconlocation.R;
 import de.dhbwloerrach.beaconlocation.adapters.MachineAdapter;
 import de.dhbwloerrach.beaconlocation.bluetooth.IBeaconListView;
 import de.dhbwloerrach.beaconlocation.database.DatabaseHandler;
 import de.dhbwloerrach.beaconlocation.extensions.ExtensionInterface;
 import de.dhbwloerrach.beaconlocation.extensions.SmartEyeGlassExtension;
-import de.dhbwloerrach.beaconlocation.extensions.ToastExtension;
 import de.dhbwloerrach.beaconlocation.models.Beacon;
 import de.dhbwloerrach.beaconlocation.models.BeaconList;
 import de.dhbwloerrach.beaconlocation.models.Machine;
@@ -34,6 +34,7 @@ public class MachinesFragment extends BaseFragment implements IBeaconListView {
     private MachineAdapter adapter;
     private Thread glassAdpaterThread;
     private ExtensionInterface extension;
+    private ArrayList<Beacon> beaconsList;
 
     @Nullable
     @Override
@@ -77,9 +78,14 @@ public class MachinesFragment extends BaseFragment implements IBeaconListView {
             public void run() {
                 while(!Thread.currentThread().isInterrupted())
                 {
-                    Machine closest=adapter.getClosestMachine(context);
-                    String maschineName=closest== null ? "No machine close to you.":"You are close to machine \"" + closest.getName()+"\"";
-                    extension.sendMessage(maschineName);
+                    if(beaconsList!=null)
+                    {
+                        final BeaconList filteredBeacons = new BeaconList(beaconsList).filterByLast(5);
+                        Machine closest=adapter.getClosestMachine(context,filteredBeacons);
+                        @SuppressWarnings("all") // For ignoring allways true/false warings for debug flag. Replace "all" with specified warning if you find needed keyword
+                        String maschineName=closest== null ? "No machine close to you.":("Close to \"" + closest.getName()+"\"" + (BeaconSettings.DEBUG?" ("+ adapter.debugRSSIValues +")":""));
+                        extension.sendMessage(maschineName);
+                    }
                     try {
                         Thread.sleep(5000);
                         if(Thread.currentThread().isInterrupted())
@@ -151,38 +157,47 @@ public class MachinesFragment extends BaseFragment implements IBeaconListView {
 
     @Override
     public void refreshList(ArrayList<Beacon> beacons) {
-        final BeaconList filteredBeacons = new BeaconList(beacons).filterByLast(5);
+        beaconsList=beacons;
+        final BeaconList filteredBeacons = new BeaconList(beaconsList).filterByLast(5);
 
         DatabaseHandler databaseHandler = new DatabaseHandler(activity);
         try {
-            ArrayList<Integer> machinesInRange = new ArrayList<>();
+            ArrayList<Machine.MachineInfoContainer> machineDistanceInfo= new ArrayList<>();
+            //ArrayList<Integer> machinesInRange = new ArrayList<>();
 
             for(Machine machine : databaseHandler.getAllMachines()) {
                 ArrayList<Beacon> machineBeacons = databaseHandler.getAllBeaconsByMachine(machine.getId());
 
-                boolean machineInRange = !machineBeacons.isEmpty();
+                //boolean machineInRange = !machineBeacons.isEmpty();
+                if(machineBeacons.isEmpty()){
+                    // machine has no beacons
+                    continue;
+                }
+                String beaconsValueList="";
+                double machinesRSSIValue=0;
                 for (Beacon beacon : machineBeacons) {
                     Beacon currentRealBeacon = filteredBeacons.getBeacon(beacon.getMinor());
-
+                    if(!"".equals(beaconsValueList))
+                    {
+                        beaconsValueList+=", ";
+                    }
                     if(currentRealBeacon == null) {
                         // Beacon is not visible
-                        machineInRange = false;
-                        break;
+                        machinesRSSIValue+=1000;
+                        beaconsValueList+= beacon.getUuid()+ " n/a";
                     }
-
-                    double rssi = currentRealBeacon.getRssiByAverageType(RssiAverageType.None, 2);
-                    if(currentRealBeacon.getRssiDistanceStatus(rssi) != Beacon.RssiDistanceStatus.IN_RANGE) {
-                        // Beacon is not in range
-                        machineInRange = false;
+                    else
+                    {
+                        double rssi = currentRealBeacon.getRssiByAverageType(RssiAverageType.None, 2);
+                        machinesRSSIValue+=rssi;
+                        beaconsValueList+= "Blukii "+beacon.getId()+ " " + rssi;
                     }
                 }
-
-                if(machineInRange) {
-                    machinesInRange.add(machine.getId());
-                }
+                machinesRSSIValue= machinesRSSIValue/machineBeacons.size();
+                machineDistanceInfo.add(new Machine.MachineInfoContainer(machine.getId(), Beacon.getRssiDistanceStatus(machinesRSSIValue), beaconsValueList));
             }
 
-            adapter.setMachineIdInRange(machinesInRange);
+            adapter.setMachineDistanceInfo(machineDistanceInfo);
             activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {

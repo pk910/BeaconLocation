@@ -129,7 +129,11 @@ public final class Control extends ControlExtension {
     private void updateLayout() {
         /* Commented out since we don't want to use the HelloWorld activity,
            but need it as source of information for now. */
-
+        /*
+        Bundle b1=new Bundle();
+        b1.putInt(com.sonyericsson.extras.liveware.aef.control.Control.Intents.EXTRA_LAYOUT_REFERENCE,R.id.btn_update_this);
+        b1.putString(com.sonyericsson.extras.liveware.aef.control.Control.Intents.EXTRA_TEXT,message);
+        Bundle[] data={b1};*/
         showLayout(R.layout.layout, null);
         sendText(R.id.btn_update_this, message);
         cont=this;
@@ -140,6 +144,17 @@ public final class Control extends ControlExtension {
            but need it as source of information for now. */
 
         sendText(R.id.btn_update_this, message);
+        /*
+        Bundle b1=new Bundle();
+        b1.putInt(com.sonyericsson.extras.liveware.aef.control.Control.Intents.EXTRA_LAYOUT_REFERENCE,R.id.btn_update_this);
+        b1.putString(com.sonyericsson.extras.liveware.aef.control.Control.Intents.EXTRA_TEXT,message);
+
+        Bundle b2=new Bundle();
+        b2.putInt(com.sonyericsson.extras.liveware.aef.control.Control.Intents.EXTRA_LAYOUT_REFERENCE,R.id.btn_update_this2);
+        b2.putString(com.sonyericsson.extras.liveware.aef.control.Control.Intents.EXTRA_TEXT,"sdf");
+
+        Bundle[] data={b1, b2};
+        showLayout(R.layout.layout, data);*/
     }
 
     /**

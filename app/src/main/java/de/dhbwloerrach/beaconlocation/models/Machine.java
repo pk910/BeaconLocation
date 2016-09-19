@@ -14,6 +14,8 @@ public class Machine implements Parcelable {
 
     private String name;
     private Integer id;
+    private Beacon.RssiDistanceStatus machineRssiDistanceStatus= Beacon.RssiDistanceStatus.UNKNOWN;
+    private String beaconsValueList="";
 
     public Machine(int id, String name){
         this.id=id;
@@ -38,6 +40,15 @@ public class Machine implements Parcelable {
         }
     };
 
+    public void incertMachineInfos(MachineInfoContainer container)
+    {
+        if(this.id== container.machineID)
+        {
+            this.machineRssiDistanceStatus=container.machineRssiDistanceStatus;
+            this.beaconsValueList = container.beaconsValueList;
+        }
+    }
+
     public Integer getId() {
         return id;
     }
@@ -50,11 +61,15 @@ public class Machine implements Parcelable {
         return name;
     }
 
-    /* Not needed anymore
-    public void setName(String name) {
-        this.name = name;
+    public Beacon.RssiDistanceStatus getStatus()
+    {
+        return machineRssiDistanceStatus;
     }
-    */
+
+    public String getBeaconsValueList()
+    {
+        return this.beaconsValueList;
+    }
 
     @Override
     public int describeContents() {
@@ -69,5 +84,19 @@ public class Machine implements Parcelable {
 
     public boolean checkMachineinDB (Machine machine,DatabaseHandler databaseHandler){
         return databaseHandler.getMachine(machine.getName()) != null;
+    }
+
+    public static class MachineInfoContainer{
+        public int machineID;
+        public Beacon.RssiDistanceStatus machineRssiDistanceStatus;
+        public String beaconsValueList;
+
+        public MachineInfoContainer(int machineID, Beacon.RssiDistanceStatus machineRssiDistanceStatus, String beaconsValueList)
+        {
+            this.machineID=machineID;
+            this.machineRssiDistanceStatus= machineRssiDistanceStatus;
+            this.beaconsValueList=beaconsValueList;
+        }
+
     }
 }
