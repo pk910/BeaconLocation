@@ -63,10 +63,6 @@ public class WeatherFragment extends BaseFragment implements WeatherListener {
         }
 
         weather.requestWeather(false);
-
-        Location loc = locationResolver.getLastKnownLocation();
-        if(loc != null)
-            weather.onLocationChanged(loc);
     }
 
     @Override
