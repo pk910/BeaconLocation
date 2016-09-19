@@ -1,6 +1,7 @@
 package de.dhbwloerrach.beaconlocation.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -31,9 +32,8 @@ public class WeatherFragment extends BaseFragment implements WeatherListener {
         locationResolver = new LocationResolver(context);
         WeatherData.setAppContext(context);
 
-        weather = new WeatherRequest();
+        weather = new WeatherRequest(locationResolver);
         weather.addWeatherListener(this);
-        locationResolver.addLocationListener(weather);
     }
 
 
@@ -48,9 +48,8 @@ public class WeatherFragment extends BaseFragment implements WeatherListener {
         locationResolver = new LocationResolver(activity);
         WeatherData.setAppContext(activity);
 
-        weather = new WeatherRequest();
+        weather = new WeatherRequest(locationResolver);
         weather.addWeatherListener(this);
-        locationResolver.addLocationListener(weather);
     }
 
     @Override
@@ -69,6 +68,13 @@ public class WeatherFragment extends BaseFragment implements WeatherListener {
     public void onPause() {
         super.onPause();
         locationResolver.stopLocationListener();
+    }
+
+    private void updateGpsEnabledPanel(boolean enabled) {
+        View panel = (View) currentView.findViewById(R.id.gpsDisabledPanel);
+        if(panel == null)
+            return;
+        panel.setVisibility(enabled ? View.GONE : View.VISIBLE);
     }
 
     /**
@@ -107,6 +113,14 @@ public class WeatherFragment extends BaseFragment implements WeatherListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //inflate fragment
         currentView = inflater.inflate(R.layout.fragment_weather, container, false);
+
+        currentView.findViewById(R.id.gpsEnableBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+            }
+        });
+        updateGpsEnabledPanel(weather.isWeatherLocationEnabled());
 
         return currentView;
     }
@@ -239,6 +253,11 @@ public class WeatherFragment extends BaseFragment implements WeatherListener {
         weatherImageView.setImageResource(weather.getCodeDayPic());
 
         weatherView.setText(strb.toString());
+    }
+
+    @Override
+    public void OnWeatherLocatorStatusChanged(boolean isLocationServiceEnabled) {
+        updateGpsEnabledPanel(isLocationServiceEnabled);
     }
 
     @Override

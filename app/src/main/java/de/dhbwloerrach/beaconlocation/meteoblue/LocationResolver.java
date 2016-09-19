@@ -1,11 +1,14 @@
 package de.dhbwloerrach.beaconlocation.meteoblue;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -16,12 +19,14 @@ import java.util.ArrayList;
  *
  */
 public class LocationResolver implements LocationListener {
+    private Activity appActivity;
     private LocationManager locationManager;
-    private ArrayList<LocationListener> locationListeners = new ArrayList<>();
+    private ArrayList<LocationListener> locationListeners = new ArrayList<LocationListener>();
     private Location currentBestLocation;
     private boolean isRunning = false;
 
     public LocationResolver(Activity activity) {
+        appActivity = activity;
         locationManager = (LocationManager) activity.getSystemService(Context.LOCATION_SERVICE);
         startLocationListener();
     }
@@ -32,11 +37,9 @@ public class LocationResolver implements LocationListener {
             listener.onLocationChanged(currentBestLocation);
     }
 
-    /* Unused
     public void delLocationListener(LocationListener listener) {
         locationListeners.remove(listener);
     }
-    */
 
     public void startLocationListener() {
         if(!isRunning) {
@@ -51,8 +54,6 @@ public class LocationResolver implements LocationListener {
             locationManager.removeUpdates(this);
             isRunning = false;
         } catch(SecurityException e) {
-            e.printStackTrace();
-            Log.e("LocationResolver",e.toString());
         }
     }
 
@@ -61,9 +62,19 @@ public class LocationResolver implements LocationListener {
         if (lastKnownLocationGPS != null) {
             return lastKnownLocationGPS;
         } else {
-            Location loc =  locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            Location loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
             return loc;
         }
+    }
+
+    public boolean isGpsEnabled(boolean gpsonly) {
+        boolean gpsLocatorEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        boolean wifiLocatorEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        return gpsLocatorEnabled || (!gpsonly && wifiLocatorEnabled);
+    }
+
+    public boolean isGpsEnabled() {
+        return isGpsEnabled(false);
     }
 
     /** Determines whether one location reading is better than the current location fix

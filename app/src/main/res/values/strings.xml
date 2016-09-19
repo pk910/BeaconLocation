@@ -87,4 +87,6 @@
         <!-- Configuration title shown in preferences -->
         <string name="configuration_text">MainActivity</string>
         <string name="action_weather">Weather</string>
+        <string name="weather_gps_disabled">Your GPS seems to be disabled, do you want to enable it?</string>
+        <string name="weather_gps_enable">Enable GPS</string>
     </resources>

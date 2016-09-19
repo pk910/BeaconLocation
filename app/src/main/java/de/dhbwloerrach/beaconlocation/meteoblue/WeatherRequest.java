@@ -18,9 +18,16 @@ public class WeatherRequest extends JsonRequestHelper implements LocationListene
 
     private boolean requestRunning;
     private boolean requestPending;
+    private boolean locationServiceEnabled;
+    private LocationResolver locationResolver;
     private Location currentLocation, weatherLocation;
     private WeatherData weatherData;
     private ArrayList<WeatherListener> weatherListener = new ArrayList<>();
+
+    public WeatherRequest(LocationResolver locationResolver) {
+        this.locationResolver = locationResolver;
+        this.locationResolver.addLocationListener(this);
+    }
 
     public void addWeatherListener(WeatherListener listener) {
         weatherListener.add(listener);
@@ -43,15 +50,11 @@ public class WeatherRequest extends JsonRequestHelper implements LocationListene
         String asl = Integer.toString((int)currentLocation.getAltitude());
 
         StringBuilder url = new StringBuilder("http://my.meteoblue.com/packages/basic-day");
-        url.append("?lat=");
-        url.append(lat);
-        url.append("&lon=");
-        url.append(lon);
-        url.append("&asl=");
-        url.append(asl);
+        url.append("?lat="+lat);
+        url.append("&lon="+lon);
+        url.append("&asl="+asl);
         url.append("&tz=Europe%2FBerlin");
-        url.append("&apikey=");
-        url.append(METEOBLUE_APIKEY);
+        url.append("&apikey="+METEOBLUE_APIKEY);
         url.append("&temperature=C");
         url.append("&windspeed=ms-1");
         url.append("&winddirection=degree");
@@ -60,6 +63,15 @@ public class WeatherRequest extends JsonRequestHelper implements LocationListene
         url.append("&format=json");
 
         requestJsonFromWeb(url.toString());
+    }
+
+    private void checkLocationServiceEnabled() {
+        boolean enabled = locationResolver.isGpsEnabled();
+        if(enabled != locationServiceEnabled) {
+            locationServiceEnabled = enabled;
+            for (WeatherListener listener : weatherListener)
+                listener.OnWeatherLocatorStatusChanged(locationServiceEnabled);
+        }
     }
 
     public void requestWeather(boolean refresh) {
@@ -74,6 +86,22 @@ public class WeatherRequest extends JsonRequestHelper implements LocationListene
         else {
             requestWeather();
         }
+    }
+
+    public Location getWeatherLocation() {
+        return weatherLocation;
+    }
+
+    public boolean isWeatherLocationEnabled() {
+        return locationResolver.isGpsEnabled();
+    }
+
+    public boolean isWeatherLocationAccurate() {
+        if(weatherLocation == null)
+            return false;
+        if(weatherLocation.getAccuracy() > 200)
+            return false;
+        return true;
     }
 
     @Override
@@ -117,11 +145,11 @@ public class WeatherRequest extends JsonRequestHelper implements LocationListene
 
     @Override
     public void onProviderEnabled(String provider) {
-
+        checkLocationServiceEnabled();
     }
 
     @Override
     public void onProviderDisabled(String provider) {
-
+        checkLocationServiceEnabled();
     }
 }
