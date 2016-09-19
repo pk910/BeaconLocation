@@ -76,7 +76,6 @@
         <string name="machine_warning_image">Machine warning</string>
         <string name="beacon_icon">Beacon icon</string>
 
-        <!-- SmartEye Glass Integration TODO: Remove uneeded strings! -->
         <!-- Name of extension, shown in preferences -->
         <string name="extension_name">MachineLocator</string>
         <!-- Text used on control layout -->
@@ -87,4 +86,12 @@
         <!-- Configuration title shown in preferences -->
         <string name="configuration_text">MainActivity</string>
         <string name="action_weather">Weather</string>
+
+
+        <!-- Weather Fragment -->
+        <string name="weather_placeholder">....</string>
+        <string name="weather_imageDescription">image showing current weather</string>
+
+        <!-- Smart Eye Glass -->
+        <string name="glass_placeholder">sample text</string>
     </resources>
